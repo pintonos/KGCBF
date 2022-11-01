@@ -3,7 +3,8 @@ import numpy as np
 from rdflib import Graph
 
 from framework.utils import construct_error_example_graph, random_replace_character
-from framework.queries import *
+#from framework.queries import *
+from framework.error_types import *
 
 
 if __name__ == '__main__':
@@ -19,23 +20,11 @@ if __name__ == '__main__':
     #    g = g.parse(args.input)
     #else:
     g = construct_error_example_graph()
+    print(g.serialize())
 
-    g.update(
-        """
-        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-        PREFIX error_foaf: <http://xmlns.com/foaf/0.1/ERROR/>
-        PREFIX ex: <http://example.org/people/>
-        DELETE {
-            ex:Linda a ?o .
-        }
-        INSERT { 
-            ex:Linda1 a ?o . 
-        }
-        WHERE {
-            ex:Linda a ?o .
-        }
-        """
-    )
+    error_type1 = WrongInstanceErrorType1(prob=0.5)
+    
+    g = error_type1.update_graph(g)
 
     print(g.serialize())
     g.serialize(destination=args.output, format="turtle")
