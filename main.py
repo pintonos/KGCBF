@@ -2,7 +2,7 @@ import argparse
 import numpy as np
 from rdflib import Graph
 
-from framework.utils import construct_error_example_graph, random_replace_character
+from framework.utils import construct_error_example_graph, random_replace_character, construct_example_graph
 #from framework.queries import *
 from framework.error_types import *
 
@@ -19,12 +19,12 @@ if __name__ == '__main__':
     #if args.input is not None:
     #    g = g.parse(args.input)
     #else:
-    g = construct_error_example_graph()
+    g = construct_example_graph()
     print(g.serialize())
-
-    error_type1 = WrongInstanceErrorType1(prob=0.5)
+    print("---------------------------------------------------------------")
     
-    g = error_type1.update_graph(g)
+    g = DomainErrorType(prob=0.5).update_graph(g)    
+    g = WrongInstanceErrorType1(prob=0.5).update_graph(g)
 
     print(g.serialize())
     g.serialize(destination=args.output, format="turtle")

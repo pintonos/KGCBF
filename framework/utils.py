@@ -2,14 +2,14 @@ import rdflib
 from rdflib import Graph, URIRef, Literal, BNode
 from pandas import DataFrame
 from rdflib.plugins.sparql.processor import SPARQLResult, prepareQuery, prepareUpdate
-from rdflib.namespace import FOAF, RDF, SDO
+from rdflib.namespace import FOAF, RDF, SDO, RDFS, OWL
 from rdflib.namespace import DefinedNamespace, Namespace
 from rdflib.term import URIRef
 
 import numpy as np
 from random import sample, choice
 
-from framework.namespaces import ErrorFOAF, ErrorRDF, ErrorSDO
+from framework.namespaces import ErrorFOAF, ErrorRDF, ErrorSDO, Example
 
 
 def sparql_results_to_df(results: SPARQLResult) -> DataFrame:
@@ -65,4 +65,36 @@ def construct_error_example_graph():
     g.add((linda, FOAF.name, Literal("Linda")))
     g.add((error_hans, RDF.type, ErrorSDO.HumAn))
     g.add((error_hans, ErrorSDO.name, Literal("Hans")))
+    return g
+
+def construct_example_graph():
+    g = Graph()
+    g.bind("foaf", FOAF)
+    g.bind("sdo", SDO)
+    g.bind("rdfs", RDFS)
+    g.bind("owl", OWL)
+    g.bind("ex", Example)
+
+    dennis = URIRef("http://example.org/Dennis")
+    dennis_som = URIRef("http://example.org/DennisSom")
+
+    g.add((dennis, RDF.type, FOAF.Person))
+    g.add((dennis, RDF.type, SDO.Person))
+    g.add((dennis, FOAF.name, Literal("Dennis")))
+    g.add((dennis, FOAF.age, Literal(24)))
+
+    g.add((Example.DAddress, RDF.type, SDO.PostalAddress))
+    g.add((Example.DAddress, SDO.postalCode, Literal("6020")))
+    g.add((dennis, SDO.address, Example.DAddress))
+
+    g.add((SDO.address, RDFS.range, SDO.PostalAddress))
+    g.add((Example.addressDoor, RDFS.domain, SDO.PostalAddress))
+
+    '''g.add((SDO.PostalAddress, RDF.type, RDFS.Class))
+    g.add((Example.Address, RDF.type, RDFS.Class))
+
+    g.add((Example.Address, OWL.equivalentClass, SDO.PostalAddress))
+    g.add((dennis, OWL.sameAs, dennis_som))
+    g.add((Example.DAddress, OWL.sameAs, Example.DennisSomAddress))'''
+
     return g

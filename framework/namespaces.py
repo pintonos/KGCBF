@@ -19,3 +19,10 @@ class ErrorSDO(SDO):
     Human: URIRef 
     HumAn: URIRef 
     homeAddress: URIRef
+
+class Example(DefinedNamespace):
+    _NS = Namespace("http://example.org/")
+
+    Address: URIRef
+    DAddress: URIRef 
+    addressDoor: URIRef
