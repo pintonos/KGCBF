@@ -8,6 +8,7 @@ from rdflib.term import URIRef
 
 import numpy as np
 from random import sample, choice
+import yaml
 
 from framework.namespaces import ErrorFOAF, ErrorRDF, ErrorSDO, Example
 
@@ -45,6 +46,16 @@ def print_rdf_triples(graph):
         else:
             print(subj, pred, obj)
 
+def read_config(config_filepath):
+    with open(config_filepath, 'r') as stream:
+        try:
+            parsed_yaml=yaml.safe_load(stream)
+            print(parsed_yaml)
+        except yaml.YAMLError as exc:
+            print(exc)
+
+    return parsed_yaml
+
 
 def construct_error_example_graph():
     g = Graph()
@@ -76,25 +87,63 @@ def construct_example_graph():
     g.bind("ex", Example)
 
     dennis = URIRef("http://example.org/Dennis")
-    dennis_som = URIRef("http://example.org/DennisSom")
 
-    g.add((dennis, RDF.type, FOAF.Person))
-    g.add((dennis, RDF.type, SDO.Person))
-    g.add((dennis, FOAF.name, Literal("Dennis")))
-    g.add((dennis, FOAF.age, Literal(24)))
+    g.add((dennis, RDF.type, Example.Person))
 
-    g.add((Example.DAddress, RDF.type, SDO.PostalAddress))
-    g.add((Example.DAddress, SDO.postalCode, Literal("6020")))
-    g.add((dennis, SDO.address, Example.DAddress))
+    #g.add((Example.Group, Example.hasMember, dennis))
+    g.add((dennis, Example.hasAddress, Example.Address))
 
-    g.add((SDO.address, RDFS.range, SDO.PostalAddress))
-    g.add((Example.addressDoor, RDFS.domain, SDO.PostalAddress))
-
-    '''g.add((SDO.PostalAddress, RDF.type, RDFS.Class))
-    g.add((Example.Address, RDF.type, RDFS.Class))
-
-    g.add((Example.Address, OWL.equivalentClass, SDO.PostalAddress))
-    g.add((dennis, OWL.sameAs, dennis_som))
-    g.add((Example.DAddress, OWL.sameAs, Example.DennisSomAddress))'''
+    g.add((Example.hasMember, RDFS.range, Example.Person))
+    g.add((Example.hasAddress, RDFS.domain, Example.Person))
 
     return g
+
+
+def sparql_query(graph, subject, predicate, object):
+    bindings = {"s": subject, "p": predicate, "o": object}
+    bindings = {k: v for k, v in bindings.items() if v is not None}
+    qres = graph.query(
+        """
+        SELECT ?s ?p ?o
+        WHERE {
+            ?s ?p ?o .
+        }
+        """,
+        initNs = { "rdf": RDF },
+        initBindings = bindings
+    )
+    df = sparql_results_to_df(qres)
+    return df
+
+
+def sparql_update_object(graph, subject, predicate, object, target_object):
+    graph.update(
+            """DELETE {
+                ?s ?p ?o .
+            }
+            INSERT { 
+                ?s ?p ?to . 
+            }
+            WHERE {
+                ?s ?p ?o .
+            }""",
+            initNs = { "rdf": RDF },
+            initBindings = {"s": subject, "p": predicate, "o": object, "to": target_object}
+        )
+    return graph
+
+def sparql_update_subject(graph, subject, predicate, object, target_subject):
+    graph.update(
+            """DELETE {
+                ?s ?p ?o .
+            }
+            INSERT { 
+                ?ts ?p ?o . 
+            }
+            WHERE {
+                ?s ?p ?o .
+            }""",
+            initNs = { "rdf": RDF },
+            initBindings = {"s": subject, "p": predicate, "o": object, "ts": target_subject}
+    )
+    return graph

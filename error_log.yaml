@@ -1,0 +1,4 @@
+http://example.org/Dennis:
+  change_type:
+  - http://example.org/Person
+  - https://schema.org/inSupportOf

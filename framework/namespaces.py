@@ -26,3 +26,9 @@ class Example(DefinedNamespace):
     Address: URIRef
     DAddress: URIRef 
     addressDoor: URIRef
+
+    Person: URIRef
+    Group: URIRef
+    hasMember: URIRef
+    hasAddress: URIRef
+    

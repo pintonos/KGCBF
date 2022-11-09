@@ -8,15 +8,19 @@ from rdflib.term import URIRef
 from pandas import DataFrame
 import random
 
-from framework.utils import insert_str, sparql_results_to_df
+from framework.utils import insert_str, sparql_results_to_df, sparql_query, sparql_update_object, sparql_update_subject
 
 
-class GeneralErrorType():
+class AbstractError():
     def __init__(self):
         self.id = None
         self.name = None
+        self.logger = None
 
     def update_graph(self):
+        raise NotImplementedError
+
+    def find_error(self):
         raise NotImplementedError
 
     def __str__(self):
@@ -25,56 +29,78 @@ class GeneralErrorType():
         )
 
 
-class DomainErrorType(GeneralErrorType):
-    def __init__(self, prob):
-        super(DomainErrorType, self).__init__()
+class DomainTypeError(AbstractError):
+    def __init__(self, prob, logger):
+        super(DomainTypeError, self).__init__()
         self.name = "Domain Violation"
         self.prob = prob
+        self.logger = logger
 
-    def get_type_asserts(self, graph, prob):
+    def get_subject_only_entities(self, graph):
         qres = graph.query(
             """
             SELECT ?s ?o
             WHERE {
                 ?s rdf:type ?o .
+                FILTER NOT EXISTS { [] ?p ?s } .
             }
             """,
             initNs = { "rdf": RDF }
         )
-
-        type_asserts = sparql_results_to_df(qres)
-        amount = int(len(type_asserts) * prob)
-        sampled_type_asserts = type_asserts.loc[random.sample(list(type_asserts.index), amount)]
-        return sampled_type_asserts.s.tolist(), sampled_type_asserts.o.tolist()
-
-    def update_type_assert(self, graph, subject, object, target_uri):
-        q = prepareUpdate(
-            """DELETE {
-                ?subject rdf:type ?object .
-            }
-            INSERT { 
-                ?subject rdf:type ?target_uri . 
-            }
-            WHERE {
-                ?subject rdf:type ?object .
-            }""",
-            initNs = { "rdf": RDF }
-        )
-        graph.update(q, initBindings={'subject': rdflib.URIRef(subject), 'object': rdflib.URIRef(object), 'target_uri': target_uri})
-        return graph
+        df = sparql_results_to_df(qres)
+        return df
 
     def update_graph(self, graph):
-        s_type_asserts, o_type_asserts = self.get_type_asserts(graph, self.prob)
-        print(s_type_asserts)
-        for s, o in zip(s_type_asserts, o_type_asserts):
-            graph = self.update_type_assert(graph, s, o, random.choice(dir(SDO))) # random SDO type for now
+        subjects_only = self.get_subject_only_entities(graph)
+        amount = int(len(subjects_only) * self.prob)
+        sampled = subjects_only.loc[random.sample(list(subjects_only.index), amount)]
+        sampled_s, sampled_o = sampled.s.tolist(), sampled.o.tolist()
+        for s, o in zip(sampled_s, sampled_o):
+            corr_o = str(random.choice(dir(SDO)))
+            sparql_update_object(graph, rdflib.URIRef(s), RDF.type, rdflib.URIRef(o), rdflib.URIRef(corr_o)) # random SDO type for now
+            self.logger.log_error('change_type', s, o, corr_o)
         
         return graph
 
 
-class WrongInstanceErrorType1(GeneralErrorType):
+class RangeTypeError(AbstractError):
+    def __init__(self, prob, logger):
+        super(RangeTypeError, self).__init__()
+        self.name = "Range Violation"
+        self.prob = prob
+        self.logger = logger
+
+    def get_object_only_entities(self, graph):
+        qres = graph.query(
+            """
+            SELECT ?s ?o
+            WHERE {
+                ?s rdf:type ?o .
+                FILTER NOT EXISTS { ?o ?p [] } .
+            }
+            """,
+            initNs = { "rdf": RDF }
+        )
+        df = sparql_results_to_df(qres)
+        print(df)
+        return df
+
+    def update_graph(self, graph):
+        objects_only = self.get_object_only_entities(graph)
+        amount = int(len(objects_only) * self.prob)
+        sampled = objects_only.loc[random.sample(list(objects_only.index), amount)]
+        sampled_s, sampled_o = sampled.s.tolist(), sampled.o.tolist()
+        for s, o in zip(sampled_s, sampled_o):
+            corr_o = str(random.choice(dir(SDO)))
+            sparql_update_object(graph, rdflib.URIRef(s), RDF.type, rdflib.URIRef(o), rdflib.URIRef(corr_o)) # random SDO type for now
+            self.logger.log_error('change_type', s, o, corr_o)
+        
+        return graph
+
+
+class WrongInstanceError(AbstractError):
     def __init__(self, prob):
-        super(WrongInstanceErrorType1, self).__init__()
+        super(WrongInstanceError, self).__init__()
         self.name = "not a proper instance identifier"
         self.prob = prob
 
