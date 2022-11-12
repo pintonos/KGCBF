@@ -58,7 +58,7 @@ class DomainTypeError(AbstractError):
         for s, o in zip(sampled_s, sampled_o):
             corr_o = str(random.choice(dir(SDO)))
             sparql_update_object(graph, rdflib.URIRef(s), RDF.type, rdflib.URIRef(o), rdflib.URIRef(corr_o)) # random SDO type for now
-            self.logger.log_error('change_type', s, o, corr_o)
+            self.logger.log_error('change_domain', s, o, corr_o)
         
         return graph
 
@@ -93,7 +93,7 @@ class RangeTypeError(AbstractError):
         for s, o in zip(sampled_s, sampled_o):
             corr_o = str(random.choice(dir(SDO)))
             sparql_update_object(graph, rdflib.URIRef(s), RDF.type, rdflib.URIRef(o), rdflib.URIRef(corr_o)) # random SDO type for now
-            self.logger.log_error('change_type', s, o, corr_o)
+            self.logger.log_error('change_range', s, o, corr_o)
         
         return graph
 

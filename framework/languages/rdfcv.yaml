@@ -1,0 +1,8 @@
+change_range:
+  pattern: "SELECT ?s
+            WHERE {
+              ?s a :constraintViolation .
+              ?s a :NonLiteral .
+              ?s :object $o$ .
+              ?s :expectedRange $old$ .
+            }"

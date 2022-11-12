@@ -1,4 +1,24 @@
-http://example.org/Dennis:
-  change_type:
-  - http://example.org/Person
-  - https://schema.org/inSupportOf
+http://example.org/#nsCoolGroup:
+  change_range:
+  - http://xmlns.com/foaf/0.1/Group
+  - https://schema.org/accessibilityHazard
+http://example.org/#nsDaniel:
+  change_range:
+  - http://xmlns.com/foaf/0.1/Agent
+  - https://schema.org/legislationTransposes
+http://example.org/#nsDennis:
+  change_range:
+  - http://xmlns.com/foaf/0.1/Agent
+  - https://schema.org/ScheduleAction
+http://example.org/#nsGroupTwo:
+  change_range:
+  - http://xmlns.com/foaf/0.1/Group
+  - https://schema.org/eligibleRegion
+http://example.org/#nsLars:
+  change_range:
+  - http://xmlns.com/foaf/0.1/Agent
+  - https://schema.org/ProfessionalService
+http://example.org/#nsMichael:
+  change_range:
+  - http://xmlns.com/foaf/0.1/Agent
+  - https://schema.org/MedicalAudience
