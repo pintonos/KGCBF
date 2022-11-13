@@ -1,24 +1,24 @@
+http://example.org/#nsCoolGroup:
+  change_domain:
+  - http://xmlns.com/foaf/0.1/Group
+  - https://schema.org/departureBusStop
+http://example.org/#nsDaniel:
+  change_range:
+  - http://xmlns.com/foaf/0.1/Agent
+  - https://schema.org/WearableMeasurementBack
+http://example.org/#nsDennis:
+  change_range:
+  - http://xmlns.com/foaf/0.1/Agent
+  - https://schema.org/guidelineSubject
 http://example.org/#nsGeorg:
   change_range:
   - http://xmlns.com/foaf/0.1/Agent
-  - https://schema.org/study
-http://example.org/#nsGroupThree:
+  - https://schema.org/DoubleBlindedTrial
+http://example.org/#nsGregor:
   change_range:
-  - http://xmlns.com/foaf/0.1/Group
-  - https://schema.org/recognizedBy
+  - http://xmlns.com/foaf/0.1/Agent
+  - https://schema.org/suggestedAge
 http://example.org/#nsJuliette:
   change_range:
   - http://xmlns.com/foaf/0.1/Agent
-  - https://schema.org/Zoo
-http://example.org/#nsLars:
-  change_range:
-  - http://xmlns.com/foaf/0.1/Agent
-  - https://schema.org/Renal
-http://example.org/#nsMax:
-  change_range:
-  - http://xmlns.com/foaf/0.1/Agent
-  - https://schema.org/muscleAction
-http://example.org/#nsSimon:
-  change_range:
-  - http://xmlns.com/foaf/0.1/Agent
-  - https://schema.org/FDAcategoryC
+  - https://schema.org/employerOverview

@@ -1,4 +1,5 @@
 import subprocess
+import sys
 
 import yaml
 from rdflib import Graph
@@ -28,7 +29,7 @@ class ValidatrrValidator:
 
     def validate_file(self, input_graph: str):
         subprocess.run(
-            "docker run -v \"%cd%\":/data n3unit" + f" -i /data/{input_graph} -o /data/validated.ttl -s foaf",
+            f"docker run -v {sys.path[0]}:/data n3unit -i /data/{input_graph} -o /data/validated.ttl -s foaf",
             shell=True)
 
     def validate_errors(self):
@@ -55,6 +56,7 @@ class ValidatrrValidator:
             for error_type in log_data[subject]:
                 if error_type not in self.dictionary:
                     print(f"Undefined error type: {error_type}")
+                    report["errors_not_detected"] += [f"{subject} {error_type} (Missing Definition)"]
                 else:
                     query = self.dictionary[error_type]["pattern"] \
                         .replace("$o$", f"<{subject}>") \

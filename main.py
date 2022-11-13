@@ -27,7 +27,7 @@ if __name__ == '__main__':
     print("---------------------------------------------------------------")
 
     logger = Logger()
-    # g = DomainTypeError(prob=config['DomainTypeError'], logger=logger).update_graph(g)
+    g = DomainTypeError(prob=config['DomainTypeError'], logger=logger).update_graph(g)
     g = RangeTypeError(prob=config['RangeTypeError'], logger=logger).update_graph(g)
     # TODO rethink: ex:Georg a ex:Person -> person is also only used as object, sparql finds this tuple
     # g = WrongInstanceError(prob=0.5).update_graph(g)

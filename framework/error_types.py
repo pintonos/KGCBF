@@ -66,10 +66,13 @@ class RangeTypeError(AbstractError):
     def get_object_only_entities(self, graph):
         qres = graph.query(
             """
-            SELECT ?s ?o
-            WHERE {
-                ?s rdf:type ?o .
-                FILTER NOT EXISTS { ?o ?p [] } .
+            SELECT ?s ?o where {
+                ?s ?p ?o
+                FILTER NOT EXISTS 
+                {
+                    ?s ?p1 []
+                    FILTER (?p1 != rdf:type)
+                }
             }
             """,
             initNs = { "rdf": RDF }
