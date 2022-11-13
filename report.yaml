@@ -1,0 +1,11 @@
+errors_detected:
+- http://example.org/#nsLars change_range
+- http://example.org/#nsJuliette change_range
+- http://example.org/#nsGeorg change_range
+- http://example.org/#nsMax change_range
+- http://example.org/#nsSimon change_range
+errors_not_detected:
+- http://example.org/#nsGroupThree change_range
+f1: 0.9090909090909091
+precision: 1.0
+recall: 0.8333333333333334

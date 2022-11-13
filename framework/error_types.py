@@ -1,26 +1,19 @@
 import rdflib
-from rdflib import Graph, URIRef, Literal, BNode
-from rdflib.plugins.sparql.processor import SPARQLResult, prepareQuery, prepareUpdate
-from rdflib.namespace import FOAF, RDF, SDO
-from rdflib.namespace import DefinedNamespace, Namespace
-from rdflib.term import URIRef
+from rdflib.plugins.sparql.processor import prepareUpdate
+from rdflib.namespace import RDF, SDO
 
-from pandas import DataFrame
 import random
 
-from framework.utils import insert_str, sparql_results_to_df, sparql_query, sparql_update_object, sparql_update_subject
+from framework.utils import insert_str, sparql_results_to_df, sparql_update_object
 
 
-class AbstractError():
+class AbstractError:
     def __init__(self):
         self.id = None
         self.name = None
         self.logger = None
 
-    def update_graph(self):
-        raise NotImplementedError
-
-    def find_error(self):
+    def update_graph(self, graph):
         raise NotImplementedError
 
     def __str__(self):

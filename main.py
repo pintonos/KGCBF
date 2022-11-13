@@ -1,5 +1,7 @@
 import argparse
 
+from rdflib import Graph
+
 from framework.Validators import ValidatrrValidator
 from framework.utils import read_config
 from framework.error_types import *
@@ -10,6 +12,7 @@ if __name__ == '__main__':
     parser.add_argument('--input', '-i', type=str, default='input.ttl')
     parser.add_argument('--output', '-o', type=str, default='output.ttl')
     parser.add_argument('--config', '-c', type=str, default='config.yaml')
+    parser.add_argument('--validation', '-v', type=str)
     args, _ = parser.parse_known_args()
     print(args)
 
@@ -37,7 +40,15 @@ if __name__ == '__main__':
     print(logger)
     logger.save_to_file()
 
-    # validate using validatrr
-    v = ValidatrrValidator(logger)
-    v.validate_file(args.output)
-    v.validate_errors()
+    if args.validation is not None:
+        # choose validator class here
+        v = None
+        if args.validation == "validatrr":
+            # validate using validatrr
+            v = ValidatrrValidator(logger)
+        # validate over chosen validator class
+        if v:
+            v.validate_file(args.output)
+            v.validate_errors()
+        else:
+            print(f"Validation method '{args.validation}' does not exist.")
