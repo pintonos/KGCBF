@@ -1,26 +1,19 @@
 import rdflib
-from rdflib import Graph, URIRef, Literal, BNode
-from rdflib.plugins.sparql.processor import SPARQLResult, prepareQuery, prepareUpdate
-from rdflib.namespace import FOAF, RDF, SDO
-from rdflib.namespace import DefinedNamespace, Namespace
-from rdflib.term import URIRef
+from rdflib.plugins.sparql.processor import prepareUpdate
+from rdflib.namespace import RDF, SDO
 
-from pandas import DataFrame
 import random
 
-from framework.utils import insert_str, sparql_results_to_df, sparql_query, sparql_update_object, sparql_update_subject
+from framework.utils import insert_str, sparql_results_to_df, sparql_update_object
 
 
-class AbstractError():
+class AbstractError:
     def __init__(self):
         self.id = None
         self.name = None
         self.logger = None
 
-    def update_graph(self):
-        raise NotImplementedError
-
-    def find_error(self):
+    def update_graph(self, graph):
         raise NotImplementedError
 
     def __str__(self):
@@ -58,7 +51,7 @@ class DomainTypeError(AbstractError):
         for s, o in zip(sampled_s, sampled_o):
             corr_o = str(random.choice(dir(SDO)))
             sparql_update_object(graph, rdflib.URIRef(s), RDF.type, rdflib.URIRef(o), rdflib.URIRef(corr_o)) # random SDO type for now
-            self.logger.log_error('change_type', s, o, corr_o)
+            self.logger.log_error('change_domain', s, o, corr_o)
         
         return graph
 
@@ -73,10 +66,13 @@ class RangeTypeError(AbstractError):
     def get_object_only_entities(self, graph):
         qres = graph.query(
             """
-            SELECT ?s ?o
-            WHERE {
-                ?s rdf:type ?o .
-                FILTER NOT EXISTS { ?o ?p [] } .
+            SELECT ?s ?o where {
+                ?s ?p ?o
+                FILTER NOT EXISTS 
+                {
+                    ?s ?p1 []
+                    FILTER (?p1 != rdf:type)
+                }
             }
             """,
             initNs = { "rdf": RDF }
@@ -93,7 +89,7 @@ class RangeTypeError(AbstractError):
         for s, o in zip(sampled_s, sampled_o):
             corr_o = str(random.choice(dir(SDO)))
             sparql_update_object(graph, rdflib.URIRef(s), RDF.type, rdflib.URIRef(o), rdflib.URIRef(corr_o)) # random SDO type for now
-            self.logger.log_error('change_type', s, o, corr_o)
+            self.logger.log_error('change_range', s, o, corr_o)
         
         return graph
 
