@@ -1,0 +1,45 @@
+@prefix ex: <http://example.org/#ns> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:CoolGroup a foaf:Group ;
+    foaf:member ex:Daniel,
+        ex:Georg,
+        ex:Max,
+        ex:Umut .
+
+ex:GroupThree a <https://schema.org/dissolutionDate> ;
+    foaf:member ex:Dennis,
+        ex:Juliette,
+        ex:Max,
+        ex:Simon .
+
+ex:GroupTwo a foaf:Group ;
+    foaf:member ex:Gregor,
+        ex:Lars,
+        ex:Michael,
+        ex:Umut .
+
+foaf:member rdfs:domain foaf:Group ;
+    rdfs:range foaf:Agent .
+
+ex:Daniel a <https://schema.org/DistanceFee> .
+
+ex:Dennis a foaf:Agent .
+
+ex:Georg a foaf:Agent .
+
+ex:Gregor a <https://schema.org/NonprofitSBBI> .
+
+ex:Juliette a <https://schema.org/MovieRentalStore> .
+
+ex:Lars a <https://schema.org/maximumEnrollment> .
+
+ex:Michael a foaf:Agent .
+
+ex:Simon a foaf:Agent .
+
+ex:Max a <https://schema.org/AutoRental> .
+
+ex:Umut a foaf:Agent .
+

@@ -1,0 +1,35 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.org/#ns> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+foaf:member rdfs:range foaf:Agent .
+foaf:member rdfs:domain foaf:Group .
+
+ex:Georg a foaf:Agent .
+ex:Daniel a foaf:Agent .
+ex:Max a foaf:Agent .
+ex:Dennis a foaf:Agent .
+ex:Simon a foaf:Agent .
+ex:Juliette a foaf:Agent .
+ex:Umut a foaf:Agent .
+ex:Lars a foaf:Agent .
+ex:Gregor a foaf:Agent .
+ex:Michael a foaf:Agent .
+
+ex:CoolGroup a foaf:Group .
+ex:CoolGroup foaf:member ex:Georg .
+ex:CoolGroup foaf:member ex:Daniel .
+ex:CoolGroup foaf:member ex:Max .
+ex:CoolGroup foaf:member ex:Umut .
+
+ex:GroupTwo a foaf:Group .
+ex:GroupTwo foaf:member ex:Lars .
+ex:GroupTwo foaf:member ex:Gregor .
+ex:GroupTwo foaf:member ex:Umut .
+ex:GroupTwo foaf:member ex:Michael .
+
+ex:GroupThree a foaf:Group .
+ex:GroupThree foaf:member ex:Juliette .
+ex:GroupThree foaf:member ex:Simon .
+ex:GroupThree foaf:member ex:Dennis .
+ex:GroupThree foaf:member ex:Max .

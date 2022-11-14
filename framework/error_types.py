@@ -78,7 +78,6 @@ class RangeTypeError(AbstractError):
             initNs = { "rdf": RDF }
         )
         df = sparql_results_to_df(qres)
-        print(df)
         return df
 
     def update_graph(self, graph):
