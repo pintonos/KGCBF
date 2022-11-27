@@ -2,9 +2,6 @@
 @prefix ex: <http://example.org/#ns> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-foaf:member rdfs:range foaf:Agent .
-foaf:member rdfs:domain foaf:Group .
-
 ex:Georg a foaf:Agent .
 ex:Daniel a foaf:Agent .
 ex:Max a foaf:Agent .
