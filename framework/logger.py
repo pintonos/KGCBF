@@ -1,5 +1,6 @@
 import yaml
 
+
 class Logger():
     def __init__(self):
         self.id = None
@@ -9,7 +10,7 @@ class Logger():
     def log_error(self, error_type, subject, original_val, corrupted_val):
         self.log_dict[subject] = {error_type: [original_val, corrupted_val]}
 
-    def save_to_file(self, filepath='error_log.yaml'):
+    def save_to_file(self, filepath='data/error_log.yaml'):
         with open(filepath, 'w') as outfile:
             yaml.dump(self.log_dict, outfile, default_flow_style=False)
 
