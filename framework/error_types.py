@@ -86,33 +86,56 @@ class RangeTypeError(AbstractError):
         self.prob = prob
         self.logger = logger
 
-    def get_object_only_entities(self, graph):
+    def __get_object_only_entities_with_count(self, graph):
         qres = graph.query(
             """
-            SELECT ?s ?o where {
-                ?s ?p ?o
+            SELECT ?s ?o ?count
+            WHERE {
+                ?s rdf:type ?o
                 FILTER NOT EXISTS 
                 {
                     ?s ?p1 []
                     FILTER (?p1 != rdf:type)
                 }
+                {
+                    SELECT (count(?p) AS ?count)
+                    WHERE 
+                    {
+                        [] ?p ?s
+                        FILTER(?p != rdf:type)
+                    }
+                } 
             }
-            """,
+            HAVING ( ?count > 0 )
+            """
+            ,
             initNs={"rdf": RDF}
         )
         df = sparql_results_to_df(qres)
         return df
 
     def update_graph(self, graph):
-        objects_only = self.get_object_only_entities(graph)
-        amount = int(len(objects_only) * self.prob)
-        sampled = objects_only.loc[random.sample(list(objects_only.index), amount)]
-        sampled_s, sampled_o = sampled.s.tolist(), sampled.o.tolist()
-        for s, o in zip(sampled_s, sampled_o):
+        objects_only = self.__get_object_only_entities_with_count(graph)
+        triple_count = get_triple_count(graph)
+        objects_only["count"] /= triple_count
+        objects_only = objects_only.sort_values(by=["count"])
+
+        corrupted_pct = 0.0
+        last = None
+        while corrupted_pct < self.prob:
+            greedy_row = objects_only.iloc[
+                (np.searchsorted(objects_only["count"].values, self.prob-corrupted_pct) - 1).clip(0)]
+            # when we already added the previous row, break
+            if greedy_row["s"] == last:
+                break
+            s = greedy_row["s"]
+            o = greedy_row["o"]
             corr_o = str(random.choice(dir(SDO)))
             sparql_update_object(graph, rdflib.URIRef(s), RDF.type, rdflib.URIRef(o),
                                  rdflib.URIRef(corr_o))  # random SDO type for now
             self.logger.log_error('change_range', s, o, corr_o)
+            corrupted_pct += greedy_row["count"]
+            last = greedy_row["s"]
 
         return graph
 
