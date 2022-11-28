@@ -2,44 +2,61 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-ex:CoolGroup a foaf:Group ;
-    foaf:member ex:Daniel,
-        ex:Georg,
-        ex:Max,
-        ex:Umut .
-
-ex:GroupThree a <https://schema.org/dissolutionDate> ;
-    foaf:member ex:Dennis,
-        ex:Juliette,
-        ex:Max,
-        ex:Simon .
-
 ex:GroupTwo a foaf:Group ;
-    foaf:member ex:Gregor,
+    foaf:member ex:Daniel,
         ex:Lars,
-        ex:Michael,
-        ex:Umut .
+        ex:Max,
+        ex:Michael .
+
+ex:ProjectOne a foaf:project ;
+    foaf:fundedBy ex:OrganizationSTI .
+
+ex:ProjectTwo a <https://schema.org/gameTip> ;
+    foaf:fundedBy ex:OrganizationSTI .
+
+ex:Simon a <https://schema.org/TypeAndQuantityNode> .
+
+foaf:fundedBy rdfs:domain foaf:project ;
+    rdfs:range foaf:Organization .
+
+foaf:knows rdfs:domain foaf:Person ;
+    rdfs:range foaf:Group,
+        foaf:Organization,
+        foaf:Person .
 
 foaf:member rdfs:domain foaf:Group ;
     rdfs:range foaf:Agent .
 
-ex:Daniel a <https://schema.org/DistanceFee> .
+ex:Andreas a foaf:Person ;
+    foaf:knows ex:Georg,
+        ex:GroupOne,
+        ex:OrganizationSTI ;
+    foaf:mbox <mailto:andreas.peintner@uibk.ac.at> ;
+    foaf:name "Andreas Peintner" .
 
-ex:Dennis a foaf:Agent .
+ex:Daniel a foaf:Agent .
 
-ex:Georg a foaf:Agent .
+ex:Dennis a <https://schema.org/occupationLocation> .
 
-ex:Gregor a <https://schema.org/NonprofitSBBI> .
+ex:Juliette a foaf:Agent .
 
-ex:Juliette a <https://schema.org/MovieRentalStore> .
-
-ex:Lars a <https://schema.org/maximumEnrollment> .
-
-ex:Michael a foaf:Agent .
-
-ex:Simon a foaf:Agent .
-
-ex:Max a <https://schema.org/AutoRental> .
+ex:Max a <https://schema.org/PropertyValue> .
 
 ex:Umut a foaf:Agent .
+
+ex:GroupOne a foaf:Group ;
+    foaf:member ex:Andreas,
+        ex:Dennis,
+        ex:Georg,
+        ex:Juliette .
+
+ex:Georg a foaf:Person ;
+    foaf:knows ex:Georg,
+        ex:GroupOne,
+        ex:OrganizationSTI ;
+    foaf:mbox <mailto:georg.wenzel@student.uibk.ac.at> ;
+    foaf:name "Georg Wenzel" .
+
+ex:OrganizationSTI a foaf:Organization ;
+    foaf:member ex:Umut .
 
