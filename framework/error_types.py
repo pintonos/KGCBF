@@ -60,13 +60,13 @@ class DomainTypeError(AbstractError):
         subjects_only = subjects_only.sort_values(by=["count"])
 
         corrupted_pct = 0.0
-        last = None
-        while corrupted_pct < self.prob:
-            greedy_row = subjects_only.iloc[
-                (np.searchsorted(subjects_only["count"].values, self.prob-corrupted_pct) - 1).clip(0)]
-            # when we already added the previous row, break
-            if greedy_row["s"] == last:
+        while corrupted_pct < self.prob and len(subjects_only) > 0:
+            greedy_idx = (np.searchsorted(subjects_only["count"].values, self.prob-corrupted_pct) - 1).clip(0)
+            greedy_row = subjects_only.iloc[greedy_idx]
+            # cannot add another entity without exceeding threshold
+            if greedy_row["count"] + corrupted_pct > self.prob:
                 break
+
             s = greedy_row["s"]
             o = greedy_row["o"]
             corr_o = str(random.choice(dir(SDO)))
@@ -74,7 +74,7 @@ class DomainTypeError(AbstractError):
                                  rdflib.URIRef(corr_o))  # random SDO type for now
             self.logger.log_error('change_domain', s, o, corr_o)
             corrupted_pct += greedy_row["count"]
-            last = greedy_row["s"]
+            subjects_only = subjects_only.drop(subjects_only.index[greedy_idx])
 
         return graph
 
@@ -121,13 +121,14 @@ class RangeTypeError(AbstractError):
         objects_only = objects_only.sort_values(by=["count"])
 
         corrupted_pct = 0.0
-        last = None
-        while corrupted_pct < self.prob:
-            greedy_row = objects_only.iloc[
-                (np.searchsorted(objects_only["count"].values, self.prob-corrupted_pct) - 1).clip(0)]
-            # when we already added the previous row, break
-            if greedy_row["s"] == last:
+        added_entities = []
+        while corrupted_pct < self.prob and len(objects_only) > 0:
+            greedy_idx = (np.searchsorted(objects_only["count"].values, self.prob-corrupted_pct) - 1).clip(0)
+            greedy_row = objects_only.iloc[greedy_idx]
+            # cannot add another entity without exceeding threshold
+            if greedy_row["count"] + corrupted_pct > self.prob:
                 break
+
             s = greedy_row["s"]
             o = greedy_row["o"]
             corr_o = str(random.choice(dir(SDO)))
@@ -135,7 +136,7 @@ class RangeTypeError(AbstractError):
                                  rdflib.URIRef(corr_o))  # random SDO type for now
             self.logger.log_error('change_range', s, o, corr_o)
             corrupted_pct += greedy_row["count"]
-            last = greedy_row["s"]
+            objects_only = objects_only.drop(objects_only.index[greedy_idx])
 
         return graph
 
