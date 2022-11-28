@@ -1,0 +1,1390 @@
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dbp: <http://dbpedia.org/property/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix gold: <http://purl.org/linguistics/gold/> .
+@prefix ns10: <http://dbpedia.org/ontology/Person/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://dbpedia.org/resource/2003_British_Academy_Television_Craft_Awards> dbp:host <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/2004_British_Academy_Television_Craft_Awards> dbp:host <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/2018_FIFA_World_Cup_statistics> dbp:mostCleanSheetsKeeperKeeper <http://dbpedia.org/resource/Alisson> ;
+    dbp:mostConsecutiveCleanSheetsKeeperKeeper <http://dbpedia.org/resource/Alisson> .
+
+<http://dbpedia.org/resource/2019_Copa_América_squads> dbp:name <http://dbpedia.org/resource/Alisson> .
+
+<http://dbpedia.org/resource/2019_FIFA_Club_World_Cup_squads> dbo:currentMember <http://dbpedia.org/resource/Alisson> ;
+    dbp:name <http://dbpedia.org/resource/Alisson> .
+
+<http://dbpedia.org/resource/2021_Copa_América_squads> dbp:name <http://dbpedia.org/resource/Alisson> .
+
+<http://dbpedia.org/resource/24_Hours_in_the_Past> dbo:starring <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbp:starring <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/29_Minutes_of_Fame> dbo:starring <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbp:starring <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/2DTV> dbo:starring <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/Alisson_(disambiguation)> dbo:wikiPageDisambiguates <http://dbpedia.org/resource/Alisson> .
+
+<http://dbpedia.org/resource/Alistair> dbo:wikiPageDisambiguates <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/All_Quiet_on_the_Preston_Front> a <http://dbpedia.org/class/yago/Abstraction100002137>,
+        <http://dbpedia.org/class/yago/Act100030358>,
+        <http://dbpedia.org/class/yago/Action100037396>,
+        <http://dbpedia.org/class/yago/Announcement106746580>,
+        <http://dbpedia.org/class/yago/Beginning100235435>,
+        <http://dbpedia.org/class/yago/Change100191142>,
+        <http://dbpedia.org/class/yago/ChangeOfState100199130>,
+        <http://dbpedia.org/class/yago/Communication100033020>,
+        <http://dbpedia.org/class/yago/DramaticComposition107007684>,
+        <http://dbpedia.org/class/yago/Ending106308765>,
+        <http://dbpedia.org/class/yago/Event100029378>,
+        <http://dbpedia.org/class/yago/Introduction100238022>,
+        <http://dbpedia.org/class/yago/LanguageUnit106284225>,
+        <http://dbpedia.org/class/yago/Message106598915>,
+        <http://dbpedia.org/class/yago/Morpheme106306233>,
+        <http://dbpedia.org/class/yago/Part113809207>,
+        <http://dbpedia.org/class/yago/Play107007945>,
+        <http://dbpedia.org/class/yago/Program106748466>,
+        <http://dbpedia.org/class/yago/PsychologicalFeature100023100>,
+        <http://dbpedia.org/class/yago/Relation100031921>,
+        <http://dbpedia.org/class/yago/Statement106722453>,
+        <http://dbpedia.org/class/yago/Wikicat1994BritishTelevisionProgrammeDebuts>,
+        <http://dbpedia.org/class/yago/Wikicat1997BritishTelevisionProgrammeEndings>,
+        <http://dbpedia.org/class/yago/WikicatBBCTelevisionDramas>,
+        <http://dbpedia.org/class/yago/WikicatBritishComedy-dramaTelevisionProgrammes>,
+        <http://dbpedia.org/class/yago/Writing106362953>,
+        <http://dbpedia.org/class/yago/WrittenCommunication106349220>,
+        <http://dbpedia.org/class/yago/YagoPermanentlyLocatedEntity>,
+        dbo:TelevisionShow,
+        dbo:Work,
+        schema:CreativeWork,
+        <http://umbel.org/umbel/rc/TVShow_IBT>,
+        owl:Thing,
+        <http://www.wikidata.org/entity/Q15416>,
+        <http://www.wikidata.org/entity/Q386724> ;
+    dbo:starring <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbp:starring <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/All_or_Nothing:_Brazil_National_Team> a dbo:TelevisionShow,
+        dbo:Work,
+        schema:CreativeWork,
+        owl:Thing,
+        <http://www.wikidata.org/entity/Q15416>,
+        <http://www.wikidata.org/entity/Q386724> ;
+    rdfs:label "All or Nothing: Brazil National Team"@en ;
+    dbo:location <http://dbpedia.org/resource/Brazil> ;
+    dbo:starring <http://dbpedia.org/resource/Alisson> ;
+    dbo:wikiPageID 69525529 ;
+    dbo:wikiPageRevisionID 1100286028 ;
+    dbp:starring <http://dbpedia.org/resource/Alisson> ;
+    dct:subject <http://dbpedia.org/resource/Category:All_or_Nothing_(sports_docuseries)>,
+        <http://dbpedia.org/resource/Category:Association_football_documentary_television_series>,
+        <http://dbpedia.org/resource/Category:Brazil_national_football_team> ;
+    rdfs:comment "All or Nothing: Brazil National Team is an Amazon Original docuseries as part of the All or Nothing brand. In the series, Brazil national football team's progress was charted through their winning campaign at the 2019 Copa América. The show premiered on 31 January 2020."@en ;
+    owl:sameAs <http://www.wikidata.org/entity/Q110235804>,
+        <https://global.dbpedia.org/id/GGhsg> .
+
+<http://dbpedia.org/resource/Brand_New_Life> dbo:starring <http://dbpedia.org/resource/Alison_Sweeney> ;
+    dbp:starring <http://dbpedia.org/resource/Alison_Sweeney> .
+
+<http://dbpedia.org/resource/Brazil_at_the_2018_FIFA_World_Cup> dbp:name <http://dbpedia.org/resource/Alisson> .
+
+<http://dbpedia.org/resource/Celebrity_Cooking_Showdown> dbo:starring <http://dbpedia.org/resource/Alison_Sweeney> ;
+    dbp:starring <http://dbpedia.org/resource/Alison_Sweeney> .
+
+<http://dbpedia.org/resource/Copa_América_Centenario_squads> dbp:name <http://dbpedia.org/resource/Alisson> .
+
+<http://dbpedia.org/resource/Crapston_Villas> dbo:starring <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/Dark_Ages_(TV_series)> a <http://dbpedia.org/class/yago/WikicatITVSitcoms>,
+        <http://dbpedia.org/class/yago/WritingStyle107092158>,
+        dbo:TelevisionShow,
+        dbo:Work,
+        schema:CreativeWork,
+        owl:Thing,
+        <http://www.wikidata.org/entity/Q15416>,
+        <http://www.wikidata.org/entity/Q386724> ;
+    dbo:starring <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbp:starring <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/Days_of_Our_Lives:_A_Very_Salem_Christmas> a dbo:Film,
+        dbo:Work,
+        schema:CreativeWork,
+        schema:Movie,
+        owl:Thing,
+        <http://www.wikidata.org/entity/Q11424>,
+        <http://www.wikidata.org/entity/Q386724> ;
+    rdfs:label "Days of Our Lives: A Very Salem Christmas"@en ;
+    dbo:starring <http://dbpedia.org/resource/Alison_Sweeney> ;
+    dbo:wikiPageExternalLink <https://www.peacocktv.com/watch/asset/movies/days-of-our-lives-a-very-salem-christmas/28286919-8070-3dc0-b918-7a2896d36445> ;
+    dbo:wikiPageID 69474891 ;
+    dbo:wikiPageRevisionID 1101491739 ;
+    dbp:name "A Very Salem Christmas"@en,
+        "Days of Our Lives:"@en ;
+    dct:subject <http://dbpedia.org/resource/Category:2020s_English-language_films>,
+        <http://dbpedia.org/resource/Category:2021_films>,
+        <http://dbpedia.org/resource/Category:American_Christmas_films>,
+        <http://dbpedia.org/resource/Category:American_television_films>,
+        <http://dbpedia.org/resource/Category:Days_of_Our_Lives>,
+        <http://dbpedia.org/resource/Category:Films_based_on_television_series>,
+        <http://dbpedia.org/resource/Category:Peacock_(streaming_service)_original_films> ;
+    rdfs:comment "Days of Our Lives: A Very Salem Christmas, directed by Noel Maxam, is an American Christmas film based on the daytime soap opera television series, Days of Our Lives. It premiered on Peacock on December 16, 2021."@en ;
+    foaf:depiction <http://commons.wikimedia.org/wiki/Special:FilePath/A_Very_Salem_Christmas_poster.jpg> ;
+    foaf:name "A Very Salem Christmas"@en,
+        "Days of Our Lives:"@en .
+
+<http://dbpedia.org/resource/Ealing_Comedy_(film)> dbo:starring <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbp:starring <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/Family_Man_(American_TV_series)> dbo:starring <http://dbpedia.org/resource/Alison_Sweeney> ;
+    dbp:starring <http://dbpedia.org/resource/Alison_Sweeney> .
+
+<http://dbpedia.org/resource/Hollywood_Girls_Night> dbo:executiveProducer <http://dbpedia.org/resource/Alison_Sweeney> ;
+    dbo:starring <http://dbpedia.org/resource/Alison_Sweeney> .
+
+<http://dbpedia.org/resource/Kids_Halloween_Baking_Championship> dbo:showJudge <http://dbpedia.org/resource/Alison_Sweeney> .
+
+<http://dbpedia.org/resource/List_of_Friday_Night_with_Jonathan_Ross_episodes> dbp:aux <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/List_of_Who_Do_You_Think_You_Are%3F_episodes> dbp:rtitle <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/Liverpool_F.C.__Alisson__1> dbo:currentMember <http://dbpedia.org/resource/Alisson> .
+
+<http://dbpedia.org/resource/McGowan> dbo:wikiPageDisambiguates <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/Monkey_Trousers> dbo:starring <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbp:starring <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/Robbie_the_Reindeer> dbo:voice <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbp:voices <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/The_Biggest_Loser_(American_TV_series)> dbo:narrator <http://dbpedia.org/resource/Alison_Sweeney> ;
+    dbo:presenter <http://dbpedia.org/resource/Alison_Sweeney> ;
+    dbp:narrated <http://dbpedia.org/resource/Alison_Sweeney> ;
+    dbp:presenter <http://dbpedia.org/resource/Alison_Sweeney> .
+
+<http://dbpedia.org/resource/The_Comedy_Annual> dbo:starring <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/The_Jerry_Lewis_MDA_Labor_Day_Telethon> dbo:presenter <http://dbpedia.org/resource/Alison_Sweeney> .
+
+<http://dbpedia.org/resource/The_Michael_Ball_Show> dbp:aux <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/The_Week_That_Wasn't_(British_TV_programme)> dbo:starring <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbp:starring <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/2018_FIFA_World_Cup_squads> dbp:name <http://dbpedia.org/resource/Alisson> .
+
+<http://dbpedia.org/resource/2021–22_Premier_League> dbp:bestGoalkeeper <http://dbpedia.org/resource/Alisson> .
+
+<http://dbpedia.org/resource/Adrienne_Johnson_Kiriakis> dbo:portrayer <http://dbpedia.org/resource/Alison_Sweeney> .
+
+<http://dbpedia.org/resource/Chronicle_Mysteries> dbo:starring <http://dbpedia.org/resource/Alison_Sweeney> ;
+    dbp:starring <http://dbpedia.org/resource/Alison_Sweeney> .
+
+<http://dbpedia.org/resource/Dare_Me_(TV_series)> a dbo:TelevisionShow,
+        dbo:Work,
+        schema:CreativeWork,
+        owl:Thing,
+        <http://www.wikidata.org/entity/Q15416>,
+        <http://www.wikidata.org/entity/Q386724> ;
+    rdfs:label "Dare Me (TV series)"@en,
+        "Dare Me"@es,
+        "Dare Me"@fr ;
+    dbo:starring <http://dbpedia.org/resource/Alison_Thornton> ;
+    dbo:wikiPageID 59794761 ;
+    dbo:wikiPageRevisionID 1098259548 ;
+    dbp:rs 1e-01,
+        2e-01 ;
+    dct:subject <http://dbpedia.org/resource/Category:2010s_American_high_school_television_series>,
+        <http://dbpedia.org/resource/Category:2010s_American_mystery_television_series>,
+        <http://dbpedia.org/resource/Category:2010s_American_teen_drama_television_series>,
+        <http://dbpedia.org/resource/Category:2019_American_television_series_debuts>,
+        <http://dbpedia.org/resource/Category:2020_American_television_series_endings>,
+        <http://dbpedia.org/resource/Category:2020s_American_high_school_television_series>,
+        <http://dbpedia.org/resource/Category:2020s_American_mystery_television_series>,
+        <http://dbpedia.org/resource/Category:2020s_American_teen_drama_television_series>,
+        <http://dbpedia.org/resource/Category:Adultery_in_television>,
+        <http://dbpedia.org/resource/Category:American_thriller_television_series>,
+        <http://dbpedia.org/resource/Category:Cheerleading_television_series>,
+        <http://dbpedia.org/resource/Category:English-language_television_shows>,
+        <http://dbpedia.org/resource/Category:Television_series_about_teenagers>,
+        <http://dbpedia.org/resource/Category:Television_series_by_Universal_Content_Productions>,
+        <http://dbpedia.org/resource/Category:Television_shows_based_on_American_novels>,
+        <http://dbpedia.org/resource/Category:Television_shows_directed_by_Justin_Tipping>,
+        <http://dbpedia.org/resource/Category:Television_shows_directed_by_Steph_Green>,
+        <http://dbpedia.org/resource/Category:USA_Network_original_programming> ;
+    rdfs:comment "Dare Me is an American teen drama television series based on the 2012 novel of the same name by Megan Abbott, co-developed with Gina Fattore. The series was picked up in late January 2019 and premiered on USA Network on December 29, 2019. In April 2020, USA Network canceled all of their scripted series, ending the series after one season."@en,
+        "Dare Me es una serie de televisión de drama y misterio estadounidense basada en la novela homónima de 2012 de Megan Abbott que se estrenó el 29 de diciembre de 2019 en USA Network. En abril de 2020, USA Network canceló la serie luego de una temporada.​"@es,
+        "Dare Me, ou Vilaines filles au Québec, est une série télévisée américaine en dix épisodes d'environ 43 minutes, développée par Megan Abbott et Gina Fattore, diffusée entre le 29 décembre 2019 et le 8 mars 2020 sur USA Network. Il s'agit d'une adaptation du roman Vilaines filles, écrit par Megan Abbott. Au Canada et dans les pays francophones, la série a été diffusée intégralement le 20 mars 2020 sur le service Netflix."@fr ;
+    foaf:depiction <http://commons.wikimedia.org/wiki/Special:FilePath/Dare_Me_(TV_series)_Title_Card.jpg> .
+
+<http://dbpedia.org/resource/ElvenQuest> dbo:starring <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbp:starring <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/James_the_Cat> dbo:narrator <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbp:narrated <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/Leonardo_(2011_TV_series)> dbo:starring <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbp:starring <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/Mayo_(TV_series)> dbo:starring <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbp:starring <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/Murder,_She_Baked> dbo:starring <http://dbpedia.org/resource/Alison_Sweeney> ;
+    dbp:starring <http://dbpedia.org/resource/Alison_Sweeney> .
+
+<http://dbpedia.org/resource/Planet_Sketch> dbo:voice <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/Premier_League_Golden_Glove> dbp:holder <http://dbpedia.org/resource/Alisson> .
+
+<http://dbpedia.org/resource/Sami_Brady> dbo:portrayer <http://dbpedia.org/resource/Alison_Sweeney> .
+
+<http://dbpedia.org/resource/The_Big_Impression> dbo:creator <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbo:starring <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbp:creator <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbp:starring <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/Yoko!_Jakamoko!_Toto!> dbo:voice <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbp:voices <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/You_Cannot_Be_Serious!_(TV_series)> dbo:author <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbo:presenter <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbp:presenter <http://dbpedia.org/resource/Alistair_McGowan> ;
+    dbp:writer <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://en.wikipedia.org/wiki/Alison_Sweeney> foaf:primaryTopic <http://dbpedia.org/resource/Alison_Sweeney> .
+
+<http://en.wikipedia.org/wiki/Alison_Thornton> foaf:primaryTopic <http://dbpedia.org/resource/Alison_Thornton> .
+
+<http://en.wikipedia.org/wiki/Alisson> foaf:primaryTopic <http://dbpedia.org/resource/Alisson> .
+
+<http://en.wikipedia.org/wiki/Alistair_McGowan> foaf:primaryTopic <http://dbpedia.org/resource/Alistair_McGowan> .
+
+<http://dbpedia.org/resource/Alison_Thornton> a dbo:Animal,
+        dbo:Eukaryote,
+        dbo:Person,
+        dbo:Species,
+        schema:Person,
+        <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson>,
+        owl:Thing,
+        <http://www.wikidata.org/entity/Q19088>,
+        <http://www.wikidata.org/entity/Q215627>,
+        <http://www.wikidata.org/entity/Q5>,
+        <http://www.wikidata.org/entity/Q729>,
+        foaf:Person ;
+    rdfs:label "أليسون ثورنتون"@ar,
+        "Alison Thornton"@en,
+        "Alison Thornton"@fr ;
+    dbo:abstract "أليسون ثورنتون (بالإنجليزية: Alison Thornton)‏ هي ممثلة أمريكية، ولدت في 14 أغسطس 1999 في فانكوفر في كندا."@ar,
+        "Alison Grace Thornton (born August 14, 1999) is a Canadian-American actress. She is best known for playing Zooey Hernandez Frumpkis in Girlfriends' Guide to Divorce, and Lydia Spring in Dirk Gently's Holistic Detective Agency."@en,
+        "Alison Thornton, née le 14 août 1999 à Vancouver (Canada), est une actrice américano-canadienne connue pour ses rôles de Zooey Hernandez Frumpkis dans Girlfriends' Guide to Divorce et Lydia Spring dans Dirk Gently, détective holistique."@fr ;
+    dbo:activeYearsStartYear "2013"^^xsd:gYear ;
+    dbo:birthDate "1999-08-14"^^xsd:date ;
+    dbo:birthPlace <http://dbpedia.org/resource/Vancouver> ;
+    dbo:birthYear "1999"^^xsd:gYear ;
+    dbo:wikiPageExternalLink <https://arielspress.wixsite.com/arielsdreamjournal/post/his-moon-by-alison-grace-thornton>,
+        <https://www.usanetwork.com/dare-me/cast/tacy-cassidy>,
+        <https://zimbellhousepublishing.com/product/the-lost-door/''The> ;
+    dbo:wikiPageID 58234610 ;
+    dbo:wikiPageLength "7156"^^xsd:nonNegativeInteger ;
+    dbo:wikiPageRevisionID 1060862748 ;
+    dbo:wikiPageWikiLink <http://dbpedia.org/resource/Alan_Thicke>,
+        <http://dbpedia.org/resource/Bravo!>,
+        <http://dbpedia.org/resource/Candace_Cameron_Bure>,
+        <http://dbpedia.org/resource/Category:1999_births>,
+        <http://dbpedia.org/resource/Category:21st-century_American_actresses>,
+        <http://dbpedia.org/resource/Category:21st-century_Canadian_actresses>,
+        <http://dbpedia.org/resource/Category:Actresses_from_Vancouver>,
+        <http://dbpedia.org/resource/Category:American_film_actresses>,
+        <http://dbpedia.org/resource/Category:American_television_actresses>,
+        <http://dbpedia.org/resource/Category:Canadian_film_actresses>,
+        <http://dbpedia.org/resource/Category:Canadian_people_of_American_descent>,
+        <http://dbpedia.org/resource/Category:Canadian_television_actresses>,
+        <http://dbpedia.org/resource/Category:Living_people>,
+        <http://dbpedia.org/resource/Dare_Me_(TV_series)>,
+        <http://dbpedia.org/resource/Dare_Me_(novel)>,
+        <http://dbpedia.org/resource/Dirk_Gently's_Holistic_Detective_Agency_(TV_series)>,
+        <http://dbpedia.org/resource/Dr._Charles_Best_Secondary_School>,
+        <http://dbpedia.org/resource/Elijah_Wood>,
+        <http://dbpedia.org/resource/Girlfriends'_Guide_to_Divorce>,
+        <http://dbpedia.org/resource/Hallmark_Channel>,
+        <http://dbpedia.org/resource/Independent_film>,
+        <http://dbpedia.org/resource/Lacey_Chabert>,
+        <http://dbpedia.org/resource/Law_&_Order:_Special_Victims_Unit>,
+        <http://dbpedia.org/resource/Let_It_Snow_(2013_film)>,
+        <http://dbpedia.org/resource/Los_Angeles>,
+        <http://dbpedia.org/resource/Megan_Abbott>,
+        <http://dbpedia.org/resource/Nancy_Drew_(2019_TV_series)>,
+        <http://dbpedia.org/resource/Place_des_Arts_(Coquitlam)>,
+        <http://dbpedia.org/resource/Psychology>,
+        <http://dbpedia.org/resource/Simon_Fraser_University>,
+        <http://dbpedia.org/resource/Supergirl_(TV_series)>,
+        <http://dbpedia.org/resource/The_100_(TV_series)>,
+        <http://dbpedia.org/resource/The_Color_of_Rain>,
+        <http://dbpedia.org/resource/Vancouver,_British_Columbia> ;
+    dbp:birthDate "1999-08-14"^^xsd:date ;
+    dbp:birthPlace "Vancouver, British Columbia, Canada"@en ;
+    dbp:name "Alison Thornton"@en ;
+    dbp:nationality "American"@en,
+        "Canadian"@en ;
+    dbp:wikiPageUsesTemplate <http://dbpedia.org/resource/Template:Authority_control>,
+        <http://dbpedia.org/resource/Template:Birth_date_and_age>,
+        <http://dbpedia.org/resource/Template:IMDb_name>,
+        <http://dbpedia.org/resource/Template:Infobox_person>,
+        <http://dbpedia.org/resource/Template:Reflist>,
+        <http://dbpedia.org/resource/Template:Short_description>,
+        <http://dbpedia.org/resource/Template:TableTBA> ;
+    dbp:yearsActive 2013 ;
+    dct:subject <http://dbpedia.org/resource/Category:1999_births>,
+        <http://dbpedia.org/resource/Category:21st-century_American_actresses>,
+        <http://dbpedia.org/resource/Category:21st-century_Canadian_actresses>,
+        <http://dbpedia.org/resource/Category:Actresses_from_Vancouver>,
+        <http://dbpedia.org/resource/Category:American_film_actresses>,
+        <http://dbpedia.org/resource/Category:American_television_actresses>,
+        <http://dbpedia.org/resource/Category:Canadian_film_actresses>,
+        <http://dbpedia.org/resource/Category:Canadian_people_of_American_descent>,
+        <http://dbpedia.org/resource/Category:Canadian_television_actresses>,
+        <http://dbpedia.org/resource/Category:Living_people> ;
+    rdfs:comment "أليسون ثورنتون (بالإنجليزية: Alison Thornton)‏ هي ممثلة أمريكية، ولدت في 14 أغسطس 1999 في فانكوفر في كندا."@ar,
+        "Alison Grace Thornton (born August 14, 1999) is a Canadian-American actress. She is best known for playing Zooey Hernandez Frumpkis in Girlfriends' Guide to Divorce, and Lydia Spring in Dirk Gently's Holistic Detective Agency."@en,
+        "Alison Thornton, née le 14 août 1999 à Vancouver (Canada), est une actrice américano-canadienne connue pour ses rôles de Zooey Hernandez Frumpkis dans Girlfriends' Guide to Divorce et Lydia Spring dans Dirk Gently, détective holistique."@fr ;
+    owl:sameAs <http://af.dbpedia.org/resource/Alison_Thornton>,
+        <http://ar.dbpedia.org/resource/أليسون_ثورنتون>,
+        <http://arz.dbpedia.org/resource/اليسون_ثورنتون>,
+        <http://fr.dbpedia.org/resource/Alison_Thornton>,
+        <http://www.wikidata.org/entity/Q57158906>,
+        <https://global.dbpedia.org/id/7C7n9> ;
+    prov:wasDerivedFrom <http://en.wikipedia.org/wiki/Alison_Thornton?oldid=1060862748&ns=0> ;
+    foaf:isPrimaryTopicOf <http://en.wikipedia.org/wiki/Alison_Thornton> ;
+    foaf:name "Alison Thornton"@en .
+
+<http://dbpedia.org/resource/Brazil_national_football_team> dbp:name <http://dbpedia.org/resource/Alisson> .
+
+<http://dbpedia.org/resource/Liverpool_F.C.> dbp:name <http://dbpedia.org/resource/Alisson> .
+
+<http://dbpedia.org/resource/Alisson> a <http://dbpedia.org/class/yago/Athlete109820263>,
+        <http://dbpedia.org/class/yago/CausalAgent100007347>,
+        <http://dbpedia.org/class/yago/Contestant109613191>,
+        <http://dbpedia.org/class/yago/FootballPlayer110101634>,
+        <http://dbpedia.org/class/yago/LivingThing100004258>,
+        <http://dbpedia.org/class/yago/Object100002684>,
+        <http://dbpedia.org/class/yago/Organism100004475>,
+        <http://dbpedia.org/class/yago/Person100007846>,
+        <http://dbpedia.org/class/yago/PhysicalEntity100001930>,
+        <http://dbpedia.org/class/yago/Player110439851>,
+        <http://dbpedia.org/class/yago/Whole100003553>,
+        <http://dbpedia.org/class/yago/WikicatBrazilianFootballers>,
+        <http://dbpedia.org/class/yago/WikicatCampeonatoBrasileiroSérieAFootballers>,
+        <http://dbpedia.org/class/yago/WikicatClubDeRegatasVascoDaGamaPlayers>,
+        <http://dbpedia.org/class/yago/WikicatCruzeiroEsporteClubePlayers>,
+        <http://dbpedia.org/class/yago/WikicatLivingPeople>,
+        <http://dbpedia.org/class/yago/YagoLegalActor>,
+        <http://dbpedia.org/class/yago/YagoLegalActorGeo>,
+        dbo:Animal,
+        dbo:Athlete,
+        dbo:Eukaryote,
+        dbo:Person,
+        dbo:SoccerPlayer,
+        dbo:Species,
+        schema:Person,
+        <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson>,
+        owl:Thing,
+        <http://www.wikidata.org/entity/Q19088>,
+        <http://www.wikidata.org/entity/Q215627>,
+        <http://www.wikidata.org/entity/Q5>,
+        <http://www.wikidata.org/entity/Q729>,
+        <http://www.wikidata.org/entity/Q937857>,
+        foaf:Person ;
+    rdfs:label "أليسون بيكر"@ar,
+        "Alisson Becker"@ca,
+        "Alisson Becker"@cs,
+        "Alisson"@de,
+        "Άλισον Μπέκερ"@el,
+        "Alisson"@en,
+        "Alisson Becker"@eo,
+        "Alisson Becker"@es,
+        "Alisson"@fr,
+        "Alisson Becker"@in,
+        "Alisson Becker"@it,
+        "アリソン・ラムセス・ベッカー"@ja,
+        "알리송 베케르"@ko,
+        "Alisson Becker"@nl,
+        "Alisson"@pl,
+        "Alisson Becker"@pt,
+        "Бекер, Алисон"@ru,
+        "Alisson Becker"@sv,
+        "Аліссон Беккер"@uk,
+        "阿利森·拉姆西斯·贝克尔"@zh ;
+    ns10:height "191.0"^^<http://dbpedia.org/datatype/centimetre> ;
+    dbo:abstract "أليسون رمسيس بيكر (بالبرتغالية: Alisson Ramses Becker‏) ويعرف أيضاً بـ\"أليسون\" (بالبرتغالية: Alisson‏) هو لاعب كرة قدم برازيلي في مركز حراسة المرمى ولد في يوم 2 أكتوبر 1992 في مدينة نوفو هامبورغو في البرازيل، يلعب حالياً مع نادي ليفربول الإنجليزي و منتخب البرازيل."@ar,
+        "Alisson Ramses Becker (Novo Hamburgo, el 2 d'octubre de 1992), conegut simplement com a Alisson, és un jugador de futbol brasiler que juga com a porter a l'equip de la Premier League Liverpool i a la selecció de futbol del Brasil. El 2019 fou el primer guanyador del trofeu Iaixin."@ca,
+        "Alisson Ramses Becker známý jako Alisson (* 2. října 1992 ) je brazilský fotbalový brankář a reprezentant, od července roku 2018 hráč anglického klubu Liverpool FC. V září 2019 získal ocenění a v prosinci obdržel pro nejlepšího brankáře světa."@cs,
+        "Alisson (* 2. Oktober 1992 in Novo Hamburgo; voller Name Alisson Ramsés Becker) ist ein brasilianischer Fußballtorwart. Seit Juli 2018 steht er beim FC Liverpool unter Vertrag. Außerdem ist er brasilianischer Nationalspieler. Alisson wurde 2019 von der IFFHS, FIFA und France Football zum „Welttorhüter des Jahres“ gewählt."@de,
+        "Ο Άλισον Ράμσες Μπέκερ (γεννήθηκε στις 2 Οκτωβρίου 1992), επίσης γνωστός ως Άλισον Μπέκερ (Πορτογαλικά Βραζιλίας: ˈalisõ ˈbɛkeʁ) ή απλά Άλισον, είναι επαγγελματίας Βραζιλιάνος ποδοσφαιριστής που παίζει ως τερματοφύλακας για τη Λίβερπουλ της αγγλικής Πρέμιερ Λιγκ και την εθνική ομάδα της Βραζιλίας. Θεωρείται από τους καλύτερους τερματοφύλακες στον κόσμο , χάρη στην ηρεμια και αυτοπεποίθηση του και στις κρίσιμες αποκρούσεις του. Ο Άλισον ξεκίνησε την καριέρα του στην Ιντερνασιονάλ, όπου έκανε πάνω από 100 εμφανίσεις και κέρδισε το Καμπεονάτο Γκαούτσο τέσσερις φορές στις τέσσερις χρονιές παραμονής του στον σύλλογο. Το 2016 μεταγράφηκε στη Ρόμα για 7,5 εκατομμύρια ευρώ. Τον Ιούλιο του 2018, ο Άλισον υπέγραψε με τη Λίβερπουλ με αρχική αμοιβή €62,5 εκατομμύρια. (56.000.000 λίρες) που θα μπορέσει να αυξηθεί και στα 72 εκατομμύρια ευρώ (66.800.000 λίρες). Ο Άλισον στην πρώτη του χρονιά στην Λίβερπουλ κράτησε ανέπαφη την εστία του 21 φορές στην Πρέμιερ Λιγκ και έτσι κατέκτησε το χρυσό γάντι, ατομική διάκριση στον καλύτερο τερματοφύλακα του πρωταθλήματος. Επίσης την ίδια χρονιά κατέκτησε και το Τσάμπιονς Λιγκ με την Λίβερπουλ.Tην επομενη χρονια,παροτι τραυματιστικε μολς στο πρωτο παιχνιδι Πρωταθληματος και εχασε τους πρωτους μηνες της σεζον,oμως βοηθησε την ομαδα του να κατακτησει την Πρεμιερ Λιγκ,κρατωντας την εστια του ανεπαφη σε 13 απο τα 28 παιχνιδια που αγωνιστικε. Ο Άλισον εκπροσώπησε τη Βραζιλία σε διάφορες ομάδες νέων πριν κάνει το διεθνές ντεμπούτο του με την κύρια ομάδα το 2015. Στη συνέχεια έπαιξε στο Κόπα Αμέρικα Σεντενάριο του 2016 και στο Παγκόσμιο Κύπελλο Ποδοσφαίρου του 2018. Ήταν ένας από τους πρωταγωνιστές της Βραζιλίας στο δρόμο προς τη κατάκτηση του Κόπα Αμέρικα 2019. Ο Άλισον δέχθηκε μόλις ένα γκολ σε όλο το τουρνουά και αυτό ήταν από πέναλτι."@el,
+        "Alisson Ramses Becker (born 2 October 1992), commonly known as Alisson, is a Brazilian professional footballer who plays as a goalkeeper for Premier League club Liverpool and the Brazil national team. He is widely regarded to be one of the best goalkeepers in the world due to his distribution and ability in one-on-one situations. Alisson joined Internacional's academy in 2002, progressing through the youth set up before making his senior debut in 2013. During his four years with Internacional's senior side, Alisson won the Campeonato Gaúcho title in each season. He signed for Roma in July 2016 and was awarded Serie A Goalkeeper of the Year in 2017–18. In July 2018, Liverpool signed Alisson for a fee of £66.8 million (€72.5 million), making him the most expensive goalkeeper of all time. At Liverpool, Alisson has won the Premier League, FA Cup, EFL Cup, UEFA Champions League and FIFA Club World Cup. In 2019, he was named The Best FIFA Goalkeeper and was also the recipient of the inaugural Yashin Trophy. Alisson represented Brazil at various youth levels before making his senior international debut in 2015 whereafter he represented the nation at the Copa América Centenario in 2016, the 2018 FIFA World Cup, and the 2019 and 2021 Copa América, winning the 2019 tournament while also being named its best goalkeeper."@en,
+        """Alisson Becker (prononco laŭ sistemo IFA ˈalisõ ˈbɛkeʁ) aŭ plennome Alisson Ramses Becker, plej ofte nur nomata Alisson, estas brazila futbalisto en pozicio de golisto. Li naskiĝis la 2-an de oktobro 1992 en Novo Hamburgo, do nun estas 29-jara. Ekde la jaro 2016 li profesie ludas futbalon en la unua vira teamo de la klubo AS Roma. Krome Alisson ekde la jaro 2015 estas membro de la rusia nacia teamo de futbalo. Kadre de ĝi li kunkonkuras pri la Futbala Mondpokalo 2018 en Rusio. Matĉe li en la nacia teamo de 2018 rekoneblas per la numero "1". 
+* Vidu ankaŭ en la Vikimedia Komunejo la kategorion Alisson Becker – (Kolekto de bildoj kaj plurmediaj dosieroj)"""@eo,
+        "Alisson Ramses Becker (Novo Hamburgo, Río Grande del Sur, Brasil, 2 de octubre de 1992) es un futbolista brasileño. Juega de guardameta y su equipo es el Liverpool F. C. de la Premier League de Inglaterra.​"@es,
+        "Alisson Ramses Becker, né le 2 octobre 1992 à Novo Hamburgo au Brésil, est un footballeur international brésilien qui évolue au poste de gardien de but au Liverpool FC. Il est le gardien titulaire de l'Équipe du Brésil lors de la Coupe du monde de football de 2018, éliminée en quarts de finale par la Belgique. La même année, au moment de son transfert à Liverpool contre 62,5 millions d'euros, il devint le gardien de but le plus cher de l'histoire avant d'être devancé par l'international espagnol Kepa Arrizabalaga lors du même mercato. Au terme de sa première saison à Liverpool, il reçoit le Trophée du meilleur gardien du championnat anglais de football pour un total de 21 matches sans prendre de but, performance qu'il réédite en finale de la Ligue des champions 2019 où son club s'impose 2-0 face à Tottenham. Il remporte en 2019, avec sa sélection, la Copa América en tant que gardien titulaire, en n’encaissant qu'un seul but. En 2019, il reçoit le trophée Yachine récompensant le meilleur joueur au poste de gardien de but, ainsi que le titre de meilleur gardien de l'année décerné par l'IFFHS. Il est considéré comme l'un des meilleurs gardien de la planète. Le 16 mai 2021, Alisson Becker marque le premier but de sa carrière face à West Bromwich Albion à la 90+5' et permet aux siens de s'imposer 2-1. Ce but permettra à son équipe de jouer la Ligue des Champions l'année suivante et d'y atteindre la finale."@fr,
+        "Alisson Becker (2 oktober 1992) adalah seorang pemain sepak bola berkewarganegaraan Brasil keturunan jerman yang bermain untuk klub Liverpool F.C. pada posisi Penjaga gawang. Alisson Becker bermain untuk klub Liverpool sejak tahun 2018, dan membela tim nasional Brasil sejak tahun 2015. Alisson memulai kariernya di Internacional, di mana ia membuat lebih dari 100 penampilan dan memenangkan di masing-masing dari empat musim di klub. Pada tahun 2016, ia menyelesaikan transfer € 7,5 juta ke AS Roma di mana ia awalnya menjabat sebagai pengganti untuk Wojciech Szczęsny sebelum masuk ke starting line-up. Pada Juli 2018, Alisson menandatangani kontrak dengan Liverpool dengan biaya awal € 62,5 juta (£ 56 juta), yang bisa naik menjadi € 72 juta (£ 66,8 juta) biaya rekor dunia untuk seorang kiper saat itu.Di musim pertamanya di klub ia menerima Golden Glove di Liga Premier untuk clean sheet terbanyak di liga (21), dan mempertahankan clean sheet saat Liverpool memenangkan Final Liga Champions UEFA 2019.Alisson mewakili Brasil di berbagai level pemuda sebelum melakukan debut internasional seniornya pada tahun 2015 lalu, ia mewakili negara di Copa América 2016, Piala Dunia FIFA 2018, danCopa América. Ia memenangkan turnamen yang Copa América, dan juga dinobatkan sebagai kiper terbaik."@in,
+        "Alisson Ramses Becker (Novo Hamburgo, 2 ottobre 1992) è un calciatore brasiliano, portiere del Liverpool e della nazionale brasiliana. Considerato uno dei migliori nel suo ruolo, a livello di club ha vinto quattro campionati Gaúchi, una Super Copa Gaúcha, un campionato inglese, una UEFA Champions League, una Supercoppa europea e una Coppa del mondo per club FIFA. Con la nazionale brasiliana è stato campione sudamericano nel 2019, mentre a livello individuale vanta due apparizioni nella squadra della stagione della UEFA Champions League, una nella squadra della stagione della Serie A, un Trofeo Jašin – primo a vincerlo – e un premio come miglior portiere dell'anno IFFHS. Nell'estate 2018, il suo trasferimento dalla Roma al Liverpool per 75 milioni di euro lo ha reso per alcune settimane il portiere più costoso nella storia del calcio, un primato battuto nella stessa sessione di mercato da Kepa Arrizabalaga, ceduto per 80 milioni; il precedente record apparteneva a Gianluigi Buffon, valutato 105 miliardi di lire nel 2001."@it,
+        "アリソン・ラムセス・ベッカー（Alisson Ramses Becker, 1992年10月2日 - ）は、ブラジル・リオグランデ・ド・スル州ノヴォ・アンブルゴ出身のサッカー選手。プレミアリーグ・リヴァプールFC所属。ブラジル代表。ポジションはGK。 5歳上の兄のムリエウも、SCインテルナシオナルなどでプレーしたゴールキーパー。"@ja,
+        "알리송 베케르(포르투갈어: Alisson Becker, 1992년 10월 2일 ~ )는 현재 리버풀에서 골키퍼로 활약하고 있는 브라질의 축구 선수이다."@ko,
+        "Alisson Ramses Becker (Novo Hamburgo, 2 oktober 1992) - alias Alisson - is een Braziliaans voetballer die als doelman speelt. Hij verruilde AS Roma in juli 2018 voor Liverpool. Dat betaalde circa €75.000.000,- voor hem, exclusief bonussen. Alisson debuteerde in 2015 in het Braziliaans voetbalelftal. Zijn oudere broer Muriel Gustavo Becker is eveneens betaald voetballer."@nl,
+        "Alisson, właśc. Alisson Ramses Becker (wym. [ˈalisõ ˈbɛkeɾ], ur. 2 października 1992 w Novo Hamburgo) – brazylijski piłkarz, występujący na pozycji bramkarza w angielskim klubie Liverpool oraz w reprezentacji Brazylii."@pl,
+        "Alisson Ramses Becker (Novo Hamburgo, 2 de outubro de 1992) é um futebolista brasileiro que atua como goleiro. Atualmente joga pelo Liverpool. Ao se transferir ao Liverpool, Alisson se tornou o goleiro mais caro da história do futebol (72,5 milhões de euros) ultrapassando Buffon quando se transferiu do Parma com destino a Juventus por 54,2 milhões de euros. Mas poucos dias depois seu recorde foi superado por Kepa Arrizabalaga que se transferiu do Athletic Bilbao para o Chelsea por 80 milhões de euros. Em 2019, Alisson recebeu os prêmios de Luva de Ouro da Premier League, Melhor Goleiro da Copa América, Melhor Goleiro da UEFA, Melhor Goleiro do Mundo FIFA e o Troféu Yashin - Melhor Goleiro do Mundo pela France Football, além de conquistar o troféu Samba de Ouro, dado ao melhor jogador brasileiro que atua na Europa."@pt,
+        "Алиссон Рамзес Бекер (порт. Alisson Ramses Becker; родился 2 октября 1992 года в Нову-Амбургу, Бразилия), более известный как Алиссон — бразильский футболист немецкого происхождения, вратарь клуба «Ливерпуль» и сборной Бразилии. Участник чемпионата мира 2018 года."@ru,
+        "Alisson Ramses Becker, mer känd som bara Alisson, född 2 oktober 1992 i Novo Hamburgo, är en brasiliansk fotbollsmålvakt som spelar för den engelska Premier League-klubben Liverpool och Brasiliens landslag."@sv,
+        "Аліссон Рамзес Беккер (порт. Alisson Becker, нар. 2 жовтня 1992, ) або просто Аліссон — бразильський футболіст, воротар англійського «Ліверпуля» і національної збірної Бразилії. Перший володар Премії Яшина (2019) — «Золотого м'яча» для воротарів від France Football. Трансферна вартість при переході до «Ліверпуля» влітку 2018 року сягнула 66,8 мільйонів фунтів (72,5 мільйони євро), що є однією з рекордних сум."@uk,
+        "艾利臣·拉姆西斯·比加 （葡萄牙語：Alisson Ramses Becker，巴西葡萄牙語：[ˈalisõ ˈbɛkeʁ]；1992年10月2日－），或简称艾列臣（葡萄牙語：Alisson），是一名巴西足球运动员，司职守門員，目前效力于英超球隊利物浦。為世界球壇現役最佳門將之一。"@zh ;
+    dbo:birthDate "1992-10-02"^^xsd:date ;
+    dbo:birthPlace <http://dbpedia.org/resource/Novo_Hamburgo> ;
+    dbo:careerStation <http://dbpedia.org/resource/Alisson__CareerStation__1>,
+        <http://dbpedia.org/resource/Alisson__CareerStation__2>,
+        <http://dbpedia.org/resource/Alisson__CareerStation__3>,
+        <http://dbpedia.org/resource/Alisson__CareerStation__4>,
+        <http://dbpedia.org/resource/Alisson__CareerStation__5>,
+        <http://dbpedia.org/resource/Alisson__CareerStation__6>,
+        <http://dbpedia.org/resource/Alisson__CareerStation__7> ;
+    dbo:height 1.91e+00 ;
+    dbo:number "1"^^xsd:nonNegativeInteger ;
+    dbo:position <http://dbpedia.org/resource/Goalkeeper_(association_football)> ;
+    dbo:team <http://dbpedia.org/resource/A.S._Roma>,
+        <http://dbpedia.org/resource/Brazil_national_football_team>,
+        <http://dbpedia.org/resource/Brazil_national_under-17_football_team>,
+        <http://dbpedia.org/resource/Brazil_national_under-20_football_team>,
+        <http://dbpedia.org/resource/Liverpool_F.C.>,
+        <http://dbpedia.org/resource/Sport_Club_Internacional> ;
+    dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/20180610_FIFA_Friendly_Match_Austria_vs._Brazil_850_1625.jpg?width=300> ;
+    dbo:wikiPageExternalLink <https://web.archive.org/web/20141006130832/http:/www.internacional.com.br/jogadorescolorados/index.php%3Fcodigo=472> ;
+    dbo:wikiPageID 44160600 ;
+    dbo:wikiPageLength "74428"^^xsd:nonNegativeInteger ;
+    dbo:wikiPageRevisionID 1107882443 ;
+    dbo:wikiPageWikiLink <http://dbpedia.org/resource/2013_Campeonato_Brasileiro_Série_A>,
+        <http://dbpedia.org/resource/2013_Campeonato_Gaúcho>,
+        <http://dbpedia.org/resource/2013_Toulon_Tournament>,
+        <http://dbpedia.org/resource/2014_Campeonato_Brasileiro_Série_A>,
+        <http://dbpedia.org/resource/2014_Campeonato_Gaúcho>,
+        <http://dbpedia.org/resource/2015_Campeonato_Brasileiro_Série_A>,
+        <http://dbpedia.org/resource/2015_Campeonato_Gaúcho>,
+        <http://dbpedia.org/resource/2016_Campeonato_Brasileiro_Série_A>,
+        <http://dbpedia.org/resource/2016_Campeonato_Gaúcho>,
+        <http://dbpedia.org/resource/2016–17_A.S._Roma_season>,
+        <http://dbpedia.org/resource/2017–18_A.S._Roma_season>,
+        <http://dbpedia.org/resource/2017–18_Serie_A>,
+        <http://dbpedia.org/resource/2017–18_UEFA_Champions_League>,
+        <http://dbpedia.org/resource/2018_FIFA_World_Cup>,
+        <http://dbpedia.org/resource/2018_FIFA_World_Cup_qualification_(CONMEBOL)>,
+        <http://dbpedia.org/resource/2018_FIFA_World_Cup_squads>,
+        <http://dbpedia.org/resource/2018–19_Liverpool_F.C._season>,
+        <http://dbpedia.org/resource/2018–19_Premier_League>,
+        <http://dbpedia.org/resource/2018–19_UEFA_Champions_League>,
+        <http://dbpedia.org/resource/2019_Ballon_d'Or>,
+        <http://dbpedia.org/resource/2019_Copa_América>,
+        <http://dbpedia.org/resource/2019_Copa_América_Final>,
+        <http://dbpedia.org/resource/2019_FA_Community_Shield>,
+        <http://dbpedia.org/resource/2019_FIFA_Club_World_Cup>,
+        <http://dbpedia.org/resource/2019_FIFA_Club_World_Cup_Final>,
+        <http://dbpedia.org/resource/2019_UEFA_Champions_League_Final>,
+        <http://dbpedia.org/resource/2019_UEFA_Super_Cup>,
+        <http://dbpedia.org/resource/2019–20_Liverpool_F.C._season>,
+        <http://dbpedia.org/resource/2019–20_Premier_League>,
+        <http://dbpedia.org/resource/2020–21_Liverpool_F.C._season>,
+        <http://dbpedia.org/resource/2020–21_Premier_League>,
+        <http://dbpedia.org/resource/2021_Copa_América>,
+        <http://dbpedia.org/resource/2021_Copa_América_Final>,
+        <http://dbpedia.org/resource/2021–22_EFL_Cup>,
+        <http://dbpedia.org/resource/2021–22_FA_Cup>,
+        <http://dbpedia.org/resource/2021–22_Liverpool_F.C._season>,
+        <http://dbpedia.org/resource/2021–22_Premier_League>,
+        <http://dbpedia.org/resource/2021–22_UEFA_Champions_League>,
+        <http://dbpedia.org/resource/2022–23_Liverpool_F.C._season>,
+        <http://dbpedia.org/resource/A.S._Roma>,
+        <http://dbpedia.org/resource/AFC_Bournemouth>,
+        <http://dbpedia.org/resource/Adrián_(footballer)>,
+        <http://dbpedia.org/resource/Agenor_Detofol>,
+        <http://dbpedia.org/resource/Anfield>,
+        <http://dbpedia.org/resource/Argentina_national_football_team>,
+        <http://dbpedia.org/resource/Association_football>,
+        <http://dbpedia.org/resource/Associação_Chapecoense_de_Futebol>,
+        <http://dbpedia.org/resource/Atalanta_B.C.>,
+        <http://dbpedia.org/resource/Athletic_Bilbao>,
+        <http://dbpedia.org/resource/Atlético_Madrid>,
+        <http://dbpedia.org/resource/Baptisms>,
+        <http://dbpedia.org/resource/Belgium_national_football_team>,
+        <http://dbpedia.org/resource/Brazil_national_football_team>,
+        <http://dbpedia.org/resource/Brazil_national_under-17_football_team>,
+        <http://dbpedia.org/resource/Brazil_national_under-20_football_team>,
+        <http://dbpedia.org/resource/Brazilian_portuguese>,
+        <http://dbpedia.org/resource/Brighton_&_Hove_Albion_F.C.>,
+        <http://dbpedia.org/resource/COVID-19_pandemic_in_the_United_Kingdom>,
+        <http://dbpedia.org/resource/Campeonato_Brasileiro_Série_A>,
+        <http://dbpedia.org/resource/Campeonato_Gaúcho>,
+        <http://dbpedia.org/resource/Castelão_(Ceará)>,
+        <http://dbpedia.org/resource/Category:1992_births>,
+        <http://dbpedia.org/resource/Category:2018_FIFA_World_Cup_players>,
+        <http://dbpedia.org/resource/Category:2019_Copa_América_players>,
+        <http://dbpedia.org/resource/Category:2021_Copa_América_players>,
+        <http://dbpedia.org/resource/Category:A.S._Roma_players>,
+        <http://dbpedia.org/resource/Category:Association_football_goalkeepers>,
+        <http://dbpedia.org/resource/Category:Brazil_international_footballers>,
+        <http://dbpedia.org/resource/Category:Brazil_youth_international_footballers>,
+        <http://dbpedia.org/resource/Category:Brazilian_Pentecostals>,
+        <http://dbpedia.org/resource/Category:Brazilian_expatriate_footballers>,
+        <http://dbpedia.org/resource/Category:Brazilian_expatriate_sportspeople_in_England>,
+        <http://dbpedia.org/resource/Category:Brazilian_expatriate_sportspeople_in_Italy>,
+        <http://dbpedia.org/resource/Category:Brazilian_footballers>,
+        <http://dbpedia.org/resource/Category:Brazilian_people_of_German_descent>,
+        <http://dbpedia.org/resource/Category:Campeonato_Brasileiro_Série_A_players>,
+        <http://dbpedia.org/resource/Category:Copa_América-winning_players>,
+        <http://dbpedia.org/resource/Category:Copa_América_Centenario_players>,
+        <http://dbpedia.org/resource/Category:Expatriate_footballers_in_England>,
+        <http://dbpedia.org/resource/Category:Expatriate_footballers_in_Italy>,
+        <http://dbpedia.org/resource/Category:FA_Cup_Final_players>,
+        <http://dbpedia.org/resource/Category:Liverpool_F.C._players>,
+        <http://dbpedia.org/resource/Category:Living_people>,
+        <http://dbpedia.org/resource/Category:People_from_Novo_Hamburgo>,
+        <http://dbpedia.org/resource/Category:Premier_League_players>,
+        <http://dbpedia.org/resource/Category:Serie_A_players>,
+        <http://dbpedia.org/resource/Category:Sport_Club_Internacional_players>,
+        <http://dbpedia.org/resource/Category:Sportspeople_from_Rio_Grande_do_Sul>,
+        <http://dbpedia.org/resource/Category:UEFA_Champions_League_winning_players>,
+        <http://dbpedia.org/resource/Chelsea_F.C.>,
+        <http://dbpedia.org/resource/Chile_national_football_team>,
+        <http://dbpedia.org/resource/Clean_sheet>,
+        <http://dbpedia.org/resource/Clube_de_Regatas_do_Flamengo>,
+        <http://dbpedia.org/resource/Cláudio_Taffarel>,
+        <http://dbpedia.org/resource/Copa_América>,
+        <http://dbpedia.org/resource/Copa_América_Centenario>,
+        <http://dbpedia.org/resource/Copa_FGF>,
+        <http://dbpedia.org/resource/Copa_Libertadores>,
+        <http://dbpedia.org/resource/Copa_do_Brasil>,
+        <http://dbpedia.org/resource/Coppa_Italia>,
+        <http://dbpedia.org/resource/Crystal_Palace_F.C.>,
+        <http://dbpedia.org/resource/Derby_della_Capitale>,
+        <http://dbpedia.org/resource/Dida_(footballer,_born_1973)>,
+        <http://dbpedia.org/resource/Dribbling>,
+        <http://dbpedia.org/resource/Dunga>,
+        <http://dbpedia.org/resource/EFL_Cup>,
+        <http://dbpedia.org/resource/Ecuador_national_football_team>,
+        <http://dbpedia.org/resource/Ederson_(footballer,_born_1993)>,
+        <http://dbpedia.org/resource/English_language>,
+        <http://dbpedia.org/resource/Esporte_Clube_Cruzeiro>,
+        <http://dbpedia.org/resource/Euro>,
+        <http://dbpedia.org/resource/FA_Community_Shield>,
+        <http://dbpedia.org/resource/FA_Cup>,
+        <http://dbpedia.org/resource/FC_Barcelona>,
+        <http://dbpedia.org/resource/FC_Porto>,
+        <http://dbpedia.org/resource/FIFA_Club_World_Cup>,
+        <http://dbpedia.org/resource/FIFPro>,
+        <http://dbpedia.org/resource/File:2019_Final_da_Copa_América_2019_-_Alisson.jpg>,
+        <http://dbpedia.org/resource/File:Bra-Cos_(4).jpg>,
+        <http://dbpedia.org/resource/File:FC_Salzburg_gegen_Liverpool_FC_(UEFA_Champions_League_10.Dezember_2019)_48.jpg>,
+        <http://dbpedia.org/resource/File:Internacional-2015_(2).jpg>,
+        <http://dbpedia.org/resource/Fred_(footballer,_born_1993)>,
+        <http://dbpedia.org/resource/German_language>,
+        <http://dbpedia.org/resource/Gianluigi_Buffon>,
+        <http://dbpedia.org/resource/Globe_Soccer_Awards>,
+        <http://dbpedia.org/resource/Goalkeeper_(association_football)>,
+        <http://dbpedia.org/resource/Goiás_Esporte_Clube>,
+        <http://dbpedia.org/resource/Grêmio_Foot-Ball_Porto_Alegrense>,
+        <http://dbpedia.org/resource/IFFHS_World's_Best_Goalkeeper>,
+        <http://dbpedia.org/resource/Internacional>,
+        <http://dbpedia.org/resource/International_Federation_of_Football_History_&_Statistics>,
+        <http://dbpedia.org/resource/Italian_language>,
+        <http://dbpedia.org/resource/Javier_Mascherano>,
+        <http://dbpedia.org/resource/Jorginho_(footballer,_born_December_1991)>,
+        <http://dbpedia.org/resource/Juventus_FC>,
+        <http://dbpedia.org/resource/Júlio_César_(football_goalkeeper,_born_1979)>,
+        <http://dbpedia.org/resource/Kepa_Arrizabalaga>,
+        <http://dbpedia.org/resource/Lavras_do_Sul>,
+        <http://dbpedia.org/resource/Leicester_City_F.C.>,
+        <http://dbpedia.org/resource/List_of_goalkeepers_who_have_scored_in_the_Premier_League>,
+        <http://dbpedia.org/resource/List_of_goalscoring_goalkeepers>,
+        <http://dbpedia.org/resource/List_of_most_expensive_association_football_transfers>,
+        <http://dbpedia.org/resource/Liverpool_F.C.>,
+        <http://dbpedia.org/resource/Loris_Karius>,
+        <http://dbpedia.org/resource/Manchester_City_F.C.>,
+        <http://dbpedia.org/resource/Manchester_United_F.C.>,
+        <http://dbpedia.org/resource/Manuel_Neuer>,
+        <http://dbpedia.org/resource/Maracanã_Stadium>,
+        <http://dbpedia.org/resource/Messi>,
+        <http://dbpedia.org/resource/Miller_Bolaños>,
+        <http://dbpedia.org/resource/Mohamed_Salah>,
+        <http://dbpedia.org/resource/Muriel_Becker>,
+        <http://dbpedia.org/resource/Muriel_Gustavo_Becker>,
+        <http://dbpedia.org/resource/Norwich_City_F.C.>,
+        <http://dbpedia.org/resource/Novo_Hamburgo>,
+        <http://dbpedia.org/resource/PFA_Team_of_the_Year>,
+        <http://dbpedia.org/resource/PFA_Team_of_the_Year_(2020s)>,
+        <http://dbpedia.org/resource/Paolo_Guerrero>,
+        <http://dbpedia.org/resource/Pentecostalism>,
+        <http://dbpedia.org/resource/Pepe_Reina>,
+        <http://dbpedia.org/resource/Peru_national_football_team>,
+        <http://dbpedia.org/resource/Poland_national_football_team>,
+        <http://dbpedia.org/resource/Pound_sterling>,
+        <http://dbpedia.org/resource/Premier_League>,
+        <http://dbpedia.org/resource/Premier_League_Golden_Glove>,
+        <http://dbpedia.org/resource/Prevention_of_mental_disorders>,
+        <http://dbpedia.org/resource/Primeira_Liga_(Brazil)>,
+        <http://dbpedia.org/resource/Raheem_Sterling>,
+        <http://dbpedia.org/resource/Rio_Grande_do_Sul>,
+        <http://dbpedia.org/resource/Roberto_Firmino>,
+        <http://dbpedia.org/resource/S.S._Lazio>,
+        <http://dbpedia.org/resource/Samba_Gold>,
+        <http://dbpedia.org/resource/Serie_A>,
+        <http://dbpedia.org/resource/Serie_A_Goalkeeper_of_the_Year>,
+        <http://dbpedia.org/resource/Serie_A_Team_of_the_Year>,
+        <http://dbpedia.org/resource/Sport_Club_Internacional>,
+        <http://dbpedia.org/resource/Squad_number_(association_football)>,
+        <http://dbpedia.org/resource/Stadio_Olimpico>,
+        <http://dbpedia.org/resource/The_Best_FIFA_Football_Awards_2019>,
+        <http://dbpedia.org/resource/The_Best_FIFA_Football_Awards_2020>,
+        <http://dbpedia.org/resource/The_Best_FIFA_Goalkeeper>,
+        <http://dbpedia.org/resource/Tite_(football_manager)>,
+        <http://dbpedia.org/resource/Tottenham_Hotspur_F.C.>,
+        <http://dbpedia.org/resource/Toulon_Tournament>,
+        <http://dbpedia.org/resource/Trent_Alexander-Arnold>,
+        <http://dbpedia.org/resource/UEFA_Champions_League>,
+        <http://dbpedia.org/resource/UEFA_Club_Football_Awards>,
+        <http://dbpedia.org/resource/UEFA_Europa_League>,
+        <http://dbpedia.org/resource/UEFA_Team_of_the_Year>,
+        <http://dbpedia.org/resource/Venezuela_national_football_team>,
+        <http://dbpedia.org/resource/Virgil_van_Dijk>,
+        <http://dbpedia.org/resource/Víctor_Valdés>,
+        <http://dbpedia.org/resource/West_Bromwich_Albion_F.C.>,
+        <http://dbpedia.org/resource/West_Ham_United_F.C.>,
+        <http://dbpedia.org/resource/Wojciech_Szczęsny>,
+        <http://dbpedia.org/resource/World_Health_Organization>,
+        <http://dbpedia.org/resource/Yashin_Trophy>,
+        <http://dbpedia.org/resource/İlkay_Gündoğan> ;
+    dbp:bg "#FEDF00"@en,
+        "gold"@en ;
+    dbp:birthDate "1992-10-02"^^xsd:date ;
+    dbp:birthPlace "Novo Hamburgo, Brazil"@en ;
+    dbp:bordercolor "#002776"@en ;
+    dbp:caps 37,
+        80,
+        141 ;
+    dbp:caption "Alisson with Brazil in 2018"@en ;
+    dbp:clubUpdate "--08-31"^^xsd:gMonthDay ;
+    dbp:clubnumber 1 ;
+    dbp:clubs <http://dbpedia.org/resource/A.S._Roma>,
+        <http://dbpedia.org/resource/Liverpool_F.C.>,
+        <http://dbpedia.org/resource/Sport_Club_Internacional> ;
+    dbp:currentclub <http://dbpedia.org/resource/Liverpool_F.C.> ;
+    dbp:fg "#009B3A"@en,
+        "navy"@en ;
+    dbp:fullName "Alisson Ramses Becker"@en ;
+    dbp:goals 0,
+        1 ;
+    dbp:height "1.91 m"@en ;
+    dbp:name "Alisson"@en ;
+    dbp:nationalcaps 3,
+        5,
+        55 ;
+    dbp:nationalgoals 0 ;
+    dbp:nationalteam <http://dbpedia.org/resource/Brazil_national_football_team>,
+        <http://dbpedia.org/resource/Brazil_national_under-17_football_team>,
+        <http://dbpedia.org/resource/Brazil_national_under-20_football_team> ;
+    dbp:nationalteamUpdate "2022-06-06"^^xsd:date ;
+    dbp:nationalyears 2009,
+        2013,
+        2015 ;
+    dbp:position <http://dbpedia.org/resource/Goalkeeper_(association_football)> ;
+    dbp:title "Awards"@en,
+        "Brazil squads"@en ;
+    dbp:wikiPageUsesTemplate <http://dbpedia.org/resource/Template:2017–18_Serie_A_Team_of_the_Year>,
+        <http://dbpedia.org/resource/Template:2019_Copa_América_Team_of_the_Tournament>,
+        <http://dbpedia.org/resource/Template:2019_UEFA_Team_of_the_Year>,
+        <http://dbpedia.org/resource/Template:2021–22_Premier_League_PFA_Team_of_the_Year>,
+        <http://dbpedia.org/resource/Template:Best_European_Goalkeeper>,
+        <http://dbpedia.org/resource/Template:Birth_date_and_age>,
+        <http://dbpedia.org/resource/Template:Brazil_squad_2018_FIFA_World_Cup>,
+        <http://dbpedia.org/resource/Template:Brazil_squad_2019_Copa_América>,
+        <http://dbpedia.org/resource/Template:Brazil_squad_2021_Copa_América>,
+        <http://dbpedia.org/resource/Template:Brazil_squad_Copa_América_Centenario>,
+        <http://dbpedia.org/resource/Template:Commons_category>,
+        <http://dbpedia.org/resource/Template:Copa_América_Golden_Glove>,
+        <http://dbpedia.org/resource/Template:Efn>,
+        <http://dbpedia.org/resource/Template:Fb>,
+        <http://dbpedia.org/resource/Template:Height>,
+        <http://dbpedia.org/resource/Template:IFFHS_World's_Best_Goalkeeper>,
+        <http://dbpedia.org/resource/Template:In_lang>,
+        <http://dbpedia.org/resource/Template:Infobox_football_biography>,
+        <http://dbpedia.org/resource/Template:Liverpool_F.C._squad>,
+        <http://dbpedia.org/resource/Template:Medal>,
+        <http://dbpedia.org/resource/Template:MedalCompetition>,
+        <http://dbpedia.org/resource/Template:MedalCountry>,
+        <http://dbpedia.org/resource/Template:MedalSport>,
+        <http://dbpedia.org/resource/Template:NFT_player>,
+        <http://dbpedia.org/resource/Template:Navboxes>,
+        <http://dbpedia.org/resource/Template:Notelist>,
+        <http://dbpedia.org/resource/Template:Other_people>,
+        <http://dbpedia.org/resource/Template:Premier_League_Golden_Glove>,
+        <http://dbpedia.org/resource/Template:Reflist>,
+        <http://dbpedia.org/resource/Template:Samba_Gold>,
+        <http://dbpedia.org/resource/Template:Sambafoot>,
+        <http://dbpedia.org/resource/Template:Serie_A_Goalkeeper_of_the_Year>,
+        <http://dbpedia.org/resource/Template:Short_description>,
+        <http://dbpedia.org/resource/Template:Soccerway>,
+        <http://dbpedia.org/resource/Template:The_Best_FIFA_Goalkeeper>,
+        <http://dbpedia.org/resource/Template:UEFA_Club_Football_Awards>,
+        <http://dbpedia.org/resource/Template:UEFA_player>,
+        <http://dbpedia.org/resource/Template:Updated>,
+        <http://dbpedia.org/resource/Template:Use_dmy_dates>,
+        <http://dbpedia.org/resource/Template:Yashin_Trophy> ;
+    dbp:years 2013,
+        2016,
+        2018 ;
+    dbp:youthclubs <http://dbpedia.org/resource/Sport_Club_Internacional> ;
+    dbp:youthyears 2002 ;
+    dct:subject <http://dbpedia.org/resource/Category:1992_births>,
+        <http://dbpedia.org/resource/Category:2018_FIFA_World_Cup_players>,
+        <http://dbpedia.org/resource/Category:2019_Copa_América_players>,
+        <http://dbpedia.org/resource/Category:2021_Copa_América_players>,
+        <http://dbpedia.org/resource/Category:A.S._Roma_players>,
+        <http://dbpedia.org/resource/Category:Association_football_goalkeepers>,
+        <http://dbpedia.org/resource/Category:Brazil_international_footballers>,
+        <http://dbpedia.org/resource/Category:Brazil_youth_international_footballers>,
+        <http://dbpedia.org/resource/Category:Brazilian_Pentecostals>,
+        <http://dbpedia.org/resource/Category:Brazilian_expatriate_footballers>,
+        <http://dbpedia.org/resource/Category:Brazilian_expatriate_sportspeople_in_England>,
+        <http://dbpedia.org/resource/Category:Brazilian_expatriate_sportspeople_in_Italy>,
+        <http://dbpedia.org/resource/Category:Brazilian_footballers>,
+        <http://dbpedia.org/resource/Category:Brazilian_people_of_German_descent>,
+        <http://dbpedia.org/resource/Category:Campeonato_Brasileiro_Série_A_players>,
+        <http://dbpedia.org/resource/Category:Copa_América-winning_players>,
+        <http://dbpedia.org/resource/Category:Copa_América_Centenario_players>,
+        <http://dbpedia.org/resource/Category:Expatriate_footballers_in_England>,
+        <http://dbpedia.org/resource/Category:Expatriate_footballers_in_Italy>,
+        <http://dbpedia.org/resource/Category:FA_Cup_Final_players>,
+        <http://dbpedia.org/resource/Category:Liverpool_F.C._players>,
+        <http://dbpedia.org/resource/Category:Living_people>,
+        <http://dbpedia.org/resource/Category:People_from_Novo_Hamburgo>,
+        <http://dbpedia.org/resource/Category:Premier_League_players>,
+        <http://dbpedia.org/resource/Category:Serie_A_players>,
+        <http://dbpedia.org/resource/Category:Sport_Club_Internacional_players>,
+        <http://dbpedia.org/resource/Category:Sportspeople_from_Rio_Grande_do_Sul>,
+        <http://dbpedia.org/resource/Category:UEFA_Champions_League_winning_players> ;
+    gold:hypernym <http://dbpedia.org/resource/Footballer> ;
+    rdfs:comment "أليسون رمسيس بيكر (بالبرتغالية: Alisson Ramses Becker‏) ويعرف أيضاً بـ\"أليسون\" (بالبرتغالية: Alisson‏) هو لاعب كرة قدم برازيلي في مركز حراسة المرمى ولد في يوم 2 أكتوبر 1992 في مدينة نوفو هامبورغو في البرازيل، يلعب حالياً مع نادي ليفربول الإنجليزي و منتخب البرازيل."@ar,
+        "Alisson Ramses Becker (Novo Hamburgo, el 2 d'octubre de 1992), conegut simplement com a Alisson, és un jugador de futbol brasiler que juga com a porter a l'equip de la Premier League Liverpool i a la selecció de futbol del Brasil. El 2019 fou el primer guanyador del trofeu Iaixin."@ca,
+        "Alisson Ramses Becker známý jako Alisson (* 2. října 1992 ) je brazilský fotbalový brankář a reprezentant, od července roku 2018 hráč anglického klubu Liverpool FC. V září 2019 získal ocenění a v prosinci obdržel pro nejlepšího brankáře světa."@cs,
+        "Alisson (* 2. Oktober 1992 in Novo Hamburgo; voller Name Alisson Ramsés Becker) ist ein brasilianischer Fußballtorwart. Seit Juli 2018 steht er beim FC Liverpool unter Vertrag. Außerdem ist er brasilianischer Nationalspieler. Alisson wurde 2019 von der IFFHS, FIFA und France Football zum „Welttorhüter des Jahres“ gewählt."@de,
+        "Ο Άλισον Ράμσες Μπέκερ (γεννήθηκε στις 2 Οκτωβρίου 1992), επίσης γνωστός ως Άλισον Μπέκερ (Πορτογαλικά Βραζιλίας: ˈalisõ ˈbɛkeʁ) ή απλά Άλισον, είναι επαγγελματίας Βραζιλιάνος ποδοσφαιριστής που παίζει ως τερματοφύλακας για τη Λίβερπουλ της αγγλικής Πρέμιερ Λιγκ και την εθνική ομάδα της Βραζιλίας. Θεωρείται από τους καλύτερους τερματοφύλακες στον κόσμο , χάρη στην ηρεμια και αυτοπεποίθηση του και στις κρίσιμες αποκρούσεις του."@el,
+        "Alisson Ramses Becker (born 2 October 1992), commonly known as Alisson, is a Brazilian professional footballer who plays as a goalkeeper for Premier League club Liverpool and the Brazil national team. He is widely regarded to be one of the best goalkeepers in the world due to his distribution and ability in one-on-one situations."@en,
+        "Alisson Becker (prononco laŭ sistemo IFA ˈalisõ ˈbɛkeʁ) aŭ plennome Alisson Ramses Becker, plej ofte nur nomata Alisson, estas brazila futbalisto en pozicio de golisto. Li naskiĝis la 2-an de oktobro 1992 en Novo Hamburgo, do nun estas 29-jara. Ekde la jaro 2016 li profesie ludas futbalon en la unua vira teamo de la klubo AS Roma. Krome Alisson ekde la jaro 2015 estas membro de la rusia nacia teamo de futbalo. Kadre de ĝi li kunkonkuras pri la Futbala Mondpokalo 2018 en Rusio. Matĉe li en la nacia teamo de 2018 rekoneblas per la numero \"1\"."@eo,
+        "Alisson Ramses Becker (Novo Hamburgo, Río Grande del Sur, Brasil, 2 de octubre de 1992) es un futbolista brasileño. Juega de guardameta y su equipo es el Liverpool F. C. de la Premier League de Inglaterra.​"@es,
+        "Alisson Ramses Becker, né le 2 octobre 1992 à Novo Hamburgo au Brésil, est un footballeur international brésilien qui évolue au poste de gardien de but au Liverpool FC. Il est le gardien titulaire de l'Équipe du Brésil lors de la Coupe du monde de football de 2018, éliminée en quarts de finale par la Belgique. La même année, au moment de son transfert à Liverpool contre 62,5 millions d'euros, il devint le gardien de but le plus cher de l'histoire avant d'être devancé par l'international espagnol Kepa Arrizabalaga lors du même mercato."@fr,
+        "Alisson Becker (2 oktober 1992) adalah seorang pemain sepak bola berkewarganegaraan Brasil keturunan jerman yang bermain untuk klub Liverpool F.C. pada posisi Penjaga gawang. Alisson Becker bermain untuk klub Liverpool sejak tahun 2018, dan membela tim nasional Brasil sejak tahun 2015."@in,
+        "Alisson Ramses Becker (Novo Hamburgo, 2 ottobre 1992) è un calciatore brasiliano, portiere del Liverpool e della nazionale brasiliana. Considerato uno dei migliori nel suo ruolo, a livello di club ha vinto quattro campionati Gaúchi, una Super Copa Gaúcha, un campionato inglese, una UEFA Champions League, una Supercoppa europea e una Coppa del mondo per club FIFA."@it,
+        "アリソン・ラムセス・ベッカー（Alisson Ramses Becker, 1992年10月2日 - ）は、ブラジル・リオグランデ・ド・スル州ノヴォ・アンブルゴ出身のサッカー選手。プレミアリーグ・リヴァプールFC所属。ブラジル代表。ポジションはGK。 5歳上の兄のムリエウも、SCインテルナシオナルなどでプレーしたゴールキーパー。"@ja,
+        "알리송 베케르(포르투갈어: Alisson Becker, 1992년 10월 2일 ~ )는 현재 리버풀에서 골키퍼로 활약하고 있는 브라질의 축구 선수이다."@ko,
+        "Alisson Ramses Becker (Novo Hamburgo, 2 oktober 1992) - alias Alisson - is een Braziliaans voetballer die als doelman speelt. Hij verruilde AS Roma in juli 2018 voor Liverpool. Dat betaalde circa €75.000.000,- voor hem, exclusief bonussen. Alisson debuteerde in 2015 in het Braziliaans voetbalelftal. Zijn oudere broer Muriel Gustavo Becker is eveneens betaald voetballer."@nl,
+        "Alisson, właśc. Alisson Ramses Becker (wym. [ˈalisõ ˈbɛkeɾ], ur. 2 października 1992 w Novo Hamburgo) – brazylijski piłkarz, występujący na pozycji bramkarza w angielskim klubie Liverpool oraz w reprezentacji Brazylii."@pl,
+        "Alisson Ramses Becker (Novo Hamburgo, 2 de outubro de 1992) é um futebolista brasileiro que atua como goleiro. Atualmente joga pelo Liverpool. Ao se transferir ao Liverpool, Alisson se tornou o goleiro mais caro da história do futebol (72,5 milhões de euros) ultrapassando Buffon quando se transferiu do Parma com destino a Juventus por 54,2 milhões de euros. Mas poucos dias depois seu recorde foi superado por Kepa Arrizabalaga que se transferiu do Athletic Bilbao para o Chelsea por 80 milhões de euros."@pt,
+        "Алиссон Рамзес Бекер (порт. Alisson Ramses Becker; родился 2 октября 1992 года в Нову-Амбургу, Бразилия), более известный как Алиссон — бразильский футболист немецкого происхождения, вратарь клуба «Ливерпуль» и сборной Бразилии. Участник чемпионата мира 2018 года."@ru,
+        "Alisson Ramses Becker, mer känd som bara Alisson, född 2 oktober 1992 i Novo Hamburgo, är en brasiliansk fotbollsmålvakt som spelar för den engelska Premier League-klubben Liverpool och Brasiliens landslag."@sv,
+        "Аліссон Рамзес Беккер (порт. Alisson Becker, нар. 2 жовтня 1992, ) або просто Аліссон — бразильський футболіст, воротар англійського «Ліверпуля» і національної збірної Бразилії. Перший володар Премії Яшина (2019) — «Золотого м'яча» для воротарів від France Football. Трансферна вартість при переході до «Ліверпуля» влітку 2018 року сягнула 66,8 мільйонів фунтів (72,5 мільйони євро), що є однією з рекордних сум."@uk,
+        "艾利臣·拉姆西斯·比加 （葡萄牙語：Alisson Ramses Becker，巴西葡萄牙語：[ˈalisõ ˈbɛkeʁ]；1992年10月2日－），或简称艾列臣（葡萄牙語：Alisson），是一名巴西足球运动员，司职守門員，目前效力于英超球隊利物浦。為世界球壇現役最佳門將之一。"@zh ;
+    owl:sameAs <http://ar.dbpedia.org/resource/أليسون_بيكر>,
+        <http://arz.dbpedia.org/resource/اليسون_بيكر_(لاعب_كورة_قدم)>,
+        <http://ast.dbpedia.org/resource/Alisson_Becker>,
+        <http://azb.dbpedia.org/resource/الیسون_بکر>,
+        <http://bg.dbpedia.org/resource/Алисон>,
+        <http://bn.dbpedia.org/resource/আলিসন>,
+        <http://ca.dbpedia.org/resource/Alisson_Becker>,
+        <http://ce.dbpedia.org/resource/Бекер,_Алисон>,
+        <http://ckb.dbpedia.org/resource/ئەلیسۆن_بێکەر>,
+        <http://cs.dbpedia.org/resource/Alisson_Becker>,
+        <http://da.dbpedia.org/resource/Alisson_Becker>,
+        <http://de.dbpedia.org/resource/Alisson>,
+        <http://el.dbpedia.org/resource/Άλισον_Μπέκερ>,
+        <http://eo.dbpedia.org/resource/Alisson_Becker>,
+        <http://es.dbpedia.org/resource/Alisson_Becker>,
+        <http://et.dbpedia.org/resource/Alisson_Becker>,
+        <http://fa.dbpedia.org/resource/آلیسون_بکر>,
+        <http://fi.dbpedia.org/resource/Alisson_Becker>,
+        <http://fo.dbpedia.org/resource/Alisson>,
+        <http://fr.dbpedia.org/resource/Alisson>,
+        <http://he.dbpedia.org/resource/אליסון_בקר>,
+        <http://hr.dbpedia.org/resource/Alisson>,
+        <http://ht.dbpedia.org/resource/Alisson_Becker>,
+        <http://hu.dbpedia.org/resource/Alisson_Becker>,
+        <http://hy.dbpedia.org/resource/Ալիսոն_Ռամզես_Բեկեր>,
+        <http://id.dbpedia.org/resource/Alisson_Becker>,
+        <http://is.dbpedia.org/resource/Alisson_Becker>,
+        <http://it.dbpedia.org/resource/Alisson_Becker>,
+        <http://ja.dbpedia.org/resource/アリソン・ラムセス・ベッカー>,
+        <http://jv.dbpedia.org/resource/Alisson_Becker>,
+        <http://ka.dbpedia.org/resource/ალისონ_ბეკერი>,
+        <http://kk.dbpedia.org/resource/Алиссон_Бекер>,
+        <http://ko.dbpedia.org/resource/알리송_베케르>,
+        <http://lb.dbpedia.org/resource/Alisson_Becker>,
+        <http://lv.dbpedia.org/resource/Alisons_Bekers>,
+        <http://mk.dbpedia.org/resource/Алисон_Бекер>,
+        <http://ml.dbpedia.org/resource/അലിസോൺ>,
+        <http://ms.dbpedia.org/resource/Alisson>,
+        <http://nl.dbpedia.org/resource/Alisson_Becker>,
+        <http://no.dbpedia.org/resource/Alisson_Becker>,
+        <http://pl.dbpedia.org/resource/Alisson>,
+        <http://pt.dbpedia.org/resource/Alisson_Becker>,
+        <http://qu.dbpedia.org/resource/Alisson_Becker>,
+        <http://rdf.freebase.com/ns/m.0q3_0jp>,
+        <http://ro.dbpedia.org/resource/Alisson_Becker>,
+        <http://ru.dbpedia.org/resource/Бекер,_Алисон>,
+        <http://simple.dbpedia.org/resource/Alisson_Becker>,
+        <http://sq.dbpedia.org/resource/Alisson_Becker>,
+        <http://sr.dbpedia.org/resource/Алисон_Бекер>,
+        <http://sv.dbpedia.org/resource/Alisson_Becker>,
+        <http://sw.dbpedia.org/resource/Alisson_Becker>,
+        <http://tg.dbpedia.org/resource/Алисcон_Беккер>,
+        <http://th.dbpedia.org/resource/อาลีซง_แบเกร์>,
+        <http://tr.dbpedia.org/resource/Alisson>,
+        <http://uk.dbpedia.org/resource/Аліссон_Беккер>,
+        <http://vi.dbpedia.org/resource/Alisson>,
+        <http://www.wikidata.org/entity/Q18237361>,
+        <http://yago-knowledge.org/resource/Alisson>,
+        <http://zh.dbpedia.org/resource/阿利森·拉姆西斯·贝克尔>,
+        <https://global.dbpedia.org/id/kfBu> ;
+    prov:wasDerivedFrom <http://en.wikipedia.org/wiki/Alisson?oldid=1107882443&ns=0> ;
+    foaf:depiction <http://commons.wikimedia.org/wiki/Special:FilePath/20180610_FIFA_Friendly_Match_Austria_vs._Brazil_850_1625.jpg>,
+        <http://commons.wikimedia.org/wiki/Special:FilePath/2019_Final_da_Copa_América_2019_-_Alisson.jpg>,
+        <http://commons.wikimedia.org/wiki/Special:FilePath/Bra-Cos_(4).jpg>,
+        <http://commons.wikimedia.org/wiki/Special:FilePath/FC_Salzburg_gegen_Liverpool_FC_(UEFA_Champions_League_10.Dezember_2019)_48.jpg>,
+        <http://commons.wikimedia.org/wiki/Special:FilePath/Internacional-2015_(2).jpg> ;
+    foaf:isPrimaryTopicOf <http://en.wikipedia.org/wiki/Alisson> ;
+    foaf:name "Alisson"@en .
+
+<http://dbpedia.org/resource/Alison_Sweeney> a <http://dbpedia.org/class/yago/Actor109765278>,
+        <http://dbpedia.org/class/yago/Actress109767700>,
+        <http://dbpedia.org/class/yago/Adult109605289>,
+        <http://dbpedia.org/class/yago/CausalAgent100007347>,
+        <http://dbpedia.org/class/yago/Entertainer109616922>,
+        <http://dbpedia.org/class/yago/Female109619168>,
+        <http://dbpedia.org/class/yago/LivingThing100004258>,
+        <http://dbpedia.org/class/yago/Object100002684>,
+        <http://dbpedia.org/class/yago/Organism100004475>,
+        <http://dbpedia.org/class/yago/Performer110415638>,
+        <http://dbpedia.org/class/yago/Person100007846>,
+        <http://dbpedia.org/class/yago/PhysicalEntity100001930>,
+        <http://dbpedia.org/class/yago/Whole100003553>,
+        <http://dbpedia.org/class/yago/Wikicat20th-centuryAmericanActresses>,
+        <http://dbpedia.org/class/yago/Wikicat21st-centuryAmericanActresses>,
+        <http://dbpedia.org/class/yago/WikicatActors>,
+        <http://dbpedia.org/class/yago/WikicatActorsFromCalifornia>,
+        <http://dbpedia.org/class/yago/WikicatActressesFromLosAngeles,California>,
+        <http://dbpedia.org/class/yago/WikicatAmericanActors>,
+        <http://dbpedia.org/class/yago/WikicatAmericanActresses>,
+        <http://dbpedia.org/class/yago/WikicatAmericanChildActresses>,
+        <http://dbpedia.org/class/yago/WikicatAmericanPeople>,
+        <http://dbpedia.org/class/yago/WikicatAmericanSoapOperaActresses>,
+        <http://dbpedia.org/class/yago/WikicatAmericanTelevisionActors>,
+        <http://dbpedia.org/class/yago/WikicatAmericanTelevisionActresses>,
+        <http://dbpedia.org/class/yago/WikicatLivingPeople>,
+        <http://dbpedia.org/class/yago/WikicatPeopleFromLosAngeles,California>,
+        <http://dbpedia.org/class/yago/WikicatWomen>,
+        <http://dbpedia.org/class/yago/Woman110787470>,
+        <http://dbpedia.org/class/yago/YagoLegalActor>,
+        <http://dbpedia.org/class/yago/YagoLegalActorGeo>,
+        dbo:Animal,
+        dbo:Eukaryote,
+        dbo:Person,
+        dbo:Species,
+        schema:Person,
+        <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson>,
+        owl:Thing,
+        <http://www.wikidata.org/entity/Q19088>,
+        <http://www.wikidata.org/entity/Q215627>,
+        <http://www.wikidata.org/entity/Q5>,
+        <http://www.wikidata.org/entity/Q729>,
+        foaf:Person ;
+    rdfs:label "أليسون سويني"@ar,
+        "Alison Sweeney"@de,
+        "Alison Sweeney"@en,
+        "Alison Sweeney"@es,
+        "Alison Sweeney"@fr,
+        "Alison Sweeney"@in,
+        "Alison Sweeney"@it,
+        "앨리슨 스위니"@ko,
+        "Alison Sweeney"@nl,
+        "Alison Sweeney"@pl,
+        "Суини, Элисон"@ru,
+        "Alison Sweeney"@sv ;
+    dbo:abstract "أليسون سويني (بالإنجليزية: Alison Sweeney)‏ مواليد 19 سبتمبر 1976 في لوس أنجلوس، هي ممثلة ومخرجة أمريكية بدأت مسيرتها الفنية عام 1981."@ar,
+        "Alison Ann Sweeney (* 19. September 1976 in Los Angeles, Kalifornien) ist eine US-amerikanische Schauspielerin und Moderatorin."@de,
+        "Alison Ann Sweeney (born September 19, 1976) is an American actress, reality show host, director and author. Sweeney is best known for her portrayal of Samantha \"Sami\" Brady on the NBC soap opera Days of Our Lives, a role she played under contract with the show from January 6, 1993 to October 30, 2014. In this role, she earned a Daytime Emmy Award nomination, four Soap Opera Digest Awards and a Fan Voted Daytime Emmy Award. After making sporadic appearances since then, she return as series regular in 2021 in the series. In 2007, she became the host of The Biggest Loser in its fourth season, and left the series at the end of the 16th season in 2015."@en,
+        "Alison Sweeny (nacida el 19 de septiembre de 1976) es una actriz estadounidense y presentadora de un reality show. Sweeney es conocida por su papel de «Samantha \"Sami\" Brady Hernandez» en la asentada serie de la NBC ,,​ papel que ha representado bajo contrato con el programa desde el 6 de enero de 1993.​ Este papel le ha permitido obtener cuatro y un Fan Voted Daytime Emmy Award.​ En 2007, se convirtió en la anfitriona de The Biggest Loser."@es,
+        "Alison Ann Sweeney (née le 19 septembre 1976) est une actrice américaine de feuilleton télévisé. Elle est née à Los Angeles (Californie)."@fr,
+        "Alison Ann Sweeney (lahir 19 September 1976) adalah seorang aktris drama, pembawa acara realitas, sutradara dan penulis asal Amerika Serikat. Sweeney terkenal karena perannya sebagai Samantha \"Sami\" Brady pada opera sabun NBC Days of Our Lives, peran telah ia mainkan di bawah kontrak dengan acara tersebut sejak 6 Januari 1993. Dalam peran ini, dia telah menerima nominasi , empat dan sebuah Daytime Emmy Award pilihan penggemar. Pada tahun 2007, ia menjadi pembawa acara , dan meninggalkan serial ini pada akhir musim keenam belas pada tahun 2015."@in,
+        "Alison Ann Sweeney (Los Angeles, 19 settembre 1976) è un'attrice televisiva statunitense che esordì in televisione a cinque anni come protagonista di una pubblicità realizzata dalla Kodak. È molto nota negli Stati Uniti per aver interpretato il personaggio di Sami Brady nella soap opera americana I giorni della nostra vita, che le valse numerosi premi e riconoscimenti: ha avuto tale parte della soap il 22 gennaio del 1993 e da allora non l'ha più abbandonata. Nel 2002 prese parte al reality show della NBC , che tuttavia non riuscì a vincere: in questa trasmissione, di lei si ricorda il panico che ebbe quando vide vermi, scorpioni e millepiedi, ovviamente di dimensioni superiori al normale. Nel 2004, scrisse il libro autobiografico All The Days of My Life (So Far). Attualmente, e fin dal 2004, Alison Sweeney vive a Los Angeles insieme al marito David Sanov. Il 25 febbraio del 2005 è diventata madre del piccolo Benjamin Edward Sanov. Il 12 gennaio 2009 è nata la sua seconda figlia, Megan Hope."@it,
+        "앨리슨 스위니(Alison Sweeney, 1976년 9월 19일 ~ )는 미국의 배우이다."@ko,
+        "Alison Sweeney (Los Angeles (Californië), 19 september 1976) is een Amerikaanse soapactrice. Ze is het bekendst van haar rol van Samantha Sami Brady in de Amerikaanse soapserie Days of our Lives, een rol die ze sinds 22 januari 1993 speelt. Verder had ze een gastrol als Jessica Ashley in Friends in 2001 en speelde ze de rol van Stephanie in de film The End of Innocence (1990). Sweeney is gehuwd en heeft twee kinderen, een zoon en een dochter."@nl,
+        "Alison Ann Sweeney (ur. 19 września 1976 w Los Angeles) – amerykańska aktorka. Znana przede wszystkim z roli Samanty „Sami” Brady w operze mydlanej Dni naszego życia emitowanej przez amerykańską stację NBC."@pl,
+        "Э́лисон Энн Суи́ни (англ. Alison Ann Sweeney; 19 сентября 1976, Лос-Анджелес, Калифорния) — американская телевизионная актриса, ведущая и писательница. Она наиболее известна благодаря своей роли мстительной интриганки Сэми Брэди в дневной мыльной опере NBC «Дни нашей жизни», где она снималась с января 1993 года по 30 октября 2014 года. За эту роль, Суини получила шесть премий «Дайджеста мыльных опер», в том числе и три награды как лучшей злодейке дневного эфира. Также она хорошо известна как ведущая шоу The Biggest Loser, начиная с 2007 года. В январе 2014 года, Суини, после двадцати одного года в мыле, объявила, что покидает «Дни нашей жизни». Уже после ухода, роль принесла ей номинацию на Дневную премию «Эмми» за лучшую женскую роль в драматическом сериале в 2015 году."@ru,
+        "Alison Ann Sweeney, född 19 september 1976 i Los Angeles, Kalifornien, är en amerikansk såpoperaskådespelerska. Mest känd som Sami (Samantha) Brady i Våra bästa år (Days of Our Lives). Hon har medverkat i Våra bästa år sedan 22 januari 1993. Under denna tid i rollen som Sami Brady har hon vunnit fyra Soap Opera Digest Awards. Hon är även känd för att vara programledare för Biggest Loser. År 2007 blev hon programledare för Biggest Loser och lämnade serien år 2015."@sv ;
+    dbo:activeYearsStartYear "1981"^^xsd:gYear ;
+    dbo:birthDate "1976-09-19"^^xsd:date ;
+    dbo:birthName "Alison Ann Sweeney"@en ;
+    dbo:birthPlace <http://dbpedia.org/resource/Los_Angeles>,
+        <http://dbpedia.org/resource/United_States> ;
+    dbo:birthYear "1976"^^xsd:gYear ;
+    dbo:occupation <http://dbpedia.org/resource/Alison_Sweeney__PersonFunction__1> ;
+    dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Alison_Sweeney_2009.jpg?width=300> ;
+    dbo:wikiPageID 704762 ;
+    dbo:wikiPageLength "23592"^^xsd:nonNegativeInteger ;
+    dbo:wikiPageRevisionID 1088963481 ;
+    dbo:wikiPageWikiLink <http://dbpedia.org/resource/15th_Youth_in_Film_Awards>,
+        <http://dbpedia.org/resource/18th_Youth_in_Film_Awards>,
+        <http://dbpedia.org/resource/Adrienne_Johnson_Kiriakis>,
+        <http://dbpedia.org/resource/American_Broadcasting_Company>,
+        <http://dbpedia.org/resource/American_Dreams>,
+        <http://dbpedia.org/resource/Barbara_Eden>,
+        <http://dbpedia.org/resource/Bay_State_(TV_series)>,
+        <http://dbpedia.org/resource/Beat_Bobby_Flay>,
+        <http://dbpedia.org/resource/Brand_New_Life_(TV_series)>,
+        <http://dbpedia.org/resource/Breaking_Bad>,
+        <http://dbpedia.org/resource/Bryan_Dattilo>,
+        <http://dbpedia.org/resource/Caroline_Rhea>,
+        <http://dbpedia.org/resource/Category:1976_births>,
+        <http://dbpedia.org/resource/Category:20th-century_American_actresses>,
+        <http://dbpedia.org/resource/Category:21st-century_American_actresses>,
+        <http://dbpedia.org/resource/Category:Actresses_from_Los_Angeles>,
+        <http://dbpedia.org/resource/Category:American_child_actresses>,
+        <http://dbpedia.org/resource/Category:American_soap_opera_actresses>,
+        <http://dbpedia.org/resource/Category:American_television_actresses>,
+        <http://dbpedia.org/resource/Category:American_television_hosts>,
+        <http://dbpedia.org/resource/Category:American_women_television_presenters>,
+        <http://dbpedia.org/resource/Category:Days_of_Our_Lives>,
+        <http://dbpedia.org/resource/Category:Living_people>,
+        <http://dbpedia.org/resource/Category:The_Biggest_Loser>,
+        <http://dbpedia.org/resource/Category:University_of_California,_Los_Angeles_alumni>,
+        <http://dbpedia.org/resource/Chris_Carter_(screenwriter)>,
+        <http://dbpedia.org/resource/Chronicle_Mysteries>,
+        <http://dbpedia.org/resource/Colleen_Brady>,
+        <http://dbpedia.org/resource/Days_of_Our_Lives>,
+        <http://dbpedia.org/resource/Daytime_Emmy_Award>,
+        <http://dbpedia.org/resource/Daytime_Emmy_Award_for_Outstanding_Lead_Actress_in_a_Drama_Series>,
+        <http://dbpedia.org/resource/Don_Murray_(actor)>,
+        <http://dbpedia.org/resource/Family_Man_(U.S._TV_series)>,
+        <http://dbpedia.org/resource/Fear_Factor>,
+        <http://dbpedia.org/resource/File:Alison_sweeney_red_dress.jpg>,
+        <http://dbpedia.org/resource/Friends>,
+        <http://dbpedia.org/resource/General_Hospital>,
+        <http://dbpedia.org/resource/Greg_Vaughan>,
+        <http://dbpedia.org/resource/Hallmark_Channel>,
+        <http://dbpedia.org/resource/Hallmark_Movies_&_Mysteries>,
+        <http://dbpedia.org/resource/Hallmark_Original_Movie>,
+        <http://dbpedia.org/resource/Jerry_Lewis_MDA_Telethon>,
+        <http://dbpedia.org/resource/Joanne_Fluke>,
+        <http://dbpedia.org/resource/Kodak>,
+        <http://dbpedia.org/resource/Las_Vegas_(TV_series)>,
+        <http://dbpedia.org/resource/List_of_Tales_from_the_Darkside_episodes>,
+        <http://dbpedia.org/resource/Los_Angeles,_California>,
+        <http://dbpedia.org/resource/Mercy_(TV_series)>,
+        <http://dbpedia.org/resource/Murder,_She_Baked>,
+        <http://dbpedia.org/resource/NBC>,
+        <http://dbpedia.org/resource/Reality_game_show>,
+        <http://dbpedia.org/resource/Sami_Brady>,
+        <http://dbpedia.org/resource/Simon_&_Simon>,
+        <http://dbpedia.org/resource/Soap_Opera_Digest_Award>,
+        <http://dbpedia.org/resource/Soap_Opera_Digest_Award_for_Outstanding_Villainess_in_a_Drama_Series_–_Daytime>,
+        <http://dbpedia.org/resource/Soap_Opera_Digest_Awards>,
+        <http://dbpedia.org/resource/Soap_opera>,
+        <http://dbpedia.org/resource/St._Elsewhere>,
+        <http://dbpedia.org/resource/Tales_from_the_Darkside>,
+        <http://dbpedia.org/resource/The_Biggest_Loser_(U.S._TV_series)>,
+        <http://dbpedia.org/resource/The_Ellen_DeGeneres_Show>,
+        <http://dbpedia.org/resource/The_End_of_Innocence_(film)>,
+        <http://dbpedia.org/resource/The_Magical_World_of_Disney>,
+        <http://dbpedia.org/resource/The_Price_of_Life_(1987_film)>,
+        <http://dbpedia.org/resource/The_X-Files>,
+        <http://dbpedia.org/resource/UCLA>,
+        <http://dbpedia.org/resource/United_States>,
+        <http://dbpedia.org/resource/Webster_(TV_series)>,
+        <http://dbpedia.org/resource/Young_Artist_Award> ;
+    dbp:birthDate "1976-09-19"^^xsd:date ;
+    dbp:birthName "Alison Ann Sweeney"@en ;
+    dbp:birthPlace <http://dbpedia.org/resource/Los_Angeles,_California>,
+        <http://dbpedia.org/resource/United_States> ;
+    dbp:caption "Sweeney in 2009"@en ;
+    dbp:children 2 ;
+    dbp:name "Alison Sweeney"@en ;
+    dbp:occupation "Actress"@en,
+        "director"@en ;
+    dbp:spouse 2000,
+        ""@en,
+        "David Sanov"@en ;
+    dbp:wikiPageUsesTemplate <http://dbpedia.org/resource/Template:Abbr>,
+        <http://dbpedia.org/resource/Template:Authority_control>,
+        <http://dbpedia.org/resource/Template:Birth_date_and_age>,
+        <http://dbpedia.org/resource/Template:Center>,
+        <http://dbpedia.org/resource/Template:Citation_needed>,
+        <http://dbpedia.org/resource/Template:Commons_category>,
+        <http://dbpedia.org/resource/Template:Facebook>,
+        <http://dbpedia.org/resource/Template:IMDb_name>,
+        <http://dbpedia.org/resource/Template:Infobox_person>,
+        <http://dbpedia.org/resource/Template:Nom>,
+        <http://dbpedia.org/resource/Template:Reflist>,
+        <http://dbpedia.org/resource/Template:Short_description>,
+        <http://dbpedia.org/resource/Template:Small>,
+        <http://dbpedia.org/resource/Template:Won> ;
+    dbp:wordnet_type <http://www.w3.org/2006/03/wn/wn20/instances/synset-actor-noun-1> ;
+    dbp:yearsActive 1981 ;
+    dct:subject <http://dbpedia.org/resource/Category:1976_births>,
+        <http://dbpedia.org/resource/Category:20th-century_American_actresses>,
+        <http://dbpedia.org/resource/Category:21st-century_American_actresses>,
+        <http://dbpedia.org/resource/Category:Actresses_from_Los_Angeles>,
+        <http://dbpedia.org/resource/Category:American_child_actresses>,
+        <http://dbpedia.org/resource/Category:American_soap_opera_actresses>,
+        <http://dbpedia.org/resource/Category:American_television_actresses>,
+        <http://dbpedia.org/resource/Category:American_television_hosts>,
+        <http://dbpedia.org/resource/Category:American_women_television_presenters>,
+        <http://dbpedia.org/resource/Category:Days_of_Our_Lives>,
+        <http://dbpedia.org/resource/Category:Living_people>,
+        <http://dbpedia.org/resource/Category:The_Biggest_Loser>,
+        <http://dbpedia.org/resource/Category:University_of_California,_Los_Angeles_alumni> ;
+    gold:hypernym <http://dbpedia.org/resource/Actress> ;
+    schema:sameAs <http://viaf.org/viaf/41243355> ;
+    rdfs:comment "أليسون سويني (بالإنجليزية: Alison Sweeney)‏ مواليد 19 سبتمبر 1976 في لوس أنجلوس، هي ممثلة ومخرجة أمريكية بدأت مسيرتها الفنية عام 1981."@ar,
+        "Alison Ann Sweeney (* 19. September 1976 in Los Angeles, Kalifornien) ist eine US-amerikanische Schauspielerin und Moderatorin."@de,
+        "Alison Ann Sweeney (born September 19, 1976) is an American actress, reality show host, director and author. Sweeney is best known for her portrayal of Samantha \"Sami\" Brady on the NBC soap opera Days of Our Lives, a role she played under contract with the show from January 6, 1993 to October 30, 2014. In this role, she earned a Daytime Emmy Award nomination, four Soap Opera Digest Awards and a Fan Voted Daytime Emmy Award. After making sporadic appearances since then, she return as series regular in 2021 in the series. In 2007, she became the host of The Biggest Loser in its fourth season, and left the series at the end of the 16th season in 2015."@en,
+        "Alison Sweeny (nacida el 19 de septiembre de 1976) es una actriz estadounidense y presentadora de un reality show. Sweeney es conocida por su papel de «Samantha \"Sami\" Brady Hernandez» en la asentada serie de la NBC ,,​ papel que ha representado bajo contrato con el programa desde el 6 de enero de 1993.​ Este papel le ha permitido obtener cuatro y un Fan Voted Daytime Emmy Award.​ En 2007, se convirtió en la anfitriona de The Biggest Loser."@es,
+        "Alison Ann Sweeney (née le 19 septembre 1976) est une actrice américaine de feuilleton télévisé. Elle est née à Los Angeles (Californie)."@fr,
+        "Alison Ann Sweeney (lahir 19 September 1976) adalah seorang aktris drama, pembawa acara realitas, sutradara dan penulis asal Amerika Serikat. Sweeney terkenal karena perannya sebagai Samantha \"Sami\" Brady pada opera sabun NBC Days of Our Lives, peran telah ia mainkan di bawah kontrak dengan acara tersebut sejak 6 Januari 1993. Dalam peran ini, dia telah menerima nominasi , empat dan sebuah Daytime Emmy Award pilihan penggemar. Pada tahun 2007, ia menjadi pembawa acara , dan meninggalkan serial ini pada akhir musim keenam belas pada tahun 2015."@in,
+        "Alison Ann Sweeney (Los Angeles, 19 settembre 1976) è un'attrice televisiva statunitense che esordì in televisione a cinque anni come protagonista di una pubblicità realizzata dalla Kodak. È molto nota negli Stati Uniti per aver interpretato il personaggio di Sami Brady nella soap opera americana I giorni della nostra vita, che le valse numerosi premi e riconoscimenti: ha avuto tale parte della soap il 22 gennaio del 1993 e da allora non l'ha più abbandonata. Nel 2004, scrisse il libro autobiografico All The Days of My Life (So Far)."@it,
+        "앨리슨 스위니(Alison Sweeney, 1976년 9월 19일 ~ )는 미국의 배우이다."@ko,
+        "Alison Sweeney (Los Angeles (Californië), 19 september 1976) is een Amerikaanse soapactrice. Ze is het bekendst van haar rol van Samantha Sami Brady in de Amerikaanse soapserie Days of our Lives, een rol die ze sinds 22 januari 1993 speelt. Verder had ze een gastrol als Jessica Ashley in Friends in 2001 en speelde ze de rol van Stephanie in de film The End of Innocence (1990). Sweeney is gehuwd en heeft twee kinderen, een zoon en een dochter."@nl,
+        "Alison Ann Sweeney (ur. 19 września 1976 w Los Angeles) – amerykańska aktorka. Znana przede wszystkim z roli Samanty „Sami” Brady w operze mydlanej Dni naszego życia emitowanej przez amerykańską stację NBC."@pl,
+        "Э́лисон Энн Суи́ни (англ. Alison Ann Sweeney; 19 сентября 1976, Лос-Анджелес, Калифорния) — американская телевизионная актриса, ведущая и писательница. Она наиболее известна благодаря своей роли мстительной интриганки Сэми Брэди в дневной мыльной опере NBC «Дни нашей жизни», где она снималась с января 1993 года по 30 октября 2014 года. За эту роль, Суини получила шесть премий «Дайджеста мыльных опер», в том числе и три награды как лучшей злодейке дневного эфира. Также она хорошо известна как ведущая шоу The Biggest Loser, начиная с 2007 года. В январе 2014 года, Суини, после двадцати одного года в мыле, объявила, что покидает «Дни нашей жизни». Уже после ухода, роль принесла ей номинацию на Дневную премию «Эмми» за лучшую женскую роль в драматическом сериале в 2015 году."@ru,
+        "Alison Ann Sweeney, född 19 september 1976 i Los Angeles, Kalifornien, är en amerikansk såpoperaskådespelerska. Mest känd som Sami (Samantha) Brady i Våra bästa år (Days of Our Lives). Hon har medverkat i Våra bästa år sedan 22 januari 1993. Under denna tid i rollen som Sami Brady har hon vunnit fyra Soap Opera Digest Awards. Hon är även känd för att vara programledare för Biggest Loser. År 2007 blev hon programledare för Biggest Loser och lämnade serien år 2015."@sv ;
+    owl:sameAs <http://af.dbpedia.org/resource/Alison_Sweeney>,
+        <http://ar.dbpedia.org/resource/أليسون_سويني>,
+        <http://arz.dbpedia.org/resource/اليسون_سوينى>,
+        <http://ast.dbpedia.org/resource/Alison_Sweeney>,
+        <http://commons.dbpedia.org/resource/Alison_Sweeney>,
+        <http://d-nb.info/gnd/1179491734>,
+        <http://de.dbpedia.org/resource/Alison_Sweeney>,
+        <http://es.dbpedia.org/resource/Alison_Sweeney>,
+        <http://fa.dbpedia.org/resource/آلیسون_سویینی>,
+        <http://fi.dbpedia.org/resource/Alison_Sweeney>,
+        <http://fr.dbpedia.org/resource/Alison_Sweeney>,
+        <http://id.dbpedia.org/resource/Alison_Sweeney>,
+        <http://it.dbpedia.org/resource/Alison_Sweeney>,
+        <http://ko.dbpedia.org/resource/앨리슨_스위니>,
+        <http://ms.dbpedia.org/resource/Alison_Sweeney>,
+        <http://nl.dbpedia.org/resource/Alison_Sweeney>,
+        <http://no.dbpedia.org/resource/Alison_Sweeney>,
+        <http://pl.dbpedia.org/resource/Alison_Sweeney>,
+        <http://rdf.freebase.com/ns/m.0347jm>,
+        <http://ru.dbpedia.org/resource/Суини,_Элисон>,
+        <http://simple.dbpedia.org/resource/Alison_Sweeney>,
+        <http://sv.dbpedia.org/resource/Alison_Sweeney>,
+        <http://tr.dbpedia.org/resource/Alison_Sweeney>,
+        <http://viaf.org/viaf/41243355>,
+        <http://www.wikidata.org/entity/Q262781>,
+        <http://yago-knowledge.org/resource/Alison_Sweeney>,
+        <https://global.dbpedia.org/id/2ThAh> ;
+    prov:wasDerivedFrom <http://en.wikipedia.org/wiki/Alison_Sweeney?oldid=1088963481&ns=0> ;
+    foaf:depiction <http://commons.wikimedia.org/wiki/Special:FilePath/Alison_Sweeney_2009.jpg>,
+        <http://commons.wikimedia.org/wiki/Special:FilePath/Alison_sweeney_red_dress.jpg> ;
+    foaf:isPrimaryTopicOf <http://en.wikipedia.org/wiki/Alison_Sweeney> ;
+    foaf:name "Alison Sweeney"@en .
+
+<http://dbpedia.org/resource/Alistair_McGowan> a <http://dbpedia.org/class/yago/Actor109765278>,
+        <http://dbpedia.org/class/yago/Alumnus109786338>,
+        <http://dbpedia.org/class/yago/CausalAgent100007347>,
+        <http://dbpedia.org/class/yago/Comedian109940146>,
+        <http://dbpedia.org/class/yago/Disputant109615465>,
+        <http://dbpedia.org/class/yago/Entertainer109616922>,
+        <http://dbpedia.org/class/yago/Environmentalist110060621>,
+        <http://dbpedia.org/class/yago/Intellectual109621545>,
+        <http://dbpedia.org/class/yago/LivingThing100004258>,
+        <http://dbpedia.org/class/yago/Object100002684>,
+        <http://dbpedia.org/class/yago/Organism100004475>,
+        <http://dbpedia.org/class/yago/Performer110415638>,
+        <http://dbpedia.org/class/yago/Person100007846>,
+        <http://dbpedia.org/class/yago/PhysicalEntity100001930>,
+        <http://dbpedia.org/class/yago/Reformer110515194>,
+        <http://dbpedia.org/class/yago/Scholar110557854>,
+        <http://dbpedia.org/class/yago/Whole100003553>,
+        <http://dbpedia.org/class/yago/WikicatActorsFromWorcestershire>,
+        <http://dbpedia.org/class/yago/WikicatAlumniOfTheGuildhallSchoolOfMusicAndDrama>,
+        <http://dbpedia.org/class/yago/WikicatAlumniOfTheUniversityOfLeeds>,
+        <http://dbpedia.org/class/yago/WikicatAnglo-IndianPeople>,
+        <http://dbpedia.org/class/yago/WikicatEnglishEnvironmentalists>,
+        <http://dbpedia.org/class/yago/WikicatEnglishMaleComedians>,
+        <http://dbpedia.org/class/yago/WikicatEnglishMaleFilmActors>,
+        <http://dbpedia.org/class/yago/WikicatEnglishMaleMusicalTheatreActors>,
+        <http://dbpedia.org/class/yago/WikicatEnglishMaleTelevisionActors>,
+        <http://dbpedia.org/class/yago/WikicatEnglishPeopleOfIndianDescent>,
+        <http://dbpedia.org/class/yago/WikicatEnglishPeopleOfIrishDescent>,
+        <http://dbpedia.org/class/yago/WikicatLivingPeople>,
+        <http://dbpedia.org/class/yago/WikicatMaleActorsFromWorcestershire>,
+        <http://dbpedia.org/class/yago/WikicatPeopleFromEvesham>,
+        <http://dbpedia.org/class/yago/YagoLegalActor>,
+        <http://dbpedia.org/class/yago/YagoLegalActorGeo>,
+        dbo:Animal,
+        dbo:Artist,
+        dbo:Comedian,
+        dbo:Eukaryote,
+        dbo:Person,
+        dbo:Species,
+        schema:Person,
+        <http://umbel.org/umbel/rc/Artist>,
+        <http://umbel.org/umbel/rc/Comedian>,
+        <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson>,
+        owl:Thing,
+        <http://www.wikidata.org/entity/Q19088>,
+        <http://www.wikidata.org/entity/Q215627>,
+        <http://www.wikidata.org/entity/Q483501>,
+        <http://www.wikidata.org/entity/Q5>,
+        <http://www.wikidata.org/entity/Q729>,
+        foaf:Person ;
+    rdfs:label "Alistair McGowan"@en,
+        "Макгован, Алистер"@ru ;
+    dbo:abstract "Alistair Charles McGowan (born 24 November 1964) is an English impressionist, comic, actor, singer and writer best known to British audiences for The Big Impression (formerly Alistair McGowan's Big Impression), which was, for four years, one of BBC1's top-rating comedy programmes – winning numerous awards, including a BAFTA in 2003. He has also worked extensively in theatre and appeared in the West End in Art, Cabaret, The Mikado and Little Shop of Horrors (for which he received a Laurence Olivier Award nomination). As a television actor, he played the lead role in BBC1's Mayo. He wrote the play Timing (nominated as Best New Comedy at the whatsonstage.com awards) and the book A Matter of Life and Death or How to Wean Your Man off Football with former comedy partner Ronni Ancona. He also provided voices for Spitting Image. He made his debut broadcast as a tennis commentator for BBC Sport at the 2011 Wimbledon Championships. In 2012, McGowan wrote and hosted the ITV comedy sports show You Cannot Be Serious!, in which his impressions included Roy Hodgson, Jedward and Louie Spence. He has written and starred in three plays for BBC Radio 4 about Erik Satie: Three Pieces in the Shape of a Pear), John Field (The Peregrinations of a Most Musical Irishman) and George Bernard Shaw (The 'B' Word). He devised stage shows showcasing the music and verse of Noël Coward (Sincerely Noel), and the music and writings of Erik Satie (Erik Satie's-faction). He wrote the stage play Timing (nominated as Best New Comedy at the 2009 whatsonstage.com awards"@en,
+        "Алистер Чарльз Макгован (англ. Alistair Charles McGowan, род. 24 ноября 1964 года, , Вустершир, Великобритания) — британский пародист, стенд-ап комик, музыкант, актер, писатель и драматург. Его шоу The Big Impression (ранее Alistair McGowan’s Big Impression) шло в России на телеканале под названием «Шоу Алистера Макгована»."@ru ;
+    dbo:birthDate "1964-11-24"^^xsd:date ;
+    dbo:birthName "Alistair Charles McGowan"@en ;
+    dbo:birthPlace <http://dbpedia.org/resource/Evesham>,
+        <http://dbpedia.org/resource/Worcestershire> ;
+    dbo:genre <http://dbpedia.org/resource/Impressionist_(entertainment)>,
+        <http://dbpedia.org/resource/Sketch_comedy> ;
+    dbo:thumbnail <http://commons.wikimedia.org/wiki/Special:FilePath/Alastair_McGowan_2016.jpg?width=300> ;
+    dbo:wikiPageExternalLink <http://www.alistairmcgowan.co.uk> ;
+    dbo:wikiPageID 266440 ;
+    dbo:wikiPageLength "21915"^^xsd:nonNegativeInteger ;
+    dbo:wikiPageRevisionID 1091095640 ;
+    dbo:wikiPageWikiLink <http://dbpedia.org/resource/2011_Wimbledon_Championships>,
+        <http://dbpedia.org/resource/5_Live>,
+        <http://dbpedia.org/resource/Alistair_Beaton>,
+        <http://dbpedia.org/resource/Alistair_McGowan's_Big_Impression>,
+        <http://dbpedia.org/resource/Ancient_Greece>,
+        <http://dbpedia.org/resource/Angus_Deayton>,
+        <http://dbpedia.org/resource/BBC>,
+        <http://dbpedia.org/resource/BBC1>,
+        <http://dbpedia.org/resource/BBC_2>,
+        <http://dbpedia.org/resource/BBC_Concert_Orchestra>,
+        <http://dbpedia.org/resource/BBC_Radio_2>,
+        <http://dbpedia.org/resource/BBC_Radio_3>,
+        <http://dbpedia.org/resource/BBC_Radio_4>,
+        <http://dbpedia.org/resource/BBC_Sport>,
+        <http://dbpedia.org/resource/BBC_Sports_Personality_of_the_Year>,
+        <http://dbpedia.org/resource/Bleak_House_(2005_TV_serial)>,
+        <http://dbpedia.org/resource/Brandwood_End_Cemetery>,
+        <http://dbpedia.org/resource/Bromley>,
+        <http://dbpedia.org/resource/CBBC_(TV_channel)>,
+        <http://dbpedia.org/resource/CBeebies>,
+        <http://dbpedia.org/resource/CITV>,
+        <http://dbpedia.org/resource/Cabaret_(musical)>,
+        <http://dbpedia.org/resource/Carl_Rosa_Opera_Company>,
+        <http://dbpedia.org/resource/Category:1964_births>,
+        <http://dbpedia.org/resource/Category:20th-century_English_comedians>,
+        <http://dbpedia.org/resource/Category:21st-century_English_comedians>,
+        <http://dbpedia.org/resource/Category:Alumni_of_the_Guildhall_School_of_Music_and_Drama>,
+        <http://dbpedia.org/resource/Category:Alumni_of_the_University_of_Leeds>,
+        <http://dbpedia.org/resource/Category:Anglo-Indian_people>,
+        <http://dbpedia.org/resource/Category:BAFTA_winners_(people)>,
+        <http://dbpedia.org/resource/Category:British_people_of_Anglo-Indian_descent>,
+        <http://dbpedia.org/resource/Category:Comedians_from_Worcestershire>,
+        <http://dbpedia.org/resource/Category:English_environmentalists>,
+        <http://dbpedia.org/resource/Category:English_impressionists_(entertainers)>,
+        <http://dbpedia.org/resource/Category:English_male_comedians>,
+        <http://dbpedia.org/resource/Category:English_male_film_actors>,
+        <http://dbpedia.org/resource/Category:English_male_musical_theatre_actors>,
+        <http://dbpedia.org/resource/Category:English_male_television_actors>,
+        <http://dbpedia.org/resource/Category:English_people_of_Indian_descent>,
+        <http://dbpedia.org/resource/Category:English_people_of_Irish_descent>,
+        <http://dbpedia.org/resource/Category:Living_people>,
+        <http://dbpedia.org/resource/Category:Male_actors_from_Worcestershire>,
+        <http://dbpedia.org/resource/Category:Musicians_from_Worcestershire>,
+        <http://dbpedia.org/resource/Category:People_from_Evesham>,
+        <http://dbpedia.org/resource/Category:Royal_Shakespeare_Company_members>,
+        <http://dbpedia.org/resource/Channel_5_(UK)>,
+        <http://dbpedia.org/resource/Charles,_Prince_of_Wales>,
+        <http://dbpedia.org/resource/Charles_Dickens>,
+        <http://dbpedia.org/resource/Chichester_Festival_Theatre>,
+        <http://dbpedia.org/resource/Children's_Ward>,
+        <http://dbpedia.org/resource/Countdown_(game_show)>,
+        <http://dbpedia.org/resource/Coventry_City>,
+        <http://dbpedia.org/resource/David_Beckham>,
+        <http://dbpedia.org/resource/Dead_Ringers_(comedy)>,
+        <http://dbpedia.org/resource/Dot_Cotton>,
+        <http://dbpedia.org/resource/EastEnders>,
+        <http://dbpedia.org/resource/Eddie_Izzard>,
+        <http://dbpedia.org/resource/Elland_Road>,
+        <http://dbpedia.org/resource/ElvenQuest>,
+        <http://dbpedia.org/resource/Emma_Thompson>,
+        <http://dbpedia.org/resource/Erik_Satie>,
+        <http://dbpedia.org/resource/Evesham>,
+        <http://dbpedia.org/resource/French_language>,
+        <http://dbpedia.org/resource/Friends>,
+        <http://dbpedia.org/resource/Fringe_theatre>,
+        <http://dbpedia.org/resource/Garrick_Theatre>,
+        <http://dbpedia.org/resource/Gary_Lineker>,
+        <http://dbpedia.org/resource/Gilbert_and_Sullivan>,
+        <http://dbpedia.org/resource/Greenpeace>,
+        <http://dbpedia.org/resource/Guildhall_School_of_Music_and_Drama>,
+        <http://dbpedia.org/resource/Gunpowder_Plot>,
+        <http://dbpedia.org/resource/Have_I_Got_News_for_You>,
+        <http://dbpedia.org/resource/Haydn_Gwynne>,
+        <http://dbpedia.org/resource/Heathrow_Airport>,
+        <http://dbpedia.org/resource/ITV_(TV_network)>,
+        <http://dbpedia.org/resource/Impressionist_(entertainment)>,
+        <http://dbpedia.org/resource/James_Whale_(radio)>,
+        <http://dbpedia.org/resource/James_the_Cat>,
+        <http://dbpedia.org/resource/Jedward>,
+        <http://dbpedia.org/resource/Jimmy_Savile>,
+        <http://dbpedia.org/resource/Jonathan_Creek>,
+        <http://dbpedia.org/resource/Jonathan_Maitland>,
+        <http://dbpedia.org/resource/Judi_Dench>,
+        <http://dbpedia.org/resource/Kara_Tointon>,
+        <http://dbpedia.org/resource/Laurence_Llewelyn-Bowen>,
+        <http://dbpedia.org/resource/Laurence_Olivier_Award>,
+        <http://dbpedia.org/resource/Leeds_United_F.C.>,
+        <http://dbpedia.org/resource/Leonardo_(2011_TV_series)>,
+        <http://dbpedia.org/resource/Little_Shop_of_Horrors_(musical)>,
+        <http://dbpedia.org/resource/Live_at_the_Apollo_(TV_series)>,
+        <http://dbpedia.org/resource/Louie_Spence>,
+        <http://dbpedia.org/resource/Ludlow>,
+        <http://dbpedia.org/resource/Lyric_Theatre,_London>,
+        <http://dbpedia.org/resource/Match_of_the_Day>,
+        <http://dbpedia.org/resource/Mayo_(TV_series)>,
+        <http://dbpedia.org/resource/Measure_for_Measure>,
+        <http://dbpedia.org/resource/Menier_Chocolate_Factory>,
+        <http://dbpedia.org/resource/Middlesex>,
+        <http://dbpedia.org/resource/My_Life_in_Ruins>,
+        <http://dbpedia.org/resource/Nicky_Campbell>,
+        <http://dbpedia.org/resource/Nikolai_Gogol>,
+        <http://dbpedia.org/resource/Noël_Coward>,
+        <http://dbpedia.org/resource/Oleanna_(play)>,
+        <http://dbpedia.org/resource/Only_an_Excuse%3F>,
+        <http://dbpedia.org/resource/Park_Theatre_(London)>,
+        <http://dbpedia.org/resource/Patron>,
+        <http://dbpedia.org/resource/Piero_di_Cosimo_de'_Medici>,
+        <http://dbpedia.org/resource/Planet_Sketch>,
+        <http://dbpedia.org/resource/Posh_and_Becks>,
+        <http://dbpedia.org/resource/Preston_Front>,
+        <http://dbpedia.org/resource/Pygmalion_(play)>,
+        <http://dbpedia.org/resource/Queen_Elizabeth_Hall>,
+        <http://dbpedia.org/resource/Richard_Madeley>,
+        <http://dbpedia.org/resource/Robert_Kilroy-Silk>,
+        <http://dbpedia.org/resource/Ronni_Ancona>,
+        <http://dbpedia.org/resource/Ross_Geller>,
+        <http://dbpedia.org/resource/Roy_Hodgson>,
+        <http://dbpedia.org/resource/Royal_Shakespeare_Company>,
+        <http://dbpedia.org/resource/Rupert_Everett>,
+        <http://dbpedia.org/resource/Semi-Monde>,
+        <http://dbpedia.org/resource/Sheffield>,
+        <http://dbpedia.org/resource/Simon_Callow>,
+        <http://dbpedia.org/resource/Sipson>,
+        <http://dbpedia.org/resource/Sketch_comedy>,
+        <http://dbpedia.org/resource/Skins_(TV_series)>,
+        <http://dbpedia.org/resource/Sony_Classical>,
+        <http://dbpedia.org/resource/Spitting_Image>,
+        <http://dbpedia.org/resource/St_Laurence's_Church,_Ludlow>,
+        <http://dbpedia.org/resource/Steinway_Grand_Piano>,
+        <http://dbpedia.org/resource/Stephen_Tompkinson>,
+        <http://dbpedia.org/resource/Steve_Wright_(DJ)>,
+        <http://dbpedia.org/resource/Susie_Dent>,
+        <http://dbpedia.org/resource/Sven-Göran_Eriksson>,
+        <http://dbpedia.org/resource/Talksport>,
+        <http://dbpedia.org/resource/Terry_Wogan>,
+        <http://dbpedia.org/resource/The_Asian_Awards>,
+        <http://dbpedia.org/resource/The_Big_Impression>,
+        <http://dbpedia.org/resource/The_Championships,_Wimbledon>,
+        <http://dbpedia.org/resource/The_Government_Inspector>,
+        <http://dbpedia.org/resource/The_Guardian>,
+        <http://dbpedia.org/resource/The_Merry_Wives_of_Windsor>,
+        <http://dbpedia.org/resource/The_Mikado>,
+        <http://dbpedia.org/resource/The_Pirates_of_Penzance>,
+        <http://dbpedia.org/resource/They're_Playing_Our_Song>,
+        <http://dbpedia.org/resource/Tim_Firth>,
+        <http://dbpedia.org/resource/Tony_Blair>,
+        <http://dbpedia.org/resource/Trees_for_Cities>,
+        <http://dbpedia.org/resource/Underdogs_(2013_animated_film)>,
+        <http://dbpedia.org/resource/University_of_Nottingham>,
+        <http://dbpedia.org/resource/Victoria_Beckham>,
+        <http://dbpedia.org/resource/West_End_(theatre)>,
+        <http://dbpedia.org/resource/Worcestershire>,
+        <http://dbpedia.org/resource/World_Wide_Fund_for_Nature>,
+        <http://dbpedia.org/resource/Yoko!_Jakamoko!_Toto!>,
+        <http://dbpedia.org/resource/You_Cannot_Be_Serious!_(TV_series)> ;
+    dbp:active 1980 ;
+    dbp:birthDate "1964-11-24"^^xsd:date ;
+    dbp:birthName "Alistair Charles McGowan"@en ;
+    dbp:birthPlace "Evesham, Worcestershire, England"@en ;
+    dbp:caption "McGowan hosting the 6th Asian Awards in 2016"@en ;
+    dbp:genre <http://dbpedia.org/resource/Impressionist_(entertainment)>,
+        <http://dbpedia.org/resource/Sketch_comedy> ;
+    dbp:medium ""@en,
+        "Television, radio and stand-up"@en ;
+    dbp:name "Alistair McGowan"@en ;
+    dbp:nationality "British"@en ;
+    dbp:notableWork "The Big Impression"@en,
+        "The Piano Album"@en ;
+    dbp:spouse "Charlotte Page"@en ;
+    dbp:website <http://www.alistairmcgowan.co.uk> ;
+    dbp:wikiPageUsesTemplate <http://dbpedia.org/resource/Template:Authority_control>,
+        <http://dbpedia.org/resource/Template:BLP_sources>,
+        <http://dbpedia.org/resource/Template:Birth_date_and_age>,
+        <http://dbpedia.org/resource/Template:British_Comedy_Guide>,
+        <http://dbpedia.org/resource/Template:Cn>,
+        <http://dbpedia.org/resource/Template:For>,
+        <http://dbpedia.org/resource/Template:IMDb_name>,
+        <http://dbpedia.org/resource/Template:Infobox_comedian>,
+        <http://dbpedia.org/resource/Template:Reflist>,
+        <http://dbpedia.org/resource/Template:Short_description>,
+        <http://dbpedia.org/resource/Template:Use_dmy_dates> ;
+    dct:subject <http://dbpedia.org/resource/Category:1964_births>,
+        <http://dbpedia.org/resource/Category:20th-century_English_comedians>,
+        <http://dbpedia.org/resource/Category:21st-century_English_comedians>,
+        <http://dbpedia.org/resource/Category:Alumni_of_the_Guildhall_School_of_Music_and_Drama>,
+        <http://dbpedia.org/resource/Category:Alumni_of_the_University_of_Leeds>,
+        <http://dbpedia.org/resource/Category:Anglo-Indian_people>,
+        <http://dbpedia.org/resource/Category:BAFTA_winners_(people)>,
+        <http://dbpedia.org/resource/Category:British_people_of_Anglo-Indian_descent>,
+        <http://dbpedia.org/resource/Category:Comedians_from_Worcestershire>,
+        <http://dbpedia.org/resource/Category:English_environmentalists>,
+        <http://dbpedia.org/resource/Category:English_impressionists_(entertainers)>,
+        <http://dbpedia.org/resource/Category:English_male_comedians>,
+        <http://dbpedia.org/resource/Category:English_male_film_actors>,
+        <http://dbpedia.org/resource/Category:English_male_musical_theatre_actors>,
+        <http://dbpedia.org/resource/Category:English_male_television_actors>,
+        <http://dbpedia.org/resource/Category:English_people_of_Indian_descent>,
+        <http://dbpedia.org/resource/Category:English_people_of_Irish_descent>,
+        <http://dbpedia.org/resource/Category:Living_people>,
+        <http://dbpedia.org/resource/Category:Male_actors_from_Worcestershire>,
+        <http://dbpedia.org/resource/Category:Musicians_from_Worcestershire>,
+        <http://dbpedia.org/resource/Category:People_from_Evesham>,
+        <http://dbpedia.org/resource/Category:Royal_Shakespeare_Company_members> ;
+    gold:hypernym <http://dbpedia.org/resource/Impressionist> ;
+    schema:sameAs <http://viaf.org/viaf/9603908> ;
+    rdfs:comment "Alistair Charles McGowan (born 24 November 1964) is an English impressionist, comic, actor, singer and writer best known to British audiences for The Big Impression (formerly Alistair McGowan's Big Impression), which was, for four years, one of BBC1's top-rating comedy programmes – winning numerous awards, including a BAFTA in 2003. He has also worked extensively in theatre and appeared in the West End in Art, Cabaret, The Mikado and Little Shop of Horrors (for which he received a Laurence Olivier Award nomination). As a television actor, he played the lead role in BBC1's Mayo. He wrote the play Timing (nominated as Best New Comedy at the whatsonstage.com awards) and the book A Matter of Life and Death or How to Wean Your Man off Football with former comedy partner Ronni Ancona. He also pr"@en,
+        "Алистер Чарльз Макгован (англ. Alistair Charles McGowan, род. 24 ноября 1964 года, , Вустершир, Великобритания) — британский пародист, стенд-ап комик, музыкант, актер, писатель и драматург. Его шоу The Big Impression (ранее Alistair McGowan’s Big Impression) шло в России на телеканале под названием «Шоу Алистера Макгована»."@ru ;
+    owl:sameAs <http://arz.dbpedia.org/resource/اليستاير_مكجوان>,
+        <http://data.europa.eu/euodp/jrc-names/Alistair_McGowan>,
+        <http://musicbrainz.org/artist/886196c9-c9a0-4655-9195-7eae43a3fc46>,
+        <http://rdf.freebase.com/ns/m.01ng6d>,
+        <http://ru.dbpedia.org/resource/Макгован,_Алистер>,
+        <http://viaf.org/viaf/9603908>,
+        <http://www.wikidata.org/entity/Q4727306>,
+        <http://yago-knowledge.org/resource/Alistair_McGowan>,
+        <https://global.dbpedia.org/id/4NrFL> ;
+    prov:wasDerivedFrom <http://en.wikipedia.org/wiki/Alistair_McGowan?oldid=1091095640&ns=0> ;
+    foaf:depiction <http://commons.wikimedia.org/wiki/Special:FilePath/Alastair_McGowan_2016.jpg> ;
+    foaf:homepage <http://www.alistairmcgowan.co.uk> ;
+    foaf:isPrimaryTopicOf <http://en.wikipedia.org/wiki/Alistair_McGowan> ;
+    foaf:name "Alistair McGowan"@en .
+
