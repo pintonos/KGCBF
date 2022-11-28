@@ -29,13 +29,13 @@ class ValidatrrValidator:
 
     def validate_file(self, input_graph: str):
         subprocess.run(
-            f"docker run -v {sys.path[0]}:/data n3unit -i /data/{input_graph} -o /data/validated.ttl -s foaf",
+            f"docker run -v {sys.path[0]}:/data n3unit -i /data/{input_graph} -o /data/data/validated.ttl -s foaf",
             shell=True)
 
     def validate_errors(self):
         # load validated graph
         g = Graph()
-        g = g.parse("validated.ttl")
+        g = g.parse("data/validated.ttl")
         # extract logged dictionary
         log_data = self.error_log.log_dict
         # get total number of detected errors, and total number of introduced errors
@@ -69,6 +69,6 @@ class ValidatrrValidator:
         report["precision"] = matching / detected
         report["recall"] = matching / introduced
         report["f1"] = 2 * report["precision"] * report["recall"] / (report["precision"] + report["recall"])
-        with open("report.yaml", 'w') as outfile:
+        with open("data/report.yaml", 'w') as outfile:
             yaml.dump(report, outfile, default_flow_style=False)
         print(yaml.dump(report, allow_unicode=True, default_flow_style=False))
