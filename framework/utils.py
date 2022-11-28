@@ -159,3 +159,18 @@ def get_shacl_from_ontology(ontology_file):
     subprocess.run(
         f"shaclinfer -datafile {ontology_file} -shapesfile data/owl2sh.ttl > data/ontology_shacl.ttl",
         shell=True)
+
+
+def get_triple_count(graph):
+    """
+    Get the count of triples in the KG, not containing rdf:type declarations.
+    """
+    qres = graph.query(
+        """
+        SELECT (count(?p) as ?count)
+        WHERE {
+            [] ?p [] .
+            FILTER (?p != rdf:type).
+        }
+        """)
+    return int(next(iter(qres))[0])
