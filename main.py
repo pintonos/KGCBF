@@ -9,7 +9,7 @@ from framework.logger import Logger
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input', '-i', type=str, default='data/input.ttl')
+    parser.add_argument('--input', '-i', type=str, default='datasets/input.ttl')
     parser.add_argument('--output', '-o', type=str, default='data/output.ttl')
     parser.add_argument('--ontology', '-on', type=str)
     parser.add_argument('--config', '-c', type=str, default='config.yaml')
