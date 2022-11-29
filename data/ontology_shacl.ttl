@@ -1,0 +1,504 @@
+@prefix dash:               <http://datashapes.org/dash#> .
+@prefix dc:                 <http://purl.org/dc/elements/1.1/> .
+@prefix dct:                <http://purl.org/dc/terms/> .
+@prefix ex:                 <http://example.org/#ns> .
+@prefix foaf:               <http://xmlns.com/foaf/0.1/> .
+@prefix graphql:            <http://datashapes.org/graphql#> .
+@prefix owl:                <http://www.w3.org/2002/07/owl#> .
+@prefix owl2sh-semi-closed: <http://data.sparna.fr/ontologies/owl2sh-semi-closed#> .
+@prefix rdf:                <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:               <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:                 <http://www.w3.org/ns/shacl#> .
+@prefix swa:                <http://topbraid.org/swa#> .
+@prefix tosh:               <http://topbraid.org/tosh#> .
+@prefix vs:                 <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix wot:                <http://xmlns.com/wot/0.1/> .
+@prefix xsd:                <http://www.w3.org/2001/XMLSchema#> .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_birthday
+        rdf:type     sh:PropertyShape ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:birthday .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_status
+        rdf:type     sh:PropertyShape ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:status .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_yahooChatID
+        rdf:type     sh:PropertyShape ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:yahooChatID .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_account
+        rdf:type  sh:PropertyShape ;
+        sh:class  foaf:OnlineAccount ;
+        sh:path   foaf:account .
+
+foaf:Image-http___xmlns.com_foaf_0.1_thumbnail
+        rdf:type  sh:PropertyShape ;
+        sh:class  foaf:Image ;
+        sh:path   foaf:thumbnail .
+
+foaf:Group-http___xmlns.com_foaf_0.1_member
+        rdf:type  sh:PropertyShape ;
+        sh:class  foaf:Agent ;
+        sh:path   foaf:member .
+
+foaf:Image-http___xmlns.com_foaf_0.1_depicts
+        rdf:type  sh:PropertyShape ;
+        sh:class  owl:Thing ;
+        sh:path   foaf:depicts .
+
+foaf:myersBriggs-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             foaf:Person ;
+        sh:targetSubjectsOf  foaf:myersBriggs .
+
+foaf:primaryTopic-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             foaf:Document ;
+        sh:targetSubjectsOf  foaf:primaryTopic .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_topic_interest
+        rdf:type  sh:PropertyShape ;
+        sh:class  owl:Thing ;
+        sh:path   foaf:topic_interest .
+
+foaf:Person-http___xmlns.com_foaf_0.1_currentProject
+        rdf:type  sh:PropertyShape ;
+        sh:class  owl:Thing ;
+        sh:path   foaf:currentProject .
+
+foaf:workInfoHomepage-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             foaf:Person ;
+        sh:targetSubjectsOf  foaf:workInfoHomepage .
+
+foaf:accountName-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             foaf:OnlineAccount ;
+        sh:targetSubjectsOf  foaf:accountName .
+
+foaf:Person-http___xmlns.com_foaf_0.1_myersBriggs
+        rdf:type     sh:PropertyShape ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:myersBriggs .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_holdsAccount
+        rdf:type  sh:PropertyShape ;
+        sh:class  foaf:OnlineAccount ;
+        sh:path   foaf:holdsAccount .
+
+foaf:holdsAccount-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:holdsAccount .
+
+foaf:Person-http___xmlns.com_foaf_0.1_family_name
+        rdf:type     sh:PropertyShape ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:family_name .
+
+foaf:Image  rdf:type  rdfs:Class , sh:NodeShape ;
+        sh:property  foaf:Image-http___xmlns.com_foaf_0.1_depicts , foaf:Image-http___xmlns.com_foaf_0.1_thumbnail .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_msnChatID
+        rdf:type     sh:PropertyShape ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:msnChatID .
+
+foaf:currentProject-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             foaf:Person ;
+        sh:targetSubjectsOf  foaf:currentProject .
+
+foaf:Person-http___xmlns.com_foaf_0.1_schoolHomepage
+        rdf:type  sh:PropertyShape ;
+        sh:class  foaf:Document ;
+        sh:path   foaf:schoolHomepage .
+
+foaf:icqChatID-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:icqChatID .
+
+foaf:interest-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:interest .
+
+foaf:Person-http___xmlns.com_foaf_0.1_surname
+        rdf:type     sh:PropertyShape ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:surname .
+
+foaf:focus-shape  rdf:type   sh:NodeShape ;
+        sh:class             <http://www.w3.org/2004/02/skos/core#Concept> ;
+        sh:targetSubjectsOf  foaf:focus .
+
+foaf:jabberID-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:jabberID .
+
+foaf:fundedBy-shape  rdf:type  sh:NodeShape ;
+        sh:class             owl:Thing ;
+        sh:targetSubjectsOf  foaf:fundedBy .
+
+foaf:msnChatID-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:msnChatID .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_made
+        rdf:type  sh:PropertyShape ;
+        sh:class  owl:Thing ;
+        sh:path   foaf:made .
+
+foaf:Document-http___xmlns.com_foaf_0.1_sha1
+        rdf:type  sh:PropertyShape ;
+        sh:path   foaf:sha1 .
+
+foaf:openid-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:openid .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_tipjar
+        rdf:type  sh:PropertyShape ;
+        sh:class  foaf:Document ;
+        sh:path   foaf:tipjar .
+
+foaf:Person-http___xmlns.com_foaf_0.1_firstName
+        rdf:type     sh:PropertyShape ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:firstName .
+
+foaf:accountServiceHomepage-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             foaf:OnlineAccount ;
+        sh:targetSubjectsOf  foaf:accountServiceHomepage .
+
+foaf:schoolHomepage-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             foaf:Person ;
+        sh:targetSubjectsOf  foaf:schoolHomepage .
+
+foaf:plan-shape  rdf:type    sh:NodeShape ;
+        sh:class             foaf:Person ;
+        sh:targetSubjectsOf  foaf:plan .
+
+foaf:Person-http___xmlns.com_foaf_0.1_knows
+        rdf:type  sh:PropertyShape ;
+        sh:class  foaf:Person ;
+        sh:path   foaf:knows .
+
+foaf:surname-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Person ;
+        sh:targetSubjectsOf  foaf:surname .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_interest
+        rdf:type  sh:PropertyShape ;
+        sh:class  foaf:Document ;
+        sh:path   foaf:interest .
+
+foaf:logo-shape  rdf:type    sh:NodeShape ;
+        sh:class             owl:Thing ;
+        sh:targetSubjectsOf  foaf:logo .
+
+foaf:birthday-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:birthday .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_weblog
+        rdf:type  sh:PropertyShape ;
+        sh:class  foaf:Document ;
+        sh:path   foaf:weblog .
+
+foaf:mbox_sha1sum-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:mbox_sha1sum .
+
+foaf:isPrimaryTopicOf-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             owl:Thing ;
+        sh:targetSubjectsOf  foaf:isPrimaryTopicOf .
+
+foaf:gender-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:gender .
+
+foaf:account-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:account .
+
+foaf:theme-shape  rdf:type   sh:NodeShape ;
+        sh:class             owl:Thing ;
+        sh:targetSubjectsOf  foaf:theme .
+
+foaf:workplaceHomepage-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             foaf:Person ;
+        sh:targetSubjectsOf  foaf:workplaceHomepage .
+
+foaf:OnlineAccount-http___xmlns.com_foaf_0.1_accountServiceHomepage
+        rdf:type  sh:PropertyShape ;
+        sh:class  foaf:Document ;
+        sh:path   foaf:accountServiceHomepage .
+
+foaf:Person-http___xmlns.com_foaf_0.1_plan
+        rdf:type     sh:PropertyShape ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:plan .
+
+foaf:weblog-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:weblog .
+
+foaf:family_name-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             foaf:Person ;
+        sh:targetSubjectsOf  foaf:family_name .
+
+foaf:homepage-shape  rdf:type  sh:NodeShape ;
+        sh:class             owl:Thing ;
+        sh:targetSubjectsOf  foaf:homepage .
+
+foaf:age-shape  rdf:type     sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:age .
+
+foaf:yahooChatID-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:yahooChatID .
+
+foaf:firstName-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Person ;
+        sh:targetSubjectsOf  foaf:firstName .
+
+foaf:lastName-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Person ;
+        sh:targetSubjectsOf  foaf:lastName .
+
+foaf:Person-http___xmlns.com_foaf_0.1_geekcode
+        rdf:type     sh:PropertyShape ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:geekcode .
+
+foaf:sha1-shape  rdf:type    sh:NodeShape ;
+        sh:class             foaf:Document ;
+        sh:targetSubjectsOf  foaf:sha1 .
+
+foaf:thumbnail-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Image ;
+        sh:targetSubjectsOf  foaf:thumbnail .
+
+foaf:Person-http___xmlns.com_foaf_0.1_workInfoHomepage
+        rdf:type  sh:PropertyShape ;
+        sh:class  foaf:Document ;
+        sh:path   foaf:workInfoHomepage .
+
+foaf:OnlineAccount-http___xmlns.com_foaf_0.1_accountName
+        rdf:type     sh:PropertyShape ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:accountName .
+
+foaf:topic-shape  rdf:type   sh:NodeShape ;
+        sh:class             foaf:Document ;
+        sh:targetSubjectsOf  foaf:topic .
+
+foaf:page-shape  rdf:type    sh:NodeShape ;
+        sh:class             owl:Thing ;
+        sh:targetSubjectsOf  foaf:page .
+
+foaf:aimChatID-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:aimChatID .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_aimChatID
+        rdf:type     sh:PropertyShape ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:aimChatID .
+
+foaf:publications-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             foaf:Person ;
+        sh:targetSubjectsOf  foaf:publications .
+
+foaf:depiction-shape  rdf:type  sh:NodeShape ;
+        sh:class             owl:Thing ;
+        sh:targetSubjectsOf  foaf:depiction .
+
+foaf:name-shape  rdf:type    sh:NodeShape ;
+        sh:class             owl:Thing ;
+        sh:targetSubjectsOf  foaf:name .
+
+foaf:OnlineAccount  rdf:type  sh:NodeShape , rdfs:Class ;
+        sh:property  foaf:OnlineAccount-http___xmlns.com_foaf_0.1_accountName , foaf:OnlineAccount-http___xmlns.com_foaf_0.1_accountServiceHomepage .
+
+foaf:made-shape  rdf:type    sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:made .
+
+foaf:skypeID-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:skypeID .
+
+foaf:Person-http___xmlns.com_foaf_0.1_workplaceHomepage
+        rdf:type  sh:PropertyShape ;
+        sh:class  foaf:Document ;
+        sh:path   foaf:workplaceHomepage .
+
+<http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
+        rdf:type     rdfs:Class , sh:NodeShape ;
+        sh:property  <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing-http___xmlns.com_foaf_0.1_based_near> .
+
+<http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing-http___xmlns.com_foaf_0.1_based_near>
+        rdf:type  sh:PropertyShape ;
+        sh:class  <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> ;
+        sh:path   foaf:based_near .
+
+foaf:geekcode-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Person ;
+        sh:targetSubjectsOf  foaf:geekcode .
+
+foaf:Person-http___xmlns.com_foaf_0.1_img
+        rdf:type  sh:PropertyShape ;
+        sh:class  foaf:Image ;
+        sh:path   foaf:img .
+
+foaf:Agent  rdf:type  rdfs:Class , sh:NodeShape ;
+        sh:property  foaf:Agent-http___xmlns.com_foaf_0.1_jabberID , foaf:Agent-http___xmlns.com_foaf_0.1_status , foaf:Agent-http___xmlns.com_foaf_0.1_aimChatID , foaf:Agent-http___xmlns.com_foaf_0.1_gender , foaf:Agent-http___xmlns.com_foaf_0.1_age , foaf:Agent-http___xmlns.com_foaf_0.1_holdsAccount , foaf:Agent-http___xmlns.com_foaf_0.1_skypeID , foaf:Agent-http___xmlns.com_foaf_0.1_mbox_sha1sum , foaf:Agent-http___xmlns.com_foaf_0.1_tipjar , foaf:Agent-http___xmlns.com_foaf_0.1_account , foaf:Agent-http___xmlns.com_foaf_0.1_yahooChatID , foaf:Agent-http___xmlns.com_foaf_0.1_msnChatID , foaf:Agent-http___xmlns.com_foaf_0.1_mbox , foaf:Agent-http___xmlns.com_foaf_0.1_weblog , foaf:Agent-http___xmlns.com_foaf_0.1_birthday , foaf:Agent-http___xmlns.com_foaf_0.1_interest , foaf:Agent-http___xmlns.com_foaf_0.1_made , foaf:Agent-http___xmlns.com_foaf_0.1_topic_interest , foaf:Agent-http___xmlns.com_foaf_0.1_icqChatID , foaf:Agent-http___xmlns.com_foaf_0.1_openid .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_openid
+        rdf:type  sh:PropertyShape ;
+        sh:class  foaf:Document ;
+        sh:path   foaf:openid .
+
+foaf:Person-http___xmlns.com_foaf_0.1_pastProject
+        rdf:type  sh:PropertyShape ;
+        sh:class  owl:Thing ;
+        sh:path   foaf:pastProject .
+
+foaf:topic_interest-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:topic_interest .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_icqChatID
+        rdf:type     sh:PropertyShape ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:icqChatID .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_skypeID
+        rdf:type     sh:PropertyShape ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:skypeID .
+
+foaf:Person-http___xmlns.com_foaf_0.1_publications
+        rdf:type  sh:PropertyShape ;
+        sh:class  foaf:Document ;
+        sh:path   foaf:publications .
+
+foaf:tipjar-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:tipjar .
+
+foaf:Person  rdf:type  sh:NodeShape , rdfs:Class ;
+        sh:property  foaf:Person-http___xmlns.com_foaf_0.1_knows , foaf:Person-http___xmlns.com_foaf_0.1_myersBriggs , foaf:Person-http___xmlns.com_foaf_0.1_workplaceHomepage , foaf:Person-http___xmlns.com_foaf_0.1_surname , foaf:Person-http___xmlns.com_foaf_0.1_lastName , foaf:Person-http___xmlns.com_foaf_0.1_pastProject , foaf:Person-http___xmlns.com_foaf_0.1_img , foaf:Person-http___xmlns.com_foaf_0.1_family_name , foaf:Person-http___xmlns.com_foaf_0.1_schoolHomepage , foaf:Person-http___xmlns.com_foaf_0.1_plan , foaf:Person-http___xmlns.com_foaf_0.1_firstName , foaf:Person-http___xmlns.com_foaf_0.1_workInfoHomepage , foaf:Person-http___xmlns.com_foaf_0.1_geekcode , foaf:Person-http___xmlns.com_foaf_0.1_familyName , foaf:Person-http___xmlns.com_foaf_0.1_currentProject , foaf:Person-http___xmlns.com_foaf_0.1_publications .
+
+foaf:maker-shape  rdf:type   sh:NodeShape ;
+        sh:class             owl:Thing ;
+        sh:targetSubjectsOf  foaf:maker .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_jabberID
+        rdf:type     sh:PropertyShape ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:jabberID .
+
+foaf:Person-http___xmlns.com_foaf_0.1_lastName
+        rdf:type     sh:PropertyShape ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:lastName .
+
+foaf:img-shape  rdf:type     sh:NodeShape ;
+        sh:class             foaf:Person ;
+        sh:targetSubjectsOf  foaf:img .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_mbox
+        rdf:type  sh:PropertyShape ;
+        sh:class  owl:Thing ;
+        sh:path   foaf:mbox .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_age
+        rdf:type     sh:PropertyShape ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:age .
+
+foaf:familyName-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             foaf:Person ;
+        sh:targetSubjectsOf  foaf:familyName .
+
+foaf:Person-http___xmlns.com_foaf_0.1_familyName
+        rdf:type     sh:PropertyShape ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:familyName .
+
+foaf:Document-http___xmlns.com_foaf_0.1_topic
+        rdf:type  sh:PropertyShape ;
+        sh:class  owl:Thing ;
+        sh:path   foaf:topic .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_mbox_sha1sum
+        rdf:type     sh:PropertyShape ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:mbox_sha1sum .
+
+foaf:Document-http___xmlns.com_foaf_0.1_primaryTopic
+        rdf:type     sh:PropertyShape ;
+        sh:class     owl:Thing ;
+        sh:maxCount  1 ;
+        sh:path      foaf:primaryTopic .
+
+foaf:Group  rdf:type  rdfs:Class , sh:NodeShape ;
+        sh:property  foaf:Group-http___xmlns.com_foaf_0.1_member .
+
+foaf:knows-shape  rdf:type   sh:NodeShape ;
+        sh:class             foaf:Person ;
+        sh:targetSubjectsOf  foaf:knows .
+
+foaf:depicts-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Image ;
+        sh:targetSubjectsOf  foaf:depicts .
+
+foaf:Agent-http___xmlns.com_foaf_0.1_gender
+        rdf:type     sh:PropertyShape ;
+        sh:maxCount  1 ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      foaf:gender .
+
+foaf:mbox-shape  rdf:type    sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:mbox .
+
+foaf:pastProject-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             foaf:Person ;
+        sh:targetSubjectsOf  foaf:pastProject .
+
+foaf:status-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Agent ;
+        sh:targetSubjectsOf  foaf:status .
+
+foaf:Document  rdf:type  sh:NodeShape , rdfs:Class ;
+        sh:property  foaf:Document-http___xmlns.com_foaf_0.1_sha1 , foaf:Document-http___xmlns.com_foaf_0.1_topic , foaf:Document-http___xmlns.com_foaf_0.1_primaryTopic .
+
+foaf:based_near-shape
+        rdf:type             sh:NodeShape ;
+        sh:class             <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> ;
+        sh:targetSubjectsOf  foaf:based_near .
+
+foaf:member-shape  rdf:type  sh:NodeShape ;
+        sh:class             foaf:Group ;
+        sh:targetSubjectsOf  foaf:member .

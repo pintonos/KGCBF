@@ -1,3 +1,5 @@
+import subprocess
+
 import rdflib
 from rdflib import Graph, URIRef, Literal, BNode
 from pandas import DataFrame
@@ -46,10 +48,11 @@ def print_rdf_triples(graph):
         else:
             print(subj, pred, obj)
 
+
 def read_config(config_filepath):
     with open(config_filepath, 'r') as stream:
         try:
-            parsed_yaml=yaml.safe_load(stream)
+            parsed_yaml = yaml.safe_load(stream)
         except yaml.YAMLError as exc:
             print(exc)
 
@@ -77,6 +80,7 @@ def construct_error_example_graph():
     g.add((error_hans, ErrorSDO.name, Literal("Hans")))
     return g
 
+
 def construct_example_graph():
     g = Graph()
     g.bind("foaf", FOAF)
@@ -89,7 +93,7 @@ def construct_example_graph():
 
     g.add((dennis, RDF.type, Example.Person))
 
-    #g.add((Example.Group, Example.hasMember, dennis))
+    # g.add((Example.Group, Example.hasMember, dennis))
     g.add((dennis, Example.hasAddress, Example.Address))
 
     g.add((Example.hasMember, RDFS.range, Example.Person))
@@ -108,8 +112,8 @@ def sparql_query(graph, subject, predicate, object):
             ?s ?p ?o .
         }
         """,
-        initNs = { "rdf": RDF },
-        initBindings = bindings
+        initNs={"rdf": RDF},
+        initBindings=bindings
     )
     df = sparql_results_to_df(qres)
     return df
@@ -117,7 +121,7 @@ def sparql_query(graph, subject, predicate, object):
 
 def sparql_update_object(graph, subject, predicate, object, target_object):
     graph.update(
-            """DELETE {
+        """DELETE {
                 ?s ?p ?o .
             }
             INSERT { 
@@ -126,14 +130,15 @@ def sparql_update_object(graph, subject, predicate, object, target_object):
             WHERE {
                 ?s ?p ?o .
             }""",
-            initNs = { "rdf": RDF },
-            initBindings = {"s": subject, "p": predicate, "o": object, "to": target_object}
-        )
+        initNs={"rdf": RDF},
+        initBindings={"s": subject, "p": predicate, "o": object, "to": target_object}
+    )
     return graph
+
 
 def sparql_update_subject(graph, subject, predicate, object, target_subject):
     graph.update(
-            """DELETE {
+        """DELETE {
                 ?s ?p ?o .
             }
             INSERT { 
@@ -142,7 +147,30 @@ def sparql_update_subject(graph, subject, predicate, object, target_subject):
             WHERE {
                 ?s ?p ?o .
             }""",
-            initNs = { "rdf": RDF },
-            initBindings = {"s": subject, "p": predicate, "o": object, "ts": target_subject}
+        initNs={"rdf": RDF},
+        initBindings={"s": subject, "p": predicate, "o": object, "ts": target_subject}
     )
     return graph
+
+
+def get_shacl_from_ontology(ontology_file):
+    # requires shaclinfer to be installed and reachable by the default system CLI
+    # https://github.com/TopQuadrant/shacl
+    subprocess.run(
+        f"shaclinfer -datafile {ontology_file} -shapesfile data/owl2sh.ttl > data/ontology_shacl.ttl",
+        shell=True)
+
+
+def get_triple_count(graph):
+    """
+    Get the count of triples in the KG, not containing rdf:type declarations.
+    """
+    qres = graph.query(
+        """
+        SELECT (count(?p) as ?count)
+        WHERE {
+            [] ?p [] .
+            FILTER (?p != rdf:type).
+        }
+        """)
+    return int(next(iter(qres))[0])

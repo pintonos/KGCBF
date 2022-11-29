@@ -66,9 +66,12 @@ class ValidatrrValidator:
                         report["errors_detected"] += [f"{subject} {error_type}"]
                     else:
                         report["errors_not_detected"] += [f"{subject} {error_type}"]
-        report["precision"] = matching / detected
+        report["precision"] = matching / detected if detected > 0 else 0
         report["recall"] = matching / introduced
-        report["f1"] = 2 * report["precision"] * report["recall"] / (report["precision"] + report["recall"])
-        with open("data/report.yaml", 'w') as outfile:
+        if report["precision"] + report["recall"] > 0:
+            report["f1"] = 2 * report["precision"] * report["recall"] / (report["precision"] + report["recall"])
+        else:
+            report["f1"] = 0.0
+        with open("report.yaml", 'w') as outfile:
             yaml.dump(report, outfile, default_flow_style=False)
         print(yaml.dump(report, allow_unicode=True, default_flow_style=False))
