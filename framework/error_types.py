@@ -23,9 +23,9 @@ class AbstractError:
         )
 
 
-class DomainTypeError(AbstractError):
+class SemanticDomainTypeError(AbstractError):
     def __init__(self, prob, logger):
-        super(DomainTypeError, self).__init__()
+        super(SemanticDomainTypeError, self).__init__()
         self.name = "Domain Violation"
         self.prob = prob
         self.logger = logger
@@ -61,7 +61,7 @@ class DomainTypeError(AbstractError):
 
         corrupted_pct = 0.0
         while corrupted_pct < self.prob and len(subjects_only) > 0:
-            greedy_idx = (np.searchsorted(subjects_only["count"].values, self.prob-corrupted_pct) - 1).clip(0)
+            greedy_idx = (np.searchsorted(subjects_only["count"].values, self.prob - corrupted_pct) - 1).clip(0)
             greedy_row = subjects_only.iloc[greedy_idx]
             # cannot add another entity without exceeding threshold
             if greedy_row["count"] + corrupted_pct > self.prob:
@@ -79,9 +79,9 @@ class DomainTypeError(AbstractError):
         return graph
 
 
-class RangeTypeError(AbstractError):
+class SemanticRangeTypeError(AbstractError):
     def __init__(self, prob, logger):
-        super(RangeTypeError, self).__init__()
+        super(SemanticRangeTypeError, self).__init__()
         self.name = "Range Violation"
         self.prob = prob
         self.logger = logger
@@ -123,7 +123,7 @@ class RangeTypeError(AbstractError):
         corrupted_pct = 0.0
         added_entities = []
         while corrupted_pct < self.prob and len(objects_only) > 0:
-            greedy_idx = (np.searchsorted(objects_only["count"].values, self.prob-corrupted_pct) - 1).clip(0)
+            greedy_idx = (np.searchsorted(objects_only["count"].values, self.prob - corrupted_pct) - 1).clip(0)
             greedy_row = objects_only.iloc[greedy_idx]
             # cannot add another entity without exceeding threshold
             if greedy_row["count"] + corrupted_pct > self.prob:
@@ -183,3 +183,11 @@ class WrongInstanceError(AbstractError):
         graph = self.update_instance_id(graph, sampled_instance_ids[0], target)
 
         return graph
+
+
+error_mapping = {
+    "semantic": {
+            "DomainTypeError": SemanticDomainTypeError,
+            "RangeTypeError": SemanticRangeTypeError
+        }
+}
