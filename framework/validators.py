@@ -55,6 +55,10 @@ class ValidatrrValidator:
 
         for subject in log_data:
             for error_type in log_data[subject]:
+                if log_data[subject][error_type][2] not in report["categories"]:
+                    report["categories"][log_data[subject][error_type][2]] = {"detected": 0, "total": 1}
+                else:
+                    report["categories"][log_data[subject][error_type][2]]["total"] += 1
                 if error_type not in self.dictionary:
                     print(f"Undefined error type: {error_type}")
                     report["errors_not_detected"] += [f"{subject} {error_type} (Missing Definition)"]
@@ -64,9 +68,10 @@ class ValidatrrValidator:
                         .replace("$old$", f"<{log_data[subject][error_type][0]}>")
                     if len(g.query(query)) > 0:
                         matching += 1
-                        report["errors_detected"] += [f"{subject} {error_type}"]
+                        report["categories"][log_data[subject][error_type][2]]["detected"] += 1
+                        report["errors_detected"] += [f"{subject} {error_type} ({log_data[subject][error_type][2]})"]
                     else:
-                        report["errors_not_detected"] += [f"{subject} {error_type}"]
+                        report["errors_not_detected"] += [f"{subject} {error_type} ({log_data[subject][error_type][2]})"]
         report["precision"] = matching / detected if detected > 0 else 0
         report["recall"] = matching / introduced
         if report["precision"] + report["recall"] > 0:

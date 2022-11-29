@@ -1,0 +1,14 @@
+categories:
+  semantic:
+    detected: 3
+    total: 5
+errors_detected:
+- http://example.org/#nsGeorg change_range (semantic)
+- http://example.org/#nsMartin change_range (semantic)
+- http://example.org/#nsMatthias change_range (semantic)
+errors_not_detected:
+- http://example.org/#nsGroup7 change_domain (Missing Definition)
+- http://example.org/#nsGroup1 change_domain (Missing Definition)
+f1: 0.7499999999999999
+precision: 1.0
+recall: 0.6
