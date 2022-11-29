@@ -49,7 +49,8 @@ class ValidatrrValidator:
         # write report
         report = {
             'errors_detected': [],
-            'errors_not_detected': []
+            'errors_not_detected': [],
+            'categories': {}
         }
 
         for subject in log_data:

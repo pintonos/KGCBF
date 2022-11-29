@@ -72,7 +72,7 @@ class SemanticDomainTypeError(AbstractError):
             corr_o = str(random.choice(dir(SDO)))
             sparql_update_object(graph, rdflib.URIRef(s), RDF.type, rdflib.URIRef(o),
                                  rdflib.URIRef(corr_o))  # random SDO type for now
-            self.logger.log_error('change_domain', s, o, corr_o)
+            self.logger.log_error('change_domain', s, o, corr_o, "semantic")
             corrupted_pct += greedy_row["count"]
             subjects_only = subjects_only.drop(subjects_only.index[greedy_idx])
 
@@ -134,7 +134,7 @@ class SemanticRangeTypeError(AbstractError):
             corr_o = str(random.choice(dir(SDO)))
             sparql_update_object(graph, rdflib.URIRef(s), RDF.type, rdflib.URIRef(o),
                                  rdflib.URIRef(corr_o))  # random SDO type for now
-            self.logger.log_error('change_range', s, o, corr_o)
+            self.logger.log_error('change_range', s, o, corr_o, "semantic")
             corrupted_pct += greedy_row["count"]
             objects_only = objects_only.drop(objects_only.index[greedy_idx])
 
