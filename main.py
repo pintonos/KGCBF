@@ -25,15 +25,17 @@ if __name__ == '__main__':
 
     if args.input is not None:
         g = g.parse(args.input)
-    print(g.serialize())
-    print("---------------------------------------------------------------")
-
     logger = Logger()
 
     # alter graph
-    g = SemanticDomainTypeError(prob=config['semantic']['DomainTypeError'], logger=logger).update_graph(g)
-    g = SemanticRangeTypeError(prob=config['semantic']['RangeTypeError'], logger=logger).update_graph(g)
-    # g = WrongInstanceError(prob=0.5).update_graph(g)
+    for cat in config["errors"]:
+        for error in config["errors"][cat]:
+            if cat in error_mapping and error in error_mapping[cat]:
+                prob = config["errors"][cat][error]
+                print(f"Adding error type {error} in category {cat} with prob {prob}.")
+                g = error_mapping[cat][error](prob=prob, logger=logger).update_graph(g)
+            else:
+                print(f"Skipping unknown error type: {cat} {error}.")
 
     # add ontology and/or shacl shapes graph
     if args.shacl and not args.ontology:

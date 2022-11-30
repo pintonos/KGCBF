@@ -26,8 +26,7 @@ class AbstractError:
 class SemanticDomainTypeError(AbstractError):
     def __init__(self, prob, logger):
         super(SemanticDomainTypeError, self).__init__()
-        self.name = "domain_error"
-        self.error_type = "semantic"
+        self.name = "Domain Violation"
         self.prob = prob
         self.logger = logger
 
@@ -62,7 +61,7 @@ class SemanticDomainTypeError(AbstractError):
 
         corrupted_pct = 0.0
         while corrupted_pct < self.prob and len(subjects_only) > 0:
-            greedy_idx = (np.searchsorted(subjects_only["count"].values, self.prob-corrupted_pct) - 1).clip(0)
+            greedy_idx = (np.searchsorted(subjects_only["count"].values, self.prob - corrupted_pct) - 1).clip(0)
             greedy_row = subjects_only.iloc[greedy_idx]
             # cannot add another entity without exceeding threshold
             if greedy_row["count"] + corrupted_pct > self.prob:
@@ -73,7 +72,7 @@ class SemanticDomainTypeError(AbstractError):
             corr_o = str(random.choice(dir(SDO)))
             sparql_update_object(graph, rdflib.URIRef(s), RDF.type, rdflib.URIRef(o),
                                  rdflib.URIRef(corr_o))  # random SDO type for now
-            self.logger.log_error(self.name, self.error_type, s, o, corr_o)
+            self.logger.log_error('change_domain', s, o, corr_o, "semantic")
             corrupted_pct += greedy_row["count"]
             subjects_only = subjects_only.drop(subjects_only.index[greedy_idx])
 
@@ -83,8 +82,7 @@ class SemanticDomainTypeError(AbstractError):
 class SemanticRangeTypeError(AbstractError):
     def __init__(self, prob, logger):
         super(SemanticRangeTypeError, self).__init__()
-        self.name = "range_error"
-        self.error_type = "semantic"
+        self.name = "Range Violation"
         self.prob = prob
         self.logger = logger
 
@@ -125,7 +123,7 @@ class SemanticRangeTypeError(AbstractError):
         corrupted_pct = 0.0
         added_entities = []
         while corrupted_pct < self.prob and len(objects_only) > 0:
-            greedy_idx = (np.searchsorted(objects_only["count"].values, self.prob-corrupted_pct) - 1).clip(0)
+            greedy_idx = (np.searchsorted(objects_only["count"].values, self.prob - corrupted_pct) - 1).clip(0)
             greedy_row = objects_only.iloc[greedy_idx]
             # cannot add another entity without exceeding threshold
             if greedy_row["count"] + corrupted_pct > self.prob:
@@ -136,7 +134,7 @@ class SemanticRangeTypeError(AbstractError):
             corr_o = str(random.choice(dir(SDO)))
             sparql_update_object(graph, rdflib.URIRef(s), RDF.type, rdflib.URIRef(o),
                                  rdflib.URIRef(corr_o))  # random SDO type for now
-            self.logger.log_error(self.name, self.error_type, s, o, corr_o)
+            self.logger.log_error('change_range', s, o, corr_o, "semantic")
             corrupted_pct += greedy_row["count"]
             objects_only = objects_only.drop(objects_only.index[greedy_idx])
 
@@ -185,3 +183,11 @@ class WrongInstanceError(AbstractError):
         graph = self.update_instance_id(graph, sampled_instance_ids[0], target)
 
         return graph
+
+
+error_mapping = {
+    "semantic": {
+            "DomainTypeError": SemanticDomainTypeError,
+            "RangeTypeError": SemanticRangeTypeError
+        }
+}

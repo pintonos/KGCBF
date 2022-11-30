@@ -157,7 +157,7 @@ def get_shacl_from_ontology(ontology_file):
     # requires shaclinfer to be installed and reachable by the default system CLI
     # https://github.com/TopQuadrant/shacl
     subprocess.run(
-        f"shaclinfer -datafile {ontology_file} -shapesfile data/owl2sh.ttl > data/ontology_shacl.ttl",
+        f"shaclinfer -datafile {ontology_file} -shapesfile owl2sh.ttl > data/ontology_shacl.ttl",
         shell=True)
 
 

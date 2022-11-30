@@ -2,16 +2,16 @@
 @prefix ex: <http://example.org/#ns> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-ex:Georg a foaf:Person .
-ex:Dennis a foaf:Person .
-ex:Umut a foaf:Person .
-ex:Juliette a foaf:Person .
-ex:Andreas a foaf:Person .
-ex:Stefan a foaf:Person .
-ex:Tom a foaf:Person .
-ex:Max a foaf:Person .
-ex:Matthias a foaf:Person .
-ex:Martin a foaf:Person .
+ex:Georg a foaf:Agent .
+ex:Dennis a foaf:Agent .
+ex:Umut a foaf:Agent .
+ex:Juliette a foaf:Agent .
+ex:Andreas a foaf:Agent .
+ex:Stefan a foaf:Agent .
+ex:Tom a foaf:Agent .
+ex:Max a foaf:Agent .
+ex:Matthias a foaf:Agent .
+ex:Martin a foaf:Agent .
 
 ex:Group7 a foaf:Group ;
 	foaf:member ex:Georg ; 
