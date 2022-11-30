@@ -26,6 +26,9 @@ class AbstractError:
 class SemanticDomainTypeError(AbstractError):
     def __init__(self, prob, logger):
         super(SemanticDomainTypeError, self).__init__()
+        self.name = "domain_error"
+        self.error_type = "semantic"
+        super(SemanticDomainTypeError, self).__init__()
         self.name = "Domain Violation"
         self.prob = prob
         self.logger = logger
