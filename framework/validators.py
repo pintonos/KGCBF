@@ -36,48 +36,52 @@ class ValidatrrValidator:
         # load validated graph
         g = Graph()
         g = g.parse("data/validated.ttl")
-        # extract logged dictionary
-        log_data = self.error_log.log_dict
-        # get total number of detected errors, and total number of introduced errors
-        detected = int(next(iter(g.query("""SELECT ?o 
-                                WHERE { 
-                                :errorCount :count ?o . 
-                                }""")))["o"])
+        # generate report
+        generate_report(self.error_log, self.dictionary, g)
 
-        introduced = len([err for subject in log_data for err in log_data[subject]])
-        matching = 0
-        # write report
-        report = {
-            'errors_detected': [],
-            'errors_not_detected': [],
-            'categories': {}
-        }
 
-        for subject in log_data:
-            for error_type in log_data[subject]:
-                if log_data[subject][error_type][2] not in report["categories"]:
-                    report["categories"][log_data[subject][error_type][2]] = {"detected": 0, "total": 1}
+def generate_report(error_log, validation_dict, graph):
+    """
+    Generates a validation report given the error log, dictionary, and validation graph
+    """
+    # extract logged dictionary
+    logged_errors = error_log.log_dict
+    # get total number of detected errors, and total number of introduced errors
+    total_error_pattern = validation_dict["total_errors"]["pattern"]
+    detected = int(next(iter(graph.query(total_error_pattern)))["count"])
+    introduced = len([err for cat in logged_errors for err in logged_errors[cat]])
+    matching = 0
+    # basic report structure
+    report = {
+        'errors_detected': [],
+        'errors_not_detected': [],
+        'categories': {}
+    }
+    for error_type in logged_errors:
+        for error in logged_errors[error_type]:
+            if error["category"] not in report["categories"]:
+                report["categories"][error["category"]] = {"detected": 0, "total": 1}
+            else:
+                report["categories"][error["category"]]["total"] += 1
+            if error_type not in validation_dict:
+                print(f"Undefined error type: {error_type}")
+                report["errors_not_detected"].append({error_type: error})
+            else:
+                query = validation_dict[error_type]["pattern"] \
+                    .replace("$subject$", f"<{error['subject']}>") \
+                    .replace("$original$", f"<{error['original']}>")
+                if len(graph.query(query)) > 0:
+                    matching += 1
+                    report["categories"][error["category"]]["detected"] += 1
+                    report["errors_detected"].append({error_type: error})
                 else:
-                    report["categories"][log_data[subject][error_type][2]]["total"] += 1
-                if error_type not in self.dictionary:
-                    print(f"Undefined error type: {error_type}")
-                    report["errors_not_detected"] += [f"{subject} {error_type} (Missing Definition)"]
-                else:
-                    query = self.dictionary[error_type]["pattern"] \
-                        .replace("$o$", f"<{subject}>") \
-                        .replace("$old$", f"<{log_data[subject][error_type][0]}>")
-                    if len(g.query(query)) > 0:
-                        matching += 1
-                        report["categories"][log_data[subject][error_type][2]]["detected"] += 1
-                        report["errors_detected"] += [f"{subject} {error_type} ({log_data[subject][error_type][2]})"]
-                    else:
-                        report["errors_not_detected"] += [f"{subject} {error_type} ({log_data[subject][error_type][2]})"]
-        report["precision"] = matching / detected if detected > 0 else 0
-        report["recall"] = matching / introduced
-        if report["precision"] + report["recall"] > 0:
-            report["f1"] = 2 * report["precision"] * report["recall"] / (report["precision"] + report["recall"])
-        else:
-            report["f1"] = 0.0
-        with open("report.yaml", 'w') as outfile:
-            yaml.dump(report, outfile, default_flow_style=False)
-        print(yaml.dump(report, allow_unicode=True, default_flow_style=False))
+                    report["errors_not_detected"].append({error_type: error})
+    report["precision"] = round(matching / detected if detected > 0 else 0, 2)
+    report["recall"] = round(matching / introduced, 2)
+    if report["precision"] + report["recall"] > 0:
+        report["f1"] = round(2 * report["precision"] * report["recall"] / (report["precision"] + report["recall"]), 2)
+    else:
+        report["f1"] = 0.0
+    with open("data/report.yaml", 'w') as outfile:
+        yaml.dump(report, outfile, default_flow_style=False)
+    print(yaml.dump(report, allow_unicode=True, default_flow_style=False))

@@ -3,6 +3,11 @@ change_range:
             WHERE {
               ?s a :constraintViolation .
               ?s a :NonLiteral .
-              ?s :object $o$ .
-              ?s :expectedRange $old$ .
+              ?s :object $subject$ .
+              ?s :expectedRange $original$ .
+            }"
+total_errors:
+  pattern: "SELECT ?count
+            WHERE {
+              :errorCount :count ?count . 
             }"
