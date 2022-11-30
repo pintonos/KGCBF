@@ -7,8 +7,8 @@ class Logger():
         self.name = None
         self.log_dict = {}
 
-    def log_error(self, error_type, subject, original_val, corrupted_val):
-        self.log_dict[subject] = {error_type: [original_val, corrupted_val]}
+    def log_error(self, error_name, error_type, subject, original_val, corrupted_val):
+        self.log_dict[subject] = {error_name: [original_val, corrupted_val], 'type': error_type}
 
     def save_to_file(self, filepath='data/error_log.yaml'):
         with open(filepath, 'w') as outfile:

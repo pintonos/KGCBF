@@ -23,10 +23,11 @@ class AbstractError:
         )
 
 
-class DomainTypeError(AbstractError):
+class SemanticDomainTypeError(AbstractError):
     def __init__(self, prob, logger):
-        super(DomainTypeError, self).__init__()
-        self.name = "Domain Violation"
+        super(SemanticDomainTypeError, self).__init__()
+        self.name = "domain_error"
+        self.error_type = "semantic"
         self.prob = prob
         self.logger = logger
 
@@ -72,17 +73,18 @@ class DomainTypeError(AbstractError):
             corr_o = str(random.choice(dir(SDO)))
             sparql_update_object(graph, rdflib.URIRef(s), RDF.type, rdflib.URIRef(o),
                                  rdflib.URIRef(corr_o))  # random SDO type for now
-            self.logger.log_error('change_domain', s, o, corr_o)
+            self.logger.log_error(self.name, self.error_type, s, o, corr_o)
             corrupted_pct += greedy_row["count"]
             subjects_only = subjects_only.drop(subjects_only.index[greedy_idx])
 
         return graph
 
 
-class RangeTypeError(AbstractError):
+class SemanticRangeTypeError(AbstractError):
     def __init__(self, prob, logger):
-        super(RangeTypeError, self).__init__()
-        self.name = "Range Violation"
+        super(SemanticRangeTypeError, self).__init__()
+        self.name = "range_error"
+        self.error_type = "semantic"
         self.prob = prob
         self.logger = logger
 
@@ -134,7 +136,7 @@ class RangeTypeError(AbstractError):
             corr_o = str(random.choice(dir(SDO)))
             sparql_update_object(graph, rdflib.URIRef(s), RDF.type, rdflib.URIRef(o),
                                  rdflib.URIRef(corr_o))  # random SDO type for now
-            self.logger.log_error('change_range', s, o, corr_o)
+            self.logger.log_error(self.name, self.error_type, s, o, corr_o)
             corrupted_pct += greedy_row["count"]
             objects_only = objects_only.drop(objects_only.index[greedy_idx])
 

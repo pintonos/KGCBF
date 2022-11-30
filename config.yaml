@@ -1,3 +1,12 @@
-DomainTypeError: 0.5
-RangeTypeError: 0.5
-#WrongInstanceError: 0.5
+semantic:
+  DomainTypeError: 0.5
+  RangeTypeError: 0.5
+  #WrongInstanceError: 0.5
+
+#semantic-syntactic:
+  #DomainTypeError: 0.5
+  #RangeTypeError: 0.5
+
+#syntactic:
+  #DomainTypeError: 0.5
+  #RangeTypeError: 0.5

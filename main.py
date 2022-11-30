@@ -31,8 +31,8 @@ if __name__ == '__main__':
     logger = Logger()
 
     # alter graph
-    g = DomainTypeError(prob=config['DomainTypeError'], logger=logger).update_graph(g)
-    g = RangeTypeError(prob=config['RangeTypeError'], logger=logger).update_graph(g)
+    g = SemanticDomainTypeError(prob=config['semantic']['DomainTypeError'], logger=logger).update_graph(g)
+    g = SemanticRangeTypeError(prob=config['semantic']['RangeTypeError'], logger=logger).update_graph(g)
     # g = WrongInstanceError(prob=0.5).update_graph(g)
 
     # add ontology and/or shacl shapes graph
