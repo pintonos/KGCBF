@@ -1,3 +1,4 @@
+import random
 import subprocess
 
 import rdflib
@@ -28,6 +29,12 @@ def sparql_results_to_df(results: SPARQLResult) -> DataFrame:
 
 def insert_str(string, str_to_insert, index):
     return string[:index] + str_to_insert + string[index:]
+
+
+def get_random_special_characters(length=1):
+    special_chars = ["$", "&", "%", "*", "§", "Ä", "Ö", "Ü", ";"]
+    random_char_list = random.sample(special_chars, length)
+    return "".join(random_char_list)
 
 
 def random_replace_character(serialized_rdf, char, prob=0.5):
@@ -174,3 +181,56 @@ def get_triple_count(graph):
         }
         """)
     return int(next(iter(qres))[0])
+
+
+def get_subject_only_entities_with_count(graph):
+    qres = graph.query(
+        """
+        SELECT ?s ?o ?count
+        WHERE {
+            ?s rdf:type ?o
+            FILTER NOT EXISTS { [] ?p3 ?s }
+            {
+                SELECT (count(?p) AS ?count)
+                WHERE 
+                {
+                    ?s ?p []
+                    FILTER(?p != rdf:type)
+                }
+            } 
+        }
+        HAVING ( ?count > 0 )
+        """,
+        initNs={"rdf": RDF}
+    )
+    df = sparql_results_to_df(qres)
+    return df
+
+
+def get_object_only_entities_with_count(graph):
+    qres = graph.query(
+        """
+        SELECT ?s ?o ?count
+        WHERE {
+            ?s rdf:type ?o
+            FILTER NOT EXISTS 
+            {
+                ?s ?p1 []
+                FILTER (?p1 != rdf:type)
+            }
+            {
+                SELECT (count(?p) AS ?count)
+                WHERE 
+                {
+                    [] ?p ?s
+                    FILTER(?p != rdf:type)
+                }
+            } 
+        }
+        HAVING ( ?count > 0 )
+        """
+        ,
+        initNs={"rdf": RDF}
+    )
+    df = sparql_results_to_df(qres)
+    return df

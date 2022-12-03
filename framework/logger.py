@@ -14,8 +14,8 @@ class Logger():
                                           "category": error_category})
 
     def save_to_file(self, filepath='data/error_log.yaml'):
-        with open(filepath, 'w') as outfile:
-            yaml.dump(self.log_dict, outfile, default_flow_style=False)
+        with open(filepath, 'w', encoding='utf8') as outfile:
+            yaml.dump(self.log_dict, outfile, default_flow_style=False, allow_unicode=True)
 
     def __str__(self):
         return (
