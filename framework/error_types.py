@@ -92,7 +92,11 @@ class SemanticSyntacticPropertyNameError(AbstractError):
                 full_target = original_ns[target]
                 graph.bind(prefix, original_ns, override=True)
 
-                sparql_update_predicate(graph, rdflib.URIRef(s), rdflib.URIRef(p), o, rdflib.URIRef(full_target))
+                if rdflib.term._is_valid_uri(o):
+                    sparql_update_predicate(graph, rdflib.URIRef(s), rdflib.URIRef(p), rdflib.URIRef(o), rdflib.URIRef(full_target))
+                else:
+                    sparql_update_predicate(graph, rdflib.URIRef(s), rdflib.URIRef(p), Literal(o), rdflib.URIRef(full_target))
+
                 self.logger.log_error('corrupt_property_name', s, p, str(full_target), "semantic-syntactic")
                 corrupted_pct += greedy_row["count"]
                 properties_only = properties_only.drop(properties_only.index[greedy_idx])
