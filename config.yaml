@@ -2,6 +2,6 @@ errors:
   semantic:
     DomainTypeError: 0.2
     RangeTypeError: 0.2
-#  semantic-syntactic:
-#    InstanceIdentifierError: 0.1
-#    PropertyNameError: 0.1
+  semantic-syntactic:
+    InstanceIdentifierError: 0.1
+    PropertyNameError: 0.1

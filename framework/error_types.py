@@ -31,29 +31,19 @@ class SemanticSyntacticInstanceIdentifierError(AbstractError):
         self.logger = logger
 
     def update_graph(self, graph):
-        subjects_only = get_subject_only_entities_with_count(graph)
-        triple_count = get_triple_count(graph)
-        subjects_only["count"] /= triple_count
-        subjects_only = subjects_only.sort_values(by=["count"])
+        subjects_only = get_all_subjects(graph)
+        amount = int(len(subjects_only) * self.prob)
+        sampled_triples = subjects_only.sample(n=amount)
 
-        corrupted_pct = 0.0
-        while corrupted_pct < self.prob and len(subjects_only) > 0:
-            greedy_idx = (np.searchsorted(subjects_only["count"].values, self.prob - corrupted_pct) - 1).clip(0)
-            greedy_row = subjects_only.iloc[greedy_idx]
-            # cannot add another entity without exceeding threshold
-            if greedy_row["count"] + corrupted_pct > self.prob:
-                break
-
-            s = greedy_row["s"]
-            o = greedy_row["o"]
-            chars = get_random_special_characters(length=5)
+        for triple in sampled_triples.iterrows():
+            s = triple[1]["s"]
+            o = triple[1]["o"]
+            chars = get_random_characters(length=5)
             target = insert_str(s, chars, -1)
             sparql_update_subject(graph, rdflib.URIRef(s), RDF.type, rdflib.URIRef(o),
                                  rdflib.URIRef(target))
 
             self.logger.log_error('corrupt_instance_id', s, s, target, "semantic-syntactic")
-            corrupted_pct += greedy_row["count"]
-            subjects_only = subjects_only.drop(subjects_only.index[greedy_idx])
 
         return graph
 
@@ -66,22 +56,14 @@ class SemanticSyntacticPropertyNameError(AbstractError):
         self.logger = logger
 
     def update_graph(self, graph):
-        properties_only = get_properties_with_count(graph)
-        triple_count = get_triple_count(graph)
-        properties_only["count"] /= triple_count
-        properties_only = properties_only.sort_values(by=["count"])
+        triple_property_only = get_properties(graph)
+        amount = int(len(triple_property_only) * self.prob)
+        sampled_triples = triple_property_only.sample(n=amount)
 
-        corrupted_pct = 0.0
-        while corrupted_pct < self.prob and len(properties_only) > 0:
-            greedy_idx = (np.searchsorted(properties_only["count"].values, self.prob - corrupted_pct) - 1).clip(0)
-            greedy_row = properties_only.iloc[greedy_idx]
-            # cannot add another entity without exceeding threshold
-            if greedy_row["count"] + corrupted_pct > self.prob:
-                break
-
-            s = greedy_row["s"]
-            p = greedy_row["p"]
-            o = greedy_row["o"]
+        for triple in sampled_triples.iterrows():
+            s = triple[1]["s"]
+            p = triple[1]["p"]
+            o = triple[1]["o"]
             original_ns = get_namespace_from_uri(graph, p)
 
             if original_ns is not None:
@@ -98,8 +80,6 @@ class SemanticSyntacticPropertyNameError(AbstractError):
                     sparql_update_predicate(graph, rdflib.URIRef(s), rdflib.URIRef(p), Literal(o), rdflib.URIRef(full_target))
 
                 self.logger.log_error('corrupt_property_name', s, p, str(full_target), "semantic-syntactic")
-                corrupted_pct += greedy_row["count"]
-                properties_only = properties_only.drop(properties_only.index[greedy_idx])
 
         return graph
 

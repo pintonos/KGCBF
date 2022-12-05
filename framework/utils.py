@@ -28,6 +28,8 @@ def sparql_results_to_df(results: SPARQLResult) -> DataFrame:
 
 
 def insert_str(string, str_to_insert, index):
+    if index == -1:
+        return string + str_to_insert
     return string[:index] + str_to_insert + string[index:]
 
 
@@ -212,6 +214,20 @@ def get_triple_count(graph):
     return int(next(iter(qres))[0])
 
 
+def get_all_subjects(graph):
+    qres = graph.query(
+        """
+        SELECT ?s ?o
+        WHERE {
+            ?s rdf:type ?o
+        }
+        """,
+        initNs={"rdf": RDF}
+    )
+    df = sparql_results_to_df(qres)
+    return df
+
+
 def get_subject_only_entities_with_count(graph):
     qres = graph.query(
         """
@@ -265,21 +281,13 @@ def get_object_only_entities_with_count(graph):
     return df
 
 
-def get_properties_with_count(graph):
+def get_properties(graph):
     qres = graph.query(
         """
-        SELECT ?s ?p ?o ?count
+        SELECT ?s ?p ?o
         WHERE {
             ?s ?p ?o
             FILTER NOT EXISTS { ?s rdf:type ?o }
-            {
-                SELECT (count(?s) AS ?count)
-                WHERE 
-                {
-                    ?s ?p ?o
-                    FILTER NOT EXISTS { ?s rdf:type ?o }
-                }
-            } 
         }
         """,
         initNs={"rdf": RDF}
