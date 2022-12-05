@@ -1,4 +1,4 @@
-change_range:
+corrupt_range:
   pattern: "SELECT ?s
             WHERE {
               ?s a :constraintViolation .
