@@ -25,6 +25,7 @@ ex:Andreas a foaf:Person ;
         ex:OrganizationSTI,
         ex:GroupOne ;
     foaf:mbox <mailto:andreas.peintner@uibk.ac.at> ;
+    ex:address "Example street 3" ;
     foaf:name "Andreas Peintner" .
 
 ex:Daniel a foaf:Agent .

@@ -13,7 +13,7 @@ import numpy as np
 from random import sample, choice
 import yaml
 
-from framework.namespaces import ErrorFOAF, ErrorRDF, ErrorSDO, Example
+from framework.namespaces import Example
 
 
 def sparql_results_to_df(results: SPARQLResult) -> DataFrame:
@@ -34,6 +34,11 @@ def insert_str(string, str_to_insert, index):
 def get_random_special_characters(length=1):
     special_chars = ["$", "&", "%", "*", "§", "Ä", "Ö", "Ü", ";"]
     random_char_list = random.sample(special_chars, length)
+    return "".join(random_char_list)
+
+def get_random_characters(length=1):
+    chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+    random_char_list = random.sample(chars, length)
     return "".join(random_char_list)
 
 
@@ -64,6 +69,14 @@ def read_config(config_filepath):
             print(exc)
 
     return parsed_yaml
+
+
+def get_namespace_from_uri(graph, uri):
+    namespaces = [RDF, RDFS, FOAF, SDO, OWL, Example]
+    extracted_ns = graph.compute_qname(URIRef(uri))[1]
+    for ns in namespaces:
+        if ns._NS == extracted_ns:
+            return ns
 
 
 def construct_error_example_graph():
@@ -124,6 +137,22 @@ def sparql_query(graph, subject, predicate, object):
     )
     df = sparql_results_to_df(qres)
     return df
+
+def sparql_update_predicate(graph, subject, predicate, object, target_predicate):
+    graph.update(
+        """DELETE {
+                ?s ?p ?o .
+            }
+            INSERT {
+                ?s ?tp ?o .
+            }
+            WHERE {
+                ?s ?p ?o .
+            }""",
+        initNs={"rdf": RDF},
+        initBindings={"s": subject, "p": predicate, "o": object, "tp": target_predicate}
+    )
+    return graph
 
 
 def sparql_update_object(graph, subject, predicate, object, target_object):
@@ -230,6 +259,29 @@ def get_object_only_entities_with_count(graph):
         HAVING ( ?count > 0 )
         """
         ,
+        initNs={"rdf": RDF}
+    )
+    df = sparql_results_to_df(qres)
+    return df
+
+
+def get_properties_with_count(graph):
+    qres = graph.query(
+        """
+        SELECT ?s ?p ?o ?count
+        WHERE {
+            ?s ?p ?o
+            FILTER NOT EXISTS { ?s rdf:type ?o }
+            {
+                SELECT (count(?s) AS ?count)
+                WHERE 
+                {
+                    ?s ?p ?o
+                    FILTER NOT EXISTS { ?s rdf:type ?o }
+                }
+            } 
+        }
+        """,
         initNs={"rdf": RDF}
     )
     df = sparql_results_to_df(qres)
