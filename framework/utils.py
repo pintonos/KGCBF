@@ -214,12 +214,14 @@ def get_triple_count(graph):
     return int(next(iter(qres))[0])
 
 
-def get_all_subjects(graph):
+def get_all_instance_ids(graph):
     qres = graph.query(
         """
-        SELECT ?s ?o
+        SELECT ?s ?p ?o
         WHERE {
-            ?s rdf:type ?o
+            ?s ?p ?o .
+            FILTER EXISTS { ?s rdf:type ?o2 }
+            OPTIONAL { ?s  rdf:type ?o }
         }
         """,
         initNs={"rdf": RDF}
@@ -286,8 +288,8 @@ def get_properties(graph):
         """
         SELECT ?s ?p ?o
         WHERE {
-            ?s ?p ?o
-            FILTER NOT EXISTS { ?s rdf:type ?o }
+            ?s ?p ?o .
+            FILTER ( ?p != rdf:type)
         }
         """,
         initNs={"rdf": RDF}

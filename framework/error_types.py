@@ -31,19 +31,29 @@ class SemanticSyntacticInstanceIdentifierError(AbstractError):
         self.logger = logger
 
     def update_graph(self, graph):
-        subjects_only = get_all_subjects(graph)
-        amount = int(len(subjects_only) * self.prob)
-        sampled_triples = subjects_only.sample(n=amount)
+        subjects_only = get_all_instance_ids(graph)
+        unique_subjects = subjects_only["s"].unique()
+        amount = int(len(unique_subjects) * self.prob)
+        sampled_subjects = random.sample(list(unique_subjects), amount)
 
-        for triple in sampled_triples.iterrows():
-            s = triple[1]["s"]
-            o = triple[1]["o"]
+        for subject in sampled_subjects:
+            triples = subjects_only.loc[subjects_only['s'] == subject]
             chars = get_random_characters(length=5)
-            target = insert_str(s, chars, -1)
-            sparql_update_subject(graph, rdflib.URIRef(s), RDF.type, rdflib.URIRef(o),
-                                 rdflib.URIRef(target))
+            for triple in triples.iterrows():
+                s = triple[1]["s"]
+                p = triple[1]["p"]
+                o = triple[1]["o"]
+                target = insert_str(s, chars, -1)
+                try: # int and float values bug in _is_valid_uri
+                    valid_uri = rdflib.term._is_valid_uri(o)
+                    if valid_uri:
+                        sparql_update_subject(graph, rdflib.URIRef(s), rdflib.URIRef(p), rdflib.URIRef(o), rdflib.URIRef(target))
+                    else:
+                        sparql_update_subject(graph, rdflib.URIRef(s), rdflib.URIRef(p), Literal(o), rdflib.URIRef(target))    
+                except:
+                    sparql_update_subject(graph, rdflib.URIRef(s), rdflib.URIRef(p), Literal(o), rdflib.URIRef(target))
 
-            self.logger.log_error('corrupt_instance_id', s, s, target, "semantic-syntactic")
+                self.logger.log_error('corrupt_instance_id', s, s, target, "semantic-syntactic")
 
         return graph
 
