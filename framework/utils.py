@@ -3,6 +3,7 @@ import subprocess
 from random import sample
 
 import numpy as np
+import rdflib
 import yaml
 from pandas import DataFrame
 from rdflib import Graph, Literal
@@ -139,7 +140,15 @@ def sparql_query(graph, subject, predicate, object):
     return df
 
 
-def sparql_update_predicate(graph, subject, predicate, object, target_predicate):
+def update_predicate(graph, subject, predicate, object, target_predicate):
+    if rdflib.term._is_valid_uri(object):
+        __sparql_update_predicate(graph, rdflib.URIRef(subject), rdflib.URIRef(predicate), rdflib.URIRef(object),
+                                rdflib.URIRef(target_predicate))
+    else:
+        __sparql_update_predicate(graph, rdflib.URIRef(subject), rdflib.URIRef(predicate), Literal(object),
+                                rdflib.URIRef(target_predicate))
+
+def __sparql_update_predicate(graph, subject, predicate, object, target_predicate):
     graph.update(
         """DELETE {
                 ?s ?p ?o .
@@ -156,7 +165,12 @@ def sparql_update_predicate(graph, subject, predicate, object, target_predicate)
     return graph
 
 
-def sparql_update_object(graph, subject, predicate, object, target_object):
+def update_object(graph, subject, predicate, object, target_object):
+    __sparql_update_object(graph, rdflib.URIRef(subject), rdflib.URIRef(predicate), rdflib.URIRef(object),
+                           rdflib.URIRef(target_object))
+
+
+def __sparql_update_object(graph, subject, predicate, object, target_object):
     graph.update(
         """DELETE {
                 ?s ?p ?o .
@@ -173,7 +187,21 @@ def sparql_update_object(graph, subject, predicate, object, target_object):
     return graph
 
 
-def sparql_update_subject(graph, subject, predicate, object, target_subject):
+def update_subject(graph, subject, predicate, object, target_subject):
+    try:  # int and float values bug in _is_valid_uri
+        valid_uri = rdflib.term._is_valid_uri(object)
+        if valid_uri:
+            __sparql_update_subject(graph, rdflib.URIRef(subject), rdflib.URIRef(predicate), rdflib.URIRef(object),
+                                    rdflib.URIRef(target_subject))
+        else:
+            __sparql_update_subject(graph, rdflib.URIRef(subject), rdflib.URIRef(predicate), Literal(object),
+                                    rdflib.URIRef(target_subject))
+    except:
+        __sparql_update_subject(graph, rdflib.URIRef(subject), rdflib.URIRef(predicate), Literal(object),
+                                rdflib.URIRef(target_subject))
+
+
+def __sparql_update_subject(graph, subject, predicate, object, target_subject):
     graph.update(
         """DELETE {
                 ?s ?p ?o .

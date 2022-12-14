@@ -1,12 +1,4 @@
 import uuid
-
-import numpy as np
-import rdflib
-from rdflib.plugins.sparql.processor import prepareUpdate
-from rdflib.namespace import RDF, SDO
-
-import random
-
 from framework.utils import *
 
 
@@ -49,17 +41,7 @@ class SemanticSyntacticInstanceIdentifierError(AbstractError):
                 p = triple[1]["p"]
                 o = triple[1]["o"]
                 target = insert_str(s, chars, -1)
-                try:  # int and float values bug in _is_valid_uri
-                    valid_uri = rdflib.term._is_valid_uri(o)
-                    if valid_uri:
-                        sparql_update_subject(graph, rdflib.URIRef(s), rdflib.URIRef(p), rdflib.URIRef(o),
-                                              rdflib.URIRef(target))
-                    else:
-                        sparql_update_subject(graph, rdflib.URIRef(s), rdflib.URIRef(p), Literal(o),
-                                              rdflib.URIRef(target))
-                except:
-                    sparql_update_subject(graph, rdflib.URIRef(s), rdflib.URIRef(p), Literal(o), rdflib.URIRef(target))
-
+                update_subject(graph, s, p, o, target)
                 self.logger.log_error('corrupt_instance_id', s, s, target, "semantic-syntactic")
 
         return graph
@@ -88,18 +70,7 @@ class SyntacticInstanceIdentifierError(AbstractError):
             target = insert_str(s, ''.join(random.sample(get_invalid_characters(), random.randint(1, 3))),
                                 random.randint(-1, len(s)))
             placeholder = f":placeholder-{uuid.uuid4()}"
-
-            try:  # int and float values bug in _is_valid_uri
-                valid_uri = rdflib.term._is_valid_uri(o)
-                if valid_uri:
-                    sparql_update_subject(graph, rdflib.URIRef(s), rdflib.URIRef(p), rdflib.URIRef(o),
-                                          rdflib.URIRef(placeholder))
-                else:
-                    sparql_update_subject(graph, rdflib.URIRef(s), rdflib.URIRef(p), Literal(o),
-                                          rdflib.URIRef(placeholder))
-            except:
-                sparql_update_subject(graph, rdflib.URIRef(s), rdflib.URIRef(p), Literal(o), rdflib.URIRef(placeholder))
-
+            update_subject(graph, s, p, o, placeholder)
             self.replace_subjects[placeholder] = f"{target}"
             self.logger.log_error('corrupt_instance_id', s, s, target, "syntactic")
 
@@ -142,14 +113,7 @@ class SemanticSyntacticPropertyNameError(AbstractError):
                 original_ns.__annotations__[target] = URIRef
                 full_target = original_ns[target]
                 graph.bind(prefix, original_ns, override=True)
-
-                if rdflib.term._is_valid_uri(o):
-                    sparql_update_predicate(graph, rdflib.URIRef(s), rdflib.URIRef(p), rdflib.URIRef(o),
-                                            rdflib.URIRef(full_target))
-                else:
-                    sparql_update_predicate(graph, rdflib.URIRef(s), rdflib.URIRef(p), Literal(o),
-                                            rdflib.URIRef(full_target))
-
+                update_predicate(graph, s, p, o, full_target)
                 self.logger.log_error('corrupt_property_name', s, p, str(full_target), "semantic-syntactic")
 
         return graph
@@ -182,8 +146,7 @@ class SemanticDomainTypeError(AbstractError):
             s = greedy_row["s"]
             o = greedy_row["o"]
             corr_o = str(random.choice(dir(SDO)))
-            sparql_update_object(graph, rdflib.URIRef(s), RDF.type, rdflib.URIRef(o),
-                                 rdflib.URIRef(corr_o))  # random SDO type for now
+            update_object(graph, s, RDF.type, o, corr_o)  # random SDO type for now
             self.logger.log_error('corrupt_domain', s, o, corr_o, "semantic")
             corrupted_pct += greedy_row["count"]
             subjects_only = subjects_only.drop(subjects_only.index[greedy_idx])
@@ -218,8 +181,7 @@ class SemanticRangeTypeError(AbstractError):
             s = greedy_row["s"]
             o = greedy_row["o"]
             corr_o = str(random.choice(dir(SDO)))
-            sparql_update_object(graph, rdflib.URIRef(s), RDF.type, rdflib.URIRef(o),
-                                 rdflib.URIRef(corr_o))  # random SDO type for now
+            update_object(graph, s, RDF.type, o, corr_o)  # random SDO type for now
             self.logger.log_error('corrupt_range', s, o, corr_o, "semantic")
             corrupted_pct += greedy_row["count"]
             objects_only = objects_only.drop(objects_only.index[greedy_idx])
