@@ -1,17 +1,14 @@
 import random
 import subprocess
-
-import rdflib
-from rdflib import Graph, URIRef, Literal, BNode
-from pandas import DataFrame
-from rdflib.plugins.sparql.processor import SPARQLResult, prepareQuery, prepareUpdate
-from rdflib.namespace import FOAF, RDF, SDO, RDFS, OWL
-from rdflib.namespace import DefinedNamespace, Namespace
-from rdflib.term import URIRef
+from random import sample
 
 import numpy as np
-from random import sample, choice
 import yaml
+from pandas import DataFrame
+from rdflib import Graph, Literal
+from rdflib.namespace import FOAF, RDF, SDO, RDFS, OWL
+from rdflib.plugins.sparql.processor import SPARQLResult
+from rdflib.term import URIRef
 
 from framework.namespaces import Example
 
@@ -37,6 +34,7 @@ def get_random_special_characters(length=1):
     special_chars = ["$", "&", "%", "*", "§", "Ä", "Ö", "Ü", ";"]
     random_char_list = random.sample(special_chars, length)
     return "".join(random_char_list)
+
 
 def get_random_characters(length=1):
     chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
@@ -140,6 +138,7 @@ def sparql_query(graph, subject, predicate, object):
     df = sparql_results_to_df(qres)
     return df
 
+
 def sparql_update_predicate(graph, subject, predicate, object, target_predicate):
     graph.update(
         """DELETE {
@@ -221,13 +220,17 @@ def get_all_instance_ids(graph):
         WHERE {
             ?s ?p ?o .
             FILTER EXISTS { ?s rdf:type ?o2 }
-            OPTIONAL { ?s  rdf:type ?o }
+            OPTIONAL { ?s rdf:type ?o }
         }
         """,
         initNs={"rdf": RDF}
     )
     df = sparql_results_to_df(qres)
     return df
+
+
+def get_invalid_characters():
+    return "<>{}|\\^`\""
 
 
 def get_subject_only_entities_with_count(graph):

@@ -1,11 +1,8 @@
 import argparse
 
-from rdflib import Graph
-
-from framework.validators import ValidatrrValidator
-from framework.utils import read_config, get_shacl_from_ontology
 from framework.error_types import *
 from framework.logger import Logger
+from framework.validators import ValidatrrValidator
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -27,13 +24,16 @@ if __name__ == '__main__':
         g = g.parse(args.input)
     logger = Logger()
 
+    error_instantiations = {cat: {} for cat in config["errors"]}
+
     # alter graph
     for cat in config["errors"]:
         for error in config["errors"][cat]:
             if cat in error_mapping and error in error_mapping[cat]:
                 prob = config["errors"][cat][error]
                 print(f"Adding error type {error} in category {cat} with prob {prob}.")
-                g = error_mapping[cat][error](prob=prob, logger=logger).update_graph(g)
+                error_instantiations[cat][error] = error_mapping[cat][error](prob=prob, logger=logger)
+                g = error_instantiations[cat][error].update_graph(g)
             else:
                 print(f"Skipping unknown error type: {cat} {error}.")
 
@@ -56,6 +56,11 @@ if __name__ == '__main__':
 
     # save introduced errors
     logger.save_to_file()
+
+    # post-processing (for syntactic errors)
+    for cat in error_instantiations:
+        for error in error_instantiations[cat]:
+            error_instantiations[cat][error].post_process(args.output)
 
     if args.validation is not None:
         # choose validator class here

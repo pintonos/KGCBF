@@ -1,3 +1,5 @@
+import uuid
+
 import numpy as np
 import rdflib
 from rdflib.plugins.sparql.processor import prepareUpdate
@@ -15,6 +17,9 @@ class AbstractError:
         self.logger = None
 
     def update_graph(self, graph):
+        raise NotImplementedError
+
+    def post_process(self, file):
         raise NotImplementedError
 
     def __str__(self):
@@ -44,18 +49,72 @@ class SemanticSyntacticInstanceIdentifierError(AbstractError):
                 p = triple[1]["p"]
                 o = triple[1]["o"]
                 target = insert_str(s, chars, -1)
-                try: # int and float values bug in _is_valid_uri
+                try:  # int and float values bug in _is_valid_uri
                     valid_uri = rdflib.term._is_valid_uri(o)
                     if valid_uri:
-                        sparql_update_subject(graph, rdflib.URIRef(s), rdflib.URIRef(p), rdflib.URIRef(o), rdflib.URIRef(target))
+                        sparql_update_subject(graph, rdflib.URIRef(s), rdflib.URIRef(p), rdflib.URIRef(o),
+                                              rdflib.URIRef(target))
                     else:
-                        sparql_update_subject(graph, rdflib.URIRef(s), rdflib.URIRef(p), Literal(o), rdflib.URIRef(target))    
+                        sparql_update_subject(graph, rdflib.URIRef(s), rdflib.URIRef(p), Literal(o),
+                                              rdflib.URIRef(target))
                 except:
                     sparql_update_subject(graph, rdflib.URIRef(s), rdflib.URIRef(p), Literal(o), rdflib.URIRef(target))
 
                 self.logger.log_error('corrupt_instance_id', s, s, target, "semantic-syntactic")
 
         return graph
+
+    def post_process(self, file):
+        pass
+
+
+class SyntacticInstanceIdentifierError(AbstractError):
+    def __init__(self, prob, logger):
+        super(SyntacticInstanceIdentifierError, self).__init__()
+        self.name = "Syntactic Instance Identifier Violation"
+        self.prob = prob
+        self.logger = logger
+        self.replace_subjects = {}
+
+    def update_graph(self, graph):
+        subjects_only = get_all_instance_ids(graph)
+        amount = int(len(subjects_only) * self.prob)
+        sampled_rows = subjects_only.sample(amount)
+
+        for triple in sampled_rows.iterrows():
+            s = triple[1]["s"]
+            p = triple[1]["p"]
+            o = triple[1]["o"]
+            target = insert_str(s, ''.join(random.sample(get_invalid_characters(), random.randint(1, 3))),
+                                random.randint(-1, len(s)))
+            placeholder = f":placeholder-{uuid.uuid4()}"
+
+            try:  # int and float values bug in _is_valid_uri
+                valid_uri = rdflib.term._is_valid_uri(o)
+                if valid_uri:
+                    sparql_update_subject(graph, rdflib.URIRef(s), rdflib.URIRef(p), rdflib.URIRef(o),
+                                          rdflib.URIRef(placeholder))
+                else:
+                    sparql_update_subject(graph, rdflib.URIRef(s), rdflib.URIRef(p), Literal(o),
+                                          rdflib.URIRef(placeholder))
+            except:
+                sparql_update_subject(graph, rdflib.URIRef(s), rdflib.URIRef(p), Literal(o), rdflib.URIRef(placeholder))
+
+            self.replace_subjects[placeholder] = f"{target}"
+            self.logger.log_error('corrupt_instance_id', s, s, target, "syntactic")
+
+        return graph
+
+    def post_process(self, file):
+        with open(file, 'r') as f:
+            filedata = f.read()
+
+        for placeholder, subject in self.replace_subjects.items():
+            filedata = filedata.replace(placeholder, subject)
+
+        # Write the file out again
+        with open(file, 'w') as f:
+            f.write(filedata)
 
 
 class SemanticSyntacticPropertyNameError(AbstractError):
@@ -85,13 +144,18 @@ class SemanticSyntacticPropertyNameError(AbstractError):
                 graph.bind(prefix, original_ns, override=True)
 
                 if rdflib.term._is_valid_uri(o):
-                    sparql_update_predicate(graph, rdflib.URIRef(s), rdflib.URIRef(p), rdflib.URIRef(o), rdflib.URIRef(full_target))
+                    sparql_update_predicate(graph, rdflib.URIRef(s), rdflib.URIRef(p), rdflib.URIRef(o),
+                                            rdflib.URIRef(full_target))
                 else:
-                    sparql_update_predicate(graph, rdflib.URIRef(s), rdflib.URIRef(p), Literal(o), rdflib.URIRef(full_target))
+                    sparql_update_predicate(graph, rdflib.URIRef(s), rdflib.URIRef(p), Literal(o),
+                                            rdflib.URIRef(full_target))
 
                 self.logger.log_error('corrupt_property_name', s, p, str(full_target), "semantic-syntactic")
 
         return graph
+
+    def post_process(self, file):
+        pass
 
 
 class SemanticDomainTypeError(AbstractError):
@@ -126,6 +190,9 @@ class SemanticDomainTypeError(AbstractError):
 
         return graph
 
+    def post_process(self, file):
+        pass
+
 
 class SemanticRangeTypeError(AbstractError):
     def __init__(self, prob, logger):
@@ -159,14 +226,20 @@ class SemanticRangeTypeError(AbstractError):
 
         return graph
 
+    def post_process(self, file):
+        pass
+
 
 error_mapping = {
     "semantic": {
-            "DomainTypeError": SemanticDomainTypeError,
-            "RangeTypeError": SemanticRangeTypeError
-        },
+        "DomainTypeError": SemanticDomainTypeError,
+        "RangeTypeError": SemanticRangeTypeError
+    },
     "semantic-syntactic": {
-            "InstanceIdentifierError": SemanticSyntacticInstanceIdentifierError,
-            "PropertyNameError": SemanticSyntacticPropertyNameError
-        }
+        "InstanceIdentifierError": SemanticSyntacticInstanceIdentifierError,
+        "PropertyNameError": SemanticSyntacticPropertyNameError
+    },
+    "syntactic": {
+        "InstanceIdentifierError": SyntacticInstanceIdentifierError
+    }
 }
