@@ -2,7 +2,7 @@ import argparse
 
 from framework.error_types import *
 from framework.logger import Logger
-from framework.validators import ValidatrrValidator
+from framework.validators import ValidatrrValidator, ValidationMethodsDict
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -64,13 +64,9 @@ if __name__ == '__main__':
 
     if args.validation is not None:
         # choose validator class here
-        v = None
-        if args.validation == "validatrr":
-            # validate using validatrr
-            v = ValidatrrValidator(logger)
-        # validate over chosen validator class
-        if v:
+        if args.validation not in ValidationMethodsDict:
+            print(f"Validation method '{args.validation}' does not exist.")
+        else:
+            v = ValidationMethodsDict[args.validation](logger)
             v.validate_file(args.output)
             v.validate_errors()
-        else:
-            print(f"Validation method '{args.validation}' does not exist.")

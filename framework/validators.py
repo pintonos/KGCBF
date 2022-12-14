@@ -40,6 +40,22 @@ class ValidatrrValidator:
         generate_report(self.error_log, self.dictionary, g)
 
 
+class RdfDoctorValidator:
+    def __init__(self, error_log):
+        super().__init__()
+        self.name = "RDF-Doctor Validator"
+        self.error_log = error_log
+        self.dictionary = None
+
+    def validate_file(self, input_graph: str):
+        subprocess.run(
+            f"java -jar {sys.path[0]}/bin/RDFDoctor.jar -i {sys.path[0]}/{input_graph} -o {sys.path[0]}/data/validated.ttl",
+            shell=True)
+
+    def validate_errors(self):
+        pass
+
+
 def generate_report(error_log, validation_dict, graph):
     """
     Generates a validation report given the error log, dictionary, and validation graph
@@ -85,3 +101,9 @@ def generate_report(error_log, validation_dict, graph):
     with open("data/report.yaml", 'w') as outfile:
         yaml.dump(report, outfile, default_flow_style=False)
     print(yaml.dump(report, allow_unicode=True, default_flow_style=False))
+
+
+ValidationMethodsDict = {
+    "validatrr": ValidatrrValidator,
+    "rdfdoctor": RdfDoctorValidator
+}
