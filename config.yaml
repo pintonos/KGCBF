@@ -1,9 +1,9 @@
 errors:
 #  semantic:
-#    DomainTypeError: 0.2
-#    RangeTypeError: 0.2
-#  semantic-syntactic:
-#    InstanceIdentifierError: 0.1
-#    PropertyNameError: 0.1
+#    DomainTypeError: 0.2 # only as part of shacl
+#    RangeTypeError: 0.2 # only as part of shacl
+  local-syntactic:
+    InstanceIdentifierError: 0.1
+    PropertyNameError: 0.1
   syntactic:
     InstanceIdentifierError: 0.2

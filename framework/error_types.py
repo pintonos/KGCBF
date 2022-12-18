@@ -20,9 +20,9 @@ class AbstractError:
         )
 
 
-class SemanticSyntacticInstanceIdentifierError(AbstractError):
+class LocalSyntacticInstanceIdentifierError(AbstractError):
     def __init__(self, prob, logger):
-        super(SemanticSyntacticInstanceIdentifierError, self).__init__()
+        super(LocalSyntacticInstanceIdentifierError, self).__init__()
         self.name = "Semantic Syntactic Instance Identifier Violation"
         self.prob = prob
         self.logger = logger
@@ -42,7 +42,7 @@ class SemanticSyntacticInstanceIdentifierError(AbstractError):
                 o = triple[1]["o"]
                 target = insert_str(s, chars, -1)
                 update_subject(graph, s, p, o, target)
-                self.logger.log_error('corrupt_instance_id', s, s, target, "semantic-syntactic")
+                self.logger.log_error('corrupt_instance_id', s, s, target, "local-syntactic")
 
         return graph
 
@@ -88,9 +88,9 @@ class SyntacticInstanceIdentifierError(AbstractError):
             f.write(filedata)
 
 
-class SemanticSyntacticPropertyNameError(AbstractError):
+class LocalSyntacticPropertyNameError(AbstractError):
     def __init__(self, prob, logger):
-        super(SemanticSyntacticPropertyNameError, self).__init__()
+        super(LocalSyntacticPropertyNameError, self).__init__()
         self.name = "Semantic Syntactic Property Name Violation"
         self.prob = prob
         self.logger = logger
@@ -114,7 +114,7 @@ class SemanticSyntacticPropertyNameError(AbstractError):
                 full_target = original_ns[target]
                 graph.bind(prefix, original_ns, override=True)
                 update_predicate(graph, s, p, o, full_target)
-                self.logger.log_error('corrupt_property_name', s, p, str(full_target), "semantic-syntactic")
+                self.logger.log_error('corrupt_property_name', s, p, str(full_target), "local-syntactic")
 
         return graph
 
@@ -197,9 +197,9 @@ error_mapping = {
         "DomainTypeError": SemanticDomainTypeError,
         "RangeTypeError": SemanticRangeTypeError
     },
-    "semantic-syntactic": {
-        "InstanceIdentifierError": SemanticSyntacticInstanceIdentifierError,
-        "PropertyNameError": SemanticSyntacticPropertyNameError
+    "local-syntactic": {
+        "InstanceIdentifierError": LocalSyntacticInstanceIdentifierError,
+        "PropertyNameError": LocalSyntacticPropertyNameError
     },
     "syntactic": {
         "InstanceIdentifierError": SyntacticInstanceIdentifierError
