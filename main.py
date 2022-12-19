@@ -2,7 +2,7 @@ import argparse
 
 from framework.error_types import *
 from framework.logger import Logger
-from framework.validators import ValidatrrValidator, ValidationMethodsDict
+from framework.validators import ValidationMethodsDict
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

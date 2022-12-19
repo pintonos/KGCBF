@@ -71,21 +71,97 @@ class SyntacticInstanceIdentifierError(AbstractError):
                                 random.randint(-1, len(s)))
             placeholder = f":placeholder-{uuid.uuid4()}"
             update_subject(graph, s, p, o, placeholder)
-            self.replace_subjects[placeholder] = f"{target}"
+            self.replace_subjects[placeholder] = target
             self.logger.log_error('corrupt_instance_id', s, s, target, "syntactic")
 
         return graph
 
     def post_process(self, file):
         with open(file, 'r') as f:
-            filedata = f.read()
+            file_data = f.read()
 
         for placeholder, subject in self.replace_subjects.items():
-            filedata = filedata.replace(placeholder, subject)
+            file_data = file_data.replace(placeholder, subject)
 
         # Write the file out again
         with open(file, 'w') as f:
-            f.write(filedata)
+            f.write(file_data)
+
+
+class SyntacticTypeError(AbstractError):
+    def __init__(self, prob, logger):
+        super(SyntacticTypeError, self).__init__()
+        self.name = "Syntactic Type Violation"
+        self.prob = prob
+        self.logger = logger
+        self.replace_objects = {}
+
+    def update_graph(self, graph):
+        instances = get_all_instance_declarations(graph)
+        amount = int(len(instances) * self.prob)
+        sampled_rows = instances.sample(amount)
+
+        for triple in sampled_rows.iterrows():
+            s = triple[1]["s"]
+            p = triple[1]["p"]
+            o = triple[1]["o"]
+            target = insert_str(o, ''.join(random.sample(get_invalid_characters(), random.randint(1, 3))),
+                                random.randint(-1, len(o)))
+            placeholder = f":placeholder-{uuid.uuid4()}"
+            update_object(graph, s, p, o, placeholder)
+            self.replace_objects[placeholder] = target
+            self.logger.log_error('corrupt_type', s, o, target, "syntactic")
+
+        return graph
+
+    def post_process(self, file):
+        with open(file, 'r') as f:
+            file_data = f.read()
+
+        for placeholder, object in self.replace_objects.items():
+            file_data = file_data.replace(placeholder, object)
+
+        # Write the file out again
+        with open(file, 'w') as f:
+            f.write(file_data)
+
+
+class SyntacticPropertyError(AbstractError):
+    def __init__(self, prob, logger):
+        super(SyntacticPropertyError, self).__init__()
+        self.name = "Syntactic Property Value Violation"
+        self.prob = prob
+        self.logger = logger
+        self.replace_property = {}
+
+    def update_graph(self, graph):
+        instances = get_all_instance_ids(graph)
+        amount = int(len(instances) * self.prob)
+        sampled_rows = instances.sample(amount)
+
+        for triple in sampled_rows.iterrows():
+            s = triple[1]["s"]
+            p = triple[1]["p"]
+            o = triple[1]["o"]
+            target = insert_str(p, ''.join(random.sample(get_invalid_characters(), random.randint(1, 3))),
+                                random.randint(-1, len(p)))
+            placeholder = f"placeholder-{uuid.uuid4()}"
+            update_predicate(graph, s, p, o, placeholder)
+            self.replace_property[placeholder] = f"{target}"
+            self.logger.log_error('corrupt_property', s, p, target, "syntactic")
+
+        return graph
+
+    def post_process(self, file):
+        with open(file, 'r') as f:
+            file_data = f.read()
+
+        for placeholder, property in self.replace_property.items():
+            file_data = file_data.replace(placeholder, property)
+
+        # Write the file out again
+        with open(file, 'w') as f:
+            f.write(file_data)
 
 
 class LocalSyntacticPropertyNameError(AbstractError):
@@ -202,6 +278,8 @@ error_mapping = {
         "PropertyNameError": LocalSyntacticPropertyNameError
     },
     "syntactic": {
-        "InstanceIdentifierError": SyntacticInstanceIdentifierError
+        "InstanceIdentifierError": SyntacticInstanceIdentifierError,
+        "TypeError": SyntacticTypeError,
+        "PropertyError": SyntacticPropertyError
     }
 }

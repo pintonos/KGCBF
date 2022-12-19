@@ -143,10 +143,11 @@ def sparql_query(graph, subject, predicate, object):
 def update_predicate(graph, subject, predicate, object, target_predicate):
     if rdflib.term._is_valid_uri(object):
         __sparql_update_predicate(graph, rdflib.URIRef(subject), rdflib.URIRef(predicate), rdflib.URIRef(object),
-                                rdflib.URIRef(target_predicate))
+                                  rdflib.URIRef(target_predicate))
     else:
         __sparql_update_predicate(graph, rdflib.URIRef(subject), rdflib.URIRef(predicate), Literal(object),
-                                rdflib.URIRef(target_predicate))
+                                  rdflib.URIRef(target_predicate))
+
 
 def __sparql_update_predicate(graph, subject, predicate, object, target_predicate):
     graph.update(
@@ -249,6 +250,21 @@ def get_all_instance_ids(graph):
             ?s ?p ?o .
             FILTER EXISTS { ?s rdf:type ?o2 }
             OPTIONAL { ?s rdf:type ?o }
+        }
+        """,
+        initNs={"rdf": RDF}
+    )
+    df = sparql_results_to_df(qres)
+    return df
+
+
+def get_all_instance_declarations(graph):
+    qres = graph.query(
+        """
+        SELECT ?s ?p ?o
+        WHERE {
+            ?s ?p ?o .
+            FILTER(?p = rdf:type)
         }
         """,
         initNs={"rdf": RDF}
