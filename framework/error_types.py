@@ -164,10 +164,10 @@ class SyntacticPropertyError(AbstractError):
             f.write(file_data)
 
 
-class LocalSyntacticPropertyNameError(AbstractError):
+class LocalSyntacticPropertyError(AbstractError):
     def __init__(self, prob, logger):
-        super(LocalSyntacticPropertyNameError, self).__init__()
-        self.name = "Semantic Syntactic Property Name Violation"
+        super(LocalSyntacticPropertyError, self).__init__()
+        self.name = "Local Syntactic Property Value Violation"
         self.prob = prob
         self.logger = logger
 
@@ -190,7 +190,7 @@ class LocalSyntacticPropertyNameError(AbstractError):
                 full_target = original_ns[target]
                 graph.bind(prefix, original_ns, override=True)
                 update_predicate(graph, s, p, o, full_target)
-                self.logger.log_error('corrupt_property_name', s, p, str(full_target), "local-syntactic")
+                self.logger.log_error('corrupt_property', s, p, str(full_target), "local-syntactic")
 
         return graph
 
@@ -275,7 +275,7 @@ error_mapping = {
     },
     "local-syntactic": {
         "InstanceIdentifierError": LocalSyntacticInstanceIdentifierError,
-        "PropertyNameError": LocalSyntacticPropertyNameError
+        "PropertyError": LocalSyntacticPropertyError
     },
     "syntactic": {
         "InstanceIdentifierError": SyntacticInstanceIdentifierError,
