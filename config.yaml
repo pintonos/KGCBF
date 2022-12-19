@@ -2,8 +2,10 @@ errors:
 #  semantic:
 #    DomainTypeError: 0.2 # only as part of shacl
 #    RangeTypeError: 0.2 # only as part of shacl
-  local-syntactic:
-    InstanceIdentifierError: 0.1
-    PropertyNameError: 0.1
+#  local-syntactic:
+#    InstanceIdentifierError: 0.1
+#    PropertyNameError: 0.1
   syntactic:
-    InstanceIdentifierError: 0.2
+#   InstanceIdentifierError: 0.2
+#    TypeError: 0.2
+    PropertyError: 0.2

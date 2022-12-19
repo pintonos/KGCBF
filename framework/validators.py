@@ -49,8 +49,8 @@ class RdfDoctorValidator:
 
     def validate_file(self, input_graph: str):
         subprocess.run(
-            f"java -jar {sys.path[0]}/bin/RDFDoctor.jar -i {sys.path[0]}/{input_graph} -o {sys.path[0]}/data/validated.ttl",
-            shell=True)
+            f"java -jar {sys.path[0]}/bin/RDFDoctor.jar -i {sys.path[0]}/{input_graph}",
+            shell=True, cwd=f"{sys.path[0]}/data")
 
     def validate_errors(self):
         pass

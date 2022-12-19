@@ -44,7 +44,7 @@ if __name__ == '__main__':
     elif args.shacl:
         get_shacl_from_ontology(args.ontology)
         shacl_graph = Graph()
-        shacl_graph.parse("data/ontology_shacl.ttl")
+        shacl_graph.parse("ontology_shacl.ttl")
         g = g + shacl_graph
     # add shapes graph to output graph
     elif args.ontology:
