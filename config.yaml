@@ -1,12 +1,14 @@
 errors:
-#  semantic:
-#    DomainTypeError: 0.2
-#    RangeTypeError: 0.2
-  local-syntactic:
-    TypeError: 0.1
-#    InstanceIdentifierError: 0.1
-    PropertyError: 0.1
-#  syntactic:
-#   InstanceIdentifierError: 0.2
-#   TypeError: 0.2
-#    PropertyError: 0.2
+  semantic:
+    DomainTypeError: 0.1
+    RangeTypeError: 0.1
+#    InstanceAssertionError: 0.1
+#    PropertyAssertionError: 0.1
+ # local-syntactic:
+ #   TypeError: 0.1
+ #   InstanceIdentifierError: 0.1
+ #   PropertyError: 0.1
+  #syntactic:
+  #  InstanceIdentifierError: 0.2
+  #  TypeError: 0.2
+  #  PropertyError: 0.2

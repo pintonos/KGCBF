@@ -12,12 +12,12 @@ class Logger():
             self.log_dict[error_type] = []
         self.log_dict[error_type].append({
             "category": error_category,
-            "original_triple": {
+            "original": {
                 "s": original_triple['s'],
                 "p": original_triple['p'],
                 "o": original_triple['o']
             }, 
-            "corrupted_triple": {
+            "corrupted": {
                 "s": corrupted_triple['s'],
                 "p": corrupted_triple['p'],
                 "o": corrupted_triple['o']

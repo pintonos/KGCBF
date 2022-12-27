@@ -84,8 +84,8 @@ def generate_report(error_log, validation_dict, graph):
                 report["errors_not_detected"].append({error_type: error})
             else:
                 query = validation_dict[error_type]["pattern"] \
-                    .replace("$subject$", f"<{error['subject']}>") \
-                    .replace("$original$", f"<{error['original']}>")
+                    .replace("$subject$", f"<{error['corrupted']['s']}>") \
+                    .replace("$original$", f"<{error['original']['o']}>")
                 if len(graph.query(query)) > 0:
                     matching += 1
                     report["categories"][error["category"]]["detected"] += 1

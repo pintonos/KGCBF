@@ -330,10 +330,73 @@ class SemanticRangeTypeError(AbstractError):
         pass
 
 
+class SemanticInstanceAssertionError(AbstractError):
+    def __init__(self, prob, logger):
+        super(SemanticInstanceAssertionError, self).__init__()
+        self.name = "Semantic Instance Assertion Error"
+        self.prob = prob
+        self.logger = logger
+
+    def update_graph(self, graph):
+        subjects_only = get_all_instance_declarations(graph)
+        amount = int(len(subjects_only) * self.prob)
+        sampled_rows = subjects_only.sample(amount)
+
+        for triple in sampled_rows.iterrows():
+            s = triple[1]["s"]
+            p = triple[1]["p"]
+            o = triple[1]["o"]
+            corr_o = str(random.choice(dir(SDO)))
+            update_object(graph, s, RDF.type, o, corr_o)  # random SDO type for now
+
+            org_triple = {"s": s, "p": str(RDF.type), "o": o}
+            corr_triple = {"s": s, "p": str(RDF.type), "o": corr_o}
+
+            org_triple = {"s": s, "p": p, "o": o}
+            corr_triple = {"s": s, "p": p, "o": corr_o}
+            self.logger.log_error('corrupt_instance_assertion', "semantic", org_triple, corr_triple)
+
+        return graph
+
+    def post_process(self, file):
+        pass
+
+
+class SemanticPropertyAssertionError(AbstractError):
+    def __init__(self, prob, logger):
+        super(SemanticPropertyAssertionError, self).__init__()
+        self.name = "Semantic Property Assertion Error"
+        self.prob = prob
+        self.logger = logger
+
+    def update_graph(self, graph):
+        triple_property_only = get_properties(graph)
+        amount = int(len(triple_property_only) * self.prob)
+        sampled_triples = triple_property_only.sample(n=amount)
+
+        for triple in sampled_triples.iterrows():
+            s = triple[1]["s"]
+            p = triple[1]["p"]
+            o = triple[1]["o"]
+            corr_p = str(random.choice(dir(SDO))) # TODO only lowercase refs?
+            update_predicate(graph, s, p, o, corr_p) # random SDO type for now
+
+            org_triple = {"s": s, "p": p, "o": o}
+            corr_triple = {"s": s, "p": corr_p, "o": o}
+            self.logger.log_error('corrupt_property_assertion', "semantic", org_triple, corr_triple)
+
+        return graph
+
+    def post_process(self, file):
+        pass
+
+
 error_mapping = {
     "semantic": {
         "DomainTypeError": SemanticDomainTypeError,
-        "RangeTypeError": SemanticRangeTypeError
+        "RangeTypeError": SemanticRangeTypeError,
+        "InstanceAssertionError": SemanticInstanceAssertionError,
+        "PropertyAssertionError": SemanticPropertyAssertionError
     },
     "local-syntactic": {
         "InstanceIdentifierError": LocalSyntacticInstanceIdentifierError,
