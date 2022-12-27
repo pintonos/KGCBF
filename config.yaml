@@ -3,9 +3,10 @@ errors:
 #    DomainTypeError: 0.2
 #    RangeTypeError: 0.2
   local-syntactic:
+    TypeError: 0.1
 #    InstanceIdentifierError: 0.1
     PropertyError: 0.1
-  syntactic:
+#  syntactic:
 #   InstanceIdentifierError: 0.2
 #   TypeError: 0.2
-    PropertyError: 0.2
+#    PropertyError: 0.2

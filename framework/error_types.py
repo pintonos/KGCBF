@@ -20,6 +20,45 @@ class AbstractError:
         )
 
 
+class LocalSyntacticTypeError(AbstractError):
+    def __init__(self, prob, logger):
+        super(LocalSyntacticTypeError, self).__init__()
+        self.name = "Local Syntactic Type Violation"
+        self.prob = prob
+        self.logger = logger
+        self.replace_objects = {}
+
+    def update_graph(self, graph):
+        instances = get_all_instance_declarations(graph)
+        amount = int(len(instances) * self.prob)
+        sampled_rows = instances.sample(amount)
+
+        for triple in sampled_rows.iterrows():
+            s = triple[1]["s"]
+            p = triple[1]["p"]
+            o = triple[1]["o"]
+            original_ns = get_namespace_from_uri(graph, o)
+
+            if original_ns is not None:
+                chars = get_random_characters(length=5)
+                prefix, full_ns, target = graph.compute_qname(URIRef(o))
+                target = insert_str(target, chars, -1)
+                original_ns.__annotations__[target] = URIRef
+                full_target = original_ns[target]
+                graph.bind(prefix, original_ns, override=True)
+                update_object(graph, s, p, o, full_target)
+
+                org_triple = {"s": s, "p": p, "o": o}
+                corr_triple = {"s": s, "p": p, "o": str(full_target)}
+                self.logger.log_error('corrupt_type', "local-syntactic", org_triple, corr_triple)
+
+        return graph
+
+    def post_process(self, file):
+        pass
+
+
+
 class LocalSyntacticInstanceIdentifierError(AbstractError):
     def __init__(self, prob, logger):
         super(LocalSyntacticInstanceIdentifierError, self).__init__()
@@ -42,7 +81,10 @@ class LocalSyntacticInstanceIdentifierError(AbstractError):
                 o = triple[1]["o"]
                 target = insert_str(s, chars, -1)
                 update_subject(graph, s, p, o, target)
-                self.logger.log_error('corrupt_instance_id', s, s, target, "local-syntactic")
+
+                org_triple = {"s": s, "p": p, "o": o}
+                corr_triple = {"s": target, "p": p, "o": o}
+                self.logger.log_error('corrupt_instance_id', "local-syntactic", org_triple, corr_triple)
 
         return graph
 
@@ -72,7 +114,10 @@ class SyntacticInstanceIdentifierError(AbstractError):
             placeholder = f":placeholder-{uuid.uuid4()}"
             update_subject(graph, s, p, o, placeholder)
             self.replace_subjects[placeholder] = target
-            self.logger.log_error('corrupt_instance_id', s, s, target, "syntactic")
+
+            org_triple = {"s": s, "p": p, "o": o}
+            corr_triple = {"s": target, "p": p, "o": o}
+            self.logger.log_error('corrupt_instance_id', "syntactic", org_triple, corr_triple)
 
         return graph
 
@@ -110,7 +155,10 @@ class SyntacticTypeError(AbstractError):
             placeholder = f":placeholder-{uuid.uuid4()}"
             update_object(graph, s, p, o, placeholder)
             self.replace_objects[placeholder] = target
-            self.logger.log_error('corrupt_type', s, o, target, "syntactic")
+
+            org_triple = {"s": s, "p": p, "o": o}
+            corr_triple = {"s": s, "p": p, "o": target}
+            self.logger.log_error('corrupt_type', "syntactic", org_triple, corr_triple)
 
         return graph
 
@@ -148,7 +196,10 @@ class SyntacticPropertyError(AbstractError):
             placeholder = f"placeholder-{uuid.uuid4()}"
             update_predicate(graph, s, p, o, placeholder)
             self.replace_property[placeholder] = f"{target}"
-            self.logger.log_error('corrupt_property', s, p, target, "syntactic")
+
+            org_triple = {"s": s, "p": p, "o": o}
+            corr_triple = {"s": s, "p": target, "o": o}
+            self.logger.log_error('corrupt_property', "syntactic", org_triple, corr_triple)
 
         return graph
 
@@ -190,7 +241,10 @@ class LocalSyntacticPropertyError(AbstractError):
                 full_target = original_ns[target]
                 graph.bind(prefix, original_ns, override=True)
                 update_predicate(graph, s, p, o, full_target)
-                self.logger.log_error('corrupt_property', s, p, str(full_target), "local-syntactic")
+
+                org_triple = {"s": s, "p": p, "o": o}
+                corr_triple = {"s": s, "p": str(full_target), "o": o}
+                self.logger.log_error('corrupt_property', "local-syntactic", org_triple, corr_triple)
 
         return graph
 
@@ -223,7 +277,11 @@ class SemanticDomainTypeError(AbstractError):
             o = greedy_row["o"]
             corr_o = str(random.choice(dir(SDO)))
             update_object(graph, s, RDF.type, o, corr_o)  # random SDO type for now
-            self.logger.log_error('corrupt_domain', s, o, corr_o, "semantic")
+
+            org_triple = {"s": s, "p": str(RDF.type), "o": o}
+            corr_triple = {"s": s, "p": str(RDF.type), "o": corr_o}
+            self.logger.log_error('corrupt_domain', "semantic", org_triple, corr_triple)
+
             corrupted_pct += greedy_row["count"]
             subjects_only = subjects_only.drop(subjects_only.index[greedy_idx])
 
@@ -258,7 +316,11 @@ class SemanticRangeTypeError(AbstractError):
             o = greedy_row["o"]
             corr_o = str(random.choice(dir(SDO)))
             update_object(graph, s, RDF.type, o, corr_o)  # random SDO type for now
-            self.logger.log_error('corrupt_range', s, o, corr_o, "semantic")
+
+            org_triple = {"s": s, "p": str(RDF.type), "o": o}
+            corr_triple = {"s": s, "p": str(RDF.type), "o": corr_o}
+            self.logger.log_error('corrupt_range', "semantic", org_triple, corr_triple)
+
             corrupted_pct += greedy_row["count"]
             objects_only = objects_only.drop(objects_only.index[greedy_idx])
 
@@ -275,6 +337,7 @@ error_mapping = {
     },
     "local-syntactic": {
         "InstanceIdentifierError": LocalSyntacticInstanceIdentifierError,
+        "TypeError": LocalSyntacticTypeError,
         "PropertyError": LocalSyntacticPropertyError
     },
     "syntactic": {
