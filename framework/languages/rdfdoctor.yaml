@@ -1,0 +1,7 @@
+type: regex
+corrupt_property:
+  pattern: "token recognition error at: .*\n    $corrupt.property$"
+corrupt_assertion:
+  pattern: "token recognition error at: .*\n    .* $corrupt.object$"
+total_errors:
+  pattern: "Error[1-9]*"

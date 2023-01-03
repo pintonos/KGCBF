@@ -1,3 +1,4 @@
+type: graph
 corrupt_range:
   pattern: "SELECT ?s
             WHERE {
