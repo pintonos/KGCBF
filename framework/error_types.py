@@ -215,7 +215,45 @@ class SyntacticPropertyError(AbstractError):
             f.write(file_data)
 
 
-class LocalSyntacticPropertyError(AbstractError):
+class SyntacticPropertyAssertionError(AbstractError):
+    def __init__(self, prob, logger):
+        super(SyntacticPropertyAssertionError, self).__init__()
+        self.name = "Syntactic Property Assertion Violation"
+        self.prob = prob
+        self.logger = logger
+        self.replace_objects = {}
+
+    def update_graph(self, graph):
+        assertions = get_properties(graph)
+        amount = int(len(assertions) * self.prob)
+        sampled_rows = assertions.sample(amount)
+
+        for triple in sampled_rows.iterrows():
+            s = triple[1]["s"]
+            p = triple[1]["p"]
+            o = triple[1]["o"]
+            target = insert_str(o, ''.join(random.sample(get_invalid_characters(), random.randint(1, 3))),
+                                random.randint(-1, len(o)))
+            placeholder = f":placeholder-{uuid.uuid4()}"
+            update_object(graph, s, p, o, placeholder)
+            self.replace_objects[placeholder] = target
+            self.logger.log_error('corrupt_assertion', s, o, target, "syntactic")
+
+        return graph
+
+    def post_process(self, file):
+        with open(file, 'r') as f:
+            file_data = f.read()
+
+        for placeholder, object in self.replace_objects.items():
+            file_data = file_data.replace(placeholder, object)
+
+        # Write the file out again
+        with open(file, 'w') as f:
+            f.write(file_data)
+
+
+class LocalSyntacticPropertyNameError(AbstractError):
     def __init__(self, prob, logger):
         super(LocalSyntacticPropertyError, self).__init__()
         self.name = "Local Syntactic Property Value Violation"
@@ -406,6 +444,7 @@ error_mapping = {
     "syntactic": {
         "InstanceIdentifierError": SyntacticInstanceIdentifierError,
         "TypeError": SyntacticTypeError,
-        "PropertyError": SyntacticPropertyError
+        "PropertyNameError": SyntacticPropertyError,
+        "PropertyAssertionError": SyntacticPropertyAssertionError
     }
 }
