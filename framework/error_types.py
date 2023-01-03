@@ -237,7 +237,9 @@ class SyntacticPropertyAssertionError(AbstractError):
             placeholder = f":placeholder-{uuid.uuid4()}"
             update_object(graph, s, p, o, placeholder)
             self.replace_objects[placeholder] = target
-            self.logger.log_error('corrupt_assertion', s, o, target, "syntactic")
+            org_triple = {"s": s, "p": p, "o": o}
+            corr_triple = {"s": s, "p": p, "o": str(target)}
+            self.logger.log_error('corrupt_assertion', "syntactic", org_triple, corr_triple)
 
         return graph
 
@@ -255,7 +257,7 @@ class SyntacticPropertyAssertionError(AbstractError):
 
 class LocalSyntacticPropertyNameError(AbstractError):
     def __init__(self, prob, logger):
-        super(LocalSyntacticPropertyError, self).__init__()
+        super(LocalSyntacticPropertyNameError, self).__init__()
         self.name = "Local Syntactic Property Value Violation"
         self.prob = prob
         self.logger = logger
@@ -439,7 +441,7 @@ error_mapping = {
     "local-syntactic": {
         "InstanceIdentifierError": LocalSyntacticInstanceIdentifierError,
         "TypeError": LocalSyntacticTypeError,
-        "PropertyError": LocalSyntacticPropertyError
+        "PropertyError": LocalSyntacticPropertyNameError
     },
     "syntactic": {
         "InstanceIdentifierError": SyntacticInstanceIdentifierError,
