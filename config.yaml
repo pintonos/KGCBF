@@ -1,14 +1,14 @@
 errors:
-#  semantic:
-#    DomainTypeError: 0.2 # only as part of shacl
-#    RangeTypeError: 0.2 # only as part of shacl
-#    InstanceAssertionError: 0.1
-#    PropertyAssertionError: 0.1
-#  local-syntactic:
-#    InstanceIdentifierError: 0.1
-#    PropertyNameError: 0.1
-#    TypeError: 0.1
-#  syntactic:
+ semantic:
+#   DomainTypeError: 0.2 # only as part of shacl
+   RangeTypeError: 0.2 # only as part of shacl
+#   InstanceAssertionError: 0.1
+#   PropertyAssertionError: 0.1
+# local-syntactic:
+#   InstanceIdentifierError: 0.1
+#   PropertyNameError: 0.1
+#   TypeError: 0.1
+# syntactic:
 #   InstanceIdentifierError: 0.2
 #   TypeError: 0.2
 #   PropertyNameError: 0.2

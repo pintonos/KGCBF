@@ -1,5 +1,6 @@
 import subprocess
 import sys
+import re
 
 import yaml
 from rdflib import Graph
@@ -33,11 +34,7 @@ class ValidatrrValidator:
             shell=True)
 
     def validate_errors(self):
-        # load validated graph
-        g = Graph()
-        g = g.parse("data/validated.ttl")
-        # generate report
-        generate_report(self.error_log, self.dictionary, g)
+        generate_approach_report(self.error_log, self.dictionary, "data/validated.ttl")
 
 
 class RdfDoctorValidator:
@@ -45,7 +42,7 @@ class RdfDoctorValidator:
         super().__init__()
         self.name = "RDF-Doctor Validator"
         self.error_log = error_log
-        self.dictionary = None
+        self.dictionary = read_config("./framework/languages/rdfdoctor.yaml")
 
     def validate_file(self, input_graph: str):
         subprocess.run(
@@ -53,26 +50,37 @@ class RdfDoctorValidator:
             shell=True, cwd=f"{sys.path[0]}/data")
 
     def validate_errors(self):
-        pass
+        generate_approach_report(self.error_log, self.dictionary, "data/output.error")
 
 
-def generate_report(error_log, validation_dict, graph):
-    """
-    Generates a validation report given the error log, dictionary, and validation graph
-    """
-    # extract logged dictionary
+def generate_approach_report(error_log, validation_dict, validation_report_location: str):
+    # extract error dictionary from error log
     logged_errors = error_log.log_dict
-    # get total number of detected errors, and total number of introduced errors
-    total_error_pattern = validation_dict["total_errors"]["pattern"]
-    detected = int(next(iter(graph.query(total_error_pattern)))["count"])
-    introduced = len([err for cat in logged_errors for err in logged_errors[cat]])
-    matching = 0
-    # basic report structure
+    # set up basic report structure
     report = {
         'errors_detected': [],
         'errors_not_detected': [],
         'categories': {}
     }
+    # get validation report source depending on type
+    if validation_dict["type"] == "graph":
+        data_source = Graph()
+        data_source = data_source.parse(validation_report_location)
+        query_function = matching_graph_count
+    elif validation_dict["type"] == "regex":
+        with open(validation_report_location, 'r') as f:
+            data_source = f.read()
+        query_function = matching_regex_count
+    else:
+        print("Skipping approach report generation due to unknown parse type (Valid: graph/regex)")
+        return
+
+    # get total number of detected errors, and total number of introduced errors
+    total_error_pattern = validation_dict["total_errors"]["pattern"]
+    detected = query_function(data_source, total_error_pattern)
+    introduced = len([err for cat in logged_errors for err in logged_errors[cat]])
+    matching = 0
+
     for error_type in logged_errors:
         for error in logged_errors[error_type]:
             if error["category"] not in report["categories"]:
@@ -83,10 +91,9 @@ def generate_report(error_log, validation_dict, graph):
                 print(f"Undefined error type: {error_type}")
                 report["errors_not_detected"].append({error_type: error})
             else:
-                query = validation_dict[error_type]["pattern"] \
-                    .replace("$subject$", f"<{error['corrupted']['s']}>") \
-                    .replace("$original$", f"<{error['original']['o']}>")
-                if len(graph.query(query)) > 0:
+                query = prepare_query_statement(validation_dict[error_type]["pattern"], error,
+                                                regex_escape=(validation_dict["type"] == "regex"))
+                if query_function(data_source, query) > 0:
                     matching += 1
                     report["categories"][error["category"]]["detected"] += 1
                     report["errors_detected"].append({error_type: error})
@@ -103,7 +110,29 @@ def generate_report(error_log, validation_dict, graph):
     print(yaml.dump(report, allow_unicode=True, default_flow_style=False))
 
 
+def matching_regex_count(content: str, query: str) -> int:
+    return len(re.findall(query, content))
+
+
+def matching_graph_count(graph: Graph, query: str) -> int:
+    return len(graph.query(query))
+
+
 ValidationMethodsDict = {
     "validatrr": ValidatrrValidator,
     "rdfdoctor": RdfDoctorValidator
 }
+
+
+def prepare_query_statement(query: str, error: dict, regex_escape: bool) -> str:
+    query = query.replace("$original.subject$", encode_uri(error['original']['s'], regex_escape))
+    query = query.replace("$original.property$", encode_uri(error['original']['p'], regex_escape))
+    query = query.replace("$original.object$", encode_uri(error['original']['o'], regex_escape))
+    query = query.replace("$corrupt.subject$", encode_uri(error['corrupted']['s'], regex_escape))
+    query = query.replace("$corrupt.property$", encode_uri(error['corrupted']['p'], regex_escape))
+    query = query.replace("$corrupt.object$", encode_uri(error['corrupted']['o'], regex_escape))
+    return query
+
+
+def encode_uri(uri: str, regex_escape: bool):
+    return f"<{uri}>" if not regex_escape else re.escape(f"<{uri}>")
