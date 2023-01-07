@@ -91,9 +91,13 @@ def generate_approach_report(error_log, validation_dict, validation_report_locat
                 print(f"Undefined error type: {error_type}")
                 report["errors_not_detected"].append({error_type: error})
             else:
-                query = prepare_query_statement(validation_dict[error_type]["pattern"], error,
-                                                regex_escape=(validation_dict["type"] == "regex"))
-                if query_function(data_source, query) > 0:
+                error_sum = 0
+                for pattern in validation_dict[error_type]["patterns"]:
+                    query = prepare_query_statement(pattern, error,
+                                                    regex_escape=(validation_dict["type"] == "regex"))
+                    error_sum += query_function(data_source, query)
+
+                if error_sum > 0:
                     matching += 1
                     report["categories"][error["category"]]["detected"] += 1
                     report["errors_detected"].append({error_type: error})

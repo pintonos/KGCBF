@@ -1,7 +1,12 @@
 type: "regex"
+corrupt_instance_id:
+  patterns:
+    - "Error[1-9]+.*\n.*$corrupt.subject$"
 corrupt_property:
-  pattern: "token recognition error at: .+\n(    )?(.*)?$corrupt.property$"
+  patterns:
+    - "Error[1-9]+.*\n.*$corrupt.property$"
 corrupt_assertion:
-  pattern: "token recognition error at: .*\n(    )?.*( .*)? $corrupt.object$"
+  patterns:
+    - "Error[1-9]+.*\n.*$corrupt.object$"
 total_errors:
-  pattern: "Error[1-9]*"
+  pattern: "Error[1-9]+"

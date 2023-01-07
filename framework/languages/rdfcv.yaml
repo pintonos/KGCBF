@@ -1,12 +1,13 @@
 type: "graph"
 corrupt_range:
-  pattern: "SELECT ?s
-            WHERE {
-              ?s a :constraintViolation .
-              ?s a :NonLiteral .
-              ?s :object $corrupt.subject$ .
-              ?s :expectedRange $original.object$ .
-            }"
+  patterns:
+    - "SELECT ?s
+        WHERE {
+          ?s a :constraintViolation .
+          ?s a :NonLiteral .
+          ?s :object $corrupt.subject$ .
+          ?s :expectedRange $original.object$ .
+        }"
 total_errors:
   pattern: "SELECT ?s
             WHERE {
