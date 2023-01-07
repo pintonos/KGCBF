@@ -34,7 +34,7 @@ class ValidatrrValidator:
             shell=True)
 
     def validate_errors(self):
-        generate_approach_report(self.error_log, self.dictionary, "data/validated.ttl")
+        generate_approach_report(self.name, self.error_log, self.dictionary, "data/validated.ttl")
 
 
 class RdfDoctorValidator:
@@ -50,10 +50,10 @@ class RdfDoctorValidator:
             shell=True, cwd=f"{sys.path[0]}/data")
 
     def validate_errors(self):
-        generate_approach_report(self.error_log, self.dictionary, "data/output.error")
+        generate_approach_report(self.name, self.error_log, self.dictionary, "data/output.error")
 
 
-def generate_approach_report(error_log, validation_dict, validation_report_location: str):
+def generate_approach_report(validator_name, error_log, validation_dict, validation_report_location: str):
     # extract error dictionary from error log
     logged_errors = error_log.log_dict
     # set up basic report structure
@@ -80,6 +80,7 @@ def generate_approach_report(error_log, validation_dict, validation_report_locat
     detected = query_function(data_source, total_error_pattern)
     introduced = len([err for cat in logged_errors for err in logged_errors[cat]])
     matching = 0
+    explained = 0
 
     for error_type in logged_errors:
         for error in logged_errors[error_type]:
@@ -99,16 +100,22 @@ def generate_approach_report(error_log, validation_dict, validation_report_locat
 
                 if error_sum > 0:
                     matching += 1
+                    explained += error_sum
                     report["categories"][error["category"]]["detected"] += 1
                     report["errors_detected"].append({error_type: error})
                 else:
                     report["errors_not_detected"].append({error_type: error})
-    report["precision"] = round(matching / detected if detected > 0 else 0, 2)
-    report["recall"] = round(matching / introduced, 2)
-    if report["precision"] + report["recall"] > 0:
-        report["f1"] = round(2 * report["precision"] * report["recall"] / (report["precision"] + report["recall"]), 2)
+    report["_validator_errors"] = detected
+    report["_validator"] = validator_name
+    report["_explained_errors"] = explained
+    report["_avg_errors_per_introduced_corruption"] = round(explained / matching if matching > 0 else 1, 2)
+    report["_estimated_unexplained_errors"] = round((detected - explained) / report["_avg_errors_per_introduced_corruption"], 2)
+    report["_estimated_precision"] = round(matching / (matching + report["_estimated_unexplained_errors"]) if matching + report["_estimated_unexplained_errors"] > 0 else 0, 2)
+    report["_recall"] = round(matching / introduced, 2)
+    if report["_estimated_precision"] + report["_recall"] > 0:
+        report["_estimated_f1"] = round(2 * report["_estimated_precision"] * report["_recall"] / (report["_estimated_precision"] + report["_recall"]), 2)
     else:
-        report["f1"] = 0.0
+        report["_estimated_f1"] = 0.0
     with open("data/report.yaml", 'w') as outfile:
         yaml.dump(report, outfile, default_flow_style=False)
     print(yaml.dump(report, allow_unicode=True, default_flow_style=False))
