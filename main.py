@@ -3,6 +3,8 @@ import argparse
 from framework.error_types import *
 from framework.logger import Logger
 from framework.validators import ValidationMethodsDict
+from framework.utils import extract_subgraph
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -12,6 +14,7 @@ if __name__ == '__main__':
     parser.add_argument('--config', '-c', type=str, default='config.yaml')
     parser.add_argument('--validation', '-v', type=str)
     parser.add_argument('--shacl', '-s', action='store_true')
+    parser.add_argument('--subgraph', '-sub', type=float, default=0.0)
     args, _ = parser.parse_known_args()
     print(args)
 
@@ -22,6 +25,8 @@ if __name__ == '__main__':
 
     if args.input is not None:
         g = g.parse(args.input)
+        if 1.0 > args.subgraph > 0.0:
+            g = extract_subgraph(g, size=args.subgraph, levels=1)
     logger = Logger()
 
     error_instantiations = {cat: {} for cat in config["errors"]}

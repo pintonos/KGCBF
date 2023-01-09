@@ -343,3 +343,73 @@ def get_properties(graph):
     )
     df = sparql_results_to_df(qres)
     return df
+
+
+def build_level_query(levels=1):
+    assert levels <= 3, "Sampling a subgraph with levels > 3 is not supported."
+    construct_str = ""
+    where_str = ""
+    for l in range(1, levels+1):
+        construct_str = construct_str + f"""
+            ?s{l} ?p{l} ?o{l} .
+            ?s{l}s ?p{l}s ?s{l} ."""
+        if l == 1:
+            where_str = where_str + f"""
+                {{?s{l} ?p{l} ?o{l} FILTER (?s1 = ?init_instance) .}}
+                UNION
+                {{?s{l}b ?p{l}b ?s{l} FILTER (?s1 = ?init_instance) .}}
+                BIND (?o{l} as ?s{l+1}) ."""
+        else:
+            where_str = where_str + f"""
+                ?s{l} ?p{l} ?o{l} .
+                ?s{l}b ?p{l}b ?s{l} .
+                BIND (?o{l} as ?s{l+1}) ."""
+
+    query_str = """
+        CONSTRUCT {""" + construct_str + """
+        }
+        WHERE {""" + where_str + """
+        }
+    """
+    #print(query_str)
+    return query_str
+
+
+def get_domain_range_assertions(graph):
+    qres = graph.query(
+        """
+        CONSTRUCT {
+            ?s ?p ?o .
+        }
+        WHERE {
+            ?s ?p ?o .
+            FILTER (?p = rdfs:domain || ?p = rdfs:range)
+        }
+        """,
+        initNs={"rdfs": RDFS}
+    )
+    return qres.graph
+
+
+def find_init_instance(graph, size):
+    all_instance_ids = get_all_instance_ids(graph)
+    counts = all_instance_ids['s'].value_counts()  # or 'o'?
+    normalized_counts = (counts - counts.min()) / (counts.max() - counts.min())
+
+    closest_instance_id = normalized_counts.iloc[(normalized_counts - size).abs().argsort()[:1]]
+    return closest_instance_id.index[0]
+
+
+def extract_subgraph(graph, size=0.5, levels=1):
+    init_instance = find_init_instance(graph, size)
+    subgraph = graph.query(
+        build_level_query(levels=levels),
+        initBindings={'init_instance': rdflib.URIRef(init_instance)}
+    ).graph
+    subgraph = subgraph + get_domain_range_assertions(graph)
+    subgraph.bind("rdfs", RDFS)
+    subgraph.bind("foaf", FOAF)
+    subgraph.bind("sdo", SDO)
+    subgraph.bind("example", Example)
+    #print(subgraph.serialize(format="turtle"))
+    return subgraph
