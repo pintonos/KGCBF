@@ -4,7 +4,7 @@ corrupt_instance_id:
     - "Error[1-9]+.*\n.*$corrupt.subject$"
 corrupt_property:
   patterns:
-    - "Error[1-9]+.*\n.*$corrupt.property$"
+    - "Error[1-9]+.*\n.*$corrupt.predicate$"
 corrupt_assertion:
   patterns:
     - "Error[1-9]+.*\n.*$corrupt.object$"

@@ -35,10 +35,10 @@ def fill_approach_dictionary_placeholders(query: str, error: dict, regex_escape:
     @return: A query without placeholders which can be used to test if an approach has detected an error.
     """
     query = query.replace("$original.subject$", encode_uri(error['original']['s'], regex_escape))
-    query = query.replace("$original.property$", encode_uri(error['original']['p'], regex_escape))
+    query = query.replace("$original.predicate$", encode_uri(error['original']['p'], regex_escape))
     query = query.replace("$original.object$", encode_uri(error['original']['o'], regex_escape))
     query = query.replace("$corrupt.subject$", encode_uri(error['corrupted']['s'], regex_escape))
-    query = query.replace("$corrupt.property$", encode_uri(error['corrupted']['p'], regex_escape))
+    query = query.replace("$corrupt.predicate$", encode_uri(error['corrupted']['p'], regex_escape))
     query = query.replace("$corrupt.object$", encode_uri(error['corrupted']['o'], regex_escape))
     return query
 
