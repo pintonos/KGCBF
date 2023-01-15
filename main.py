@@ -2,7 +2,7 @@ import argparse
 
 from framework.error_types import *
 from framework.logger import Logger
-from framework.validators import ValidationMethodsDict
+from evaluation.validation import ValidationMethodsDict
 from framework.utils import extract_subgraph
 
 
@@ -72,6 +72,5 @@ if __name__ == '__main__':
         if args.validation not in ValidationMethodsDict:
             print(f"Validation method '{args.validation}' does not exist.")
         else:
-            v = ValidationMethodsDict[args.validation](logger)
-            v.validate_file(args.output)
-            v.validate_errors()
+            v = ValidationMethodsDict[args.validation](args.output, logger)
+            v.evaluate_errors()
