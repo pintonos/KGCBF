@@ -28,6 +28,7 @@ class ValidatrrValidator(AbstractValidator):
             f"docker run -v {sys.path[0]}:/data n3unit -i /data/{self.input_graph} -o /data/{self.output_file}",
             shell=True)
 
-    def evaluate_errors(self) -> None:
+    def evaluate_errors(self, report_location: str = "data/report.yaml") -> None:
         self.validate_file()
-        generate_approach_report(self.name, self.error_log, read_config(self.approach_dictionary), self.output_file)
+        generate_approach_report(self.name, self.error_log, read_config(self.approach_dictionary), self.output_file,
+                                 kgcbf_report_location=report_location)

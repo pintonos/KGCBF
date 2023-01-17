@@ -31,11 +31,13 @@ class AbstractValidator:
         # This needs to be implemented for each approach individually (see existing validators for examples).
         raise NotImplementedError()
 
-    def evaluate_errors(self) -> None:
+    def evaluate_errors(self, report_location: str = "data/report.yaml") -> None:
         """
         Generate the KGCBF report for the given validation approach.
+        @param report_location: The location where the KGCBF report should be placed.
         """
         # Generally, this code should work just fine, if validate_file is implemented appropriately
         # and if the approach_dictionary is defined properly.
         self.validate_file()
-        generate_approach_report(self.name, self.error_log, read_config(self.approach_dictionary), self.output_file)
+        generate_approach_report(self.name, self.error_log, read_config(self.approach_dictionary), self.output_file,
+                                 kgcbf_report_location=report_location)

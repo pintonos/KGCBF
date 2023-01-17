@@ -14,6 +14,7 @@ if __name__ == '__main__':
     parser.add_argument('--config', '-c', type=str, default='config.yaml')
     parser.add_argument('--validation', '-v', type=str)
     parser.add_argument('--shacl', '-s', action='store_true')
+    parser.add_argument('--report', '-r', type=str, default='data/report.yaml')
     parser.add_argument('--subgraph', '-sub', type=float, default=0.0)
     args, _ = parser.parse_known_args()
     print(args)
@@ -73,4 +74,4 @@ if __name__ == '__main__':
             print(f"Validation method '{args.validation}' does not exist.")
         else:
             v = ValidationMethodsDict[args.validation](args.output, logger)
-            v.evaluate_errors()
+            v.evaluate_errors(args.report)
