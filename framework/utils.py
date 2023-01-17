@@ -7,7 +7,8 @@ import rdflib
 import yaml
 from pandas import DataFrame
 from rdflib import Graph, Literal
-from rdflib.namespace import FOAF, RDF, SDO, RDFS, OWL
+from rdflib.namespace import BRICK, CSVW, DC, DCAT, DCMITYPE, DCTERMS, DCAM, DOAP, FOAF, ODRL2, ORG, OWL, PROF, PROV, \
+    QB, RDF, RDFS, SDO, SH, SKOS, SOSA, SSN, TIME, VANN, VOID, WGS, XSD
 from rdflib.plugins.sparql.processor import SPARQLResult
 from rdflib.term import URIRef
 
@@ -78,49 +79,6 @@ def get_namespace_from_uri(graph, uri):
     for ns in namespaces:
         if ns._NS == extracted_ns:
             return ns
-
-
-def construct_error_example_graph():
-    g = Graph()
-    g.bind("foaf", FOAF)
-    g.bind("error_foaf", ErrorFOAF)
-    g.bind("sdo", SDO)
-    g.bind("error_sdo", ErrorSDO)
-
-    bob = URIRef("http://example.org/people/Bob")
-    linda = URIRef("http://example.org/people/Linda")
-    error_hans = URIRef("http://exampleorg/Hans")
-
-    g.add((bob, RDF.type, FOAF.Person))
-    g.add((bob, FOAF.name, Literal("Bob")))
-    g.add((bob, ErrorFOAF.age, Literal(24)))
-    g.add((bob, FOAF.knows, linda))
-    g.add((linda, RDF.type, FOAF.Person))
-    g.add((linda, FOAF.name, Literal("Linda")))
-    g.add((error_hans, RDF.type, ErrorSDO.HumAn))
-    g.add((error_hans, ErrorSDO.name, Literal("Hans")))
-    return g
-
-
-def construct_example_graph():
-    g = Graph()
-    g.bind("foaf", FOAF)
-    g.bind("sdo", SDO)
-    g.bind("rdfs", RDFS)
-    g.bind("owl", OWL)
-    g.bind("ex", Example)
-
-    dennis = URIRef("http://example.org/Dennis")
-
-    g.add((dennis, RDF.type, Example.Person))
-
-    # g.add((Example.Group, Example.hasMember, dennis))
-    g.add((dennis, Example.hasAddress, Example.Address))
-
-    g.add((Example.hasMember, RDFS.range, Example.Person))
-    g.add((Example.hasAddress, RDFS.domain, Example.Person))
-
-    return g
 
 
 def sparql_query(graph, subject, predicate, object):
@@ -349,7 +307,7 @@ def build_level_query(levels=1):
     assert levels <= 3, "Sampling a subgraph with levels > 3 is not supported."
     construct_str = ""
     where_str = ""
-    for l in range(1, levels+1):
+    for l in range(1, levels + 1):
         construct_str = construct_str + f"""
             ?s{l} ?p{l} ?o{l} .
             ?s{l}s ?p{l}s ?s{l} ."""
@@ -358,12 +316,12 @@ def build_level_query(levels=1):
                 {{?s{l} ?p{l} ?o{l} FILTER (?s1 = ?init_instance) .}}
                 UNION
                 {{?s{l}b ?p{l}b ?s{l} FILTER (?s1 = ?init_instance) .}}
-                BIND (?o{l} as ?s{l+1}) ."""
+                BIND (?o{l} as ?s{l + 1}) ."""
         else:
             where_str = where_str + f"""
                 ?s{l} ?p{l} ?o{l} .
                 ?s{l}b ?p{l}b ?s{l} .
-                BIND (?o{l} as ?s{l+1}) ."""
+                BIND (?o{l} as ?s{l + 1}) ."""
 
     query_str = """
         CONSTRUCT {""" + construct_str + """
@@ -371,7 +329,7 @@ def build_level_query(levels=1):
         WHERE {""" + where_str + """
         }
     """
-    #print(query_str)
+    # print(query_str)
     return query_str
 
 
@@ -391,25 +349,46 @@ def get_domain_range_assertions(graph):
     return qres.graph
 
 
-def find_init_instance(graph, size):
+def find_init_instances(graph, size):
     all_instance_ids = get_all_instance_ids(graph)
     counts = all_instance_ids['s'].value_counts()  # or 'o'?
-    normalized_counts = (counts - counts.min()) / (counts.max() - counts.min())
+    normalized_counts = (counts - counts.min()) / (counts.sum() - counts.min())
 
-    closest_instance_id = normalized_counts.iloc[(normalized_counts - size).abs().argsort()[:1]]
-    return closest_instance_id.index[0]
+    init_instances = []
+    reached_size = 0.0
+    while reached_size <= size:
+        sampled_instance = normalized_counts.sample(n=1)
+        if sampled_instance.values[0] > 0:
+            init_instances.append(rdflib.URIRef(sampled_instance.index[0]))
+            reached_size += sampled_instance.values[0]
+    # remove duplicates
+    init_instances = list(set(init_instances))
+    return init_instances
 
 
-def extract_subgraph(graph, size=0.5, levels=1):
-    init_instance = find_init_instance(graph, size)
-    subgraph = graph.query(
-        build_level_query(levels=levels),
-        initBindings={'init_instance': rdflib.URIRef(init_instance)}
-    ).graph
-    subgraph = subgraph + get_domain_range_assertions(graph)
-    subgraph.bind("rdfs", RDFS)
-    subgraph.bind("foaf", FOAF)
-    subgraph.bind("sdo", SDO)
-    subgraph.bind("example", Example)
-    #print(subgraph.serialize(format="turtle"))
+def bind_all_namespaces(graph):
+    namespaces = [BRICK, CSVW, DC, DCAT, DCMITYPE, DCTERMS, DCAM, DOAP, FOAF, ODRL2, ORG, OWL, PROF, PROV, QB, RDF,
+                  RDFS, SDO, SH, SKOS, SOSA, SSN, TIME, VANN, VOID, WGS, XSD]
+    namespaces_str = ['brick', 'csvw', 'cv', 'dcat', 'dcmitype', 'dcterms', 'dcam', 'doap', 'foaf', 'odrl2', 'org',
+                      'owl', 'prof', 'prov', 'qb', 'rdf', 'rdfs', 'sdo', 'sh', 'skos', 'sosa', 'ssn', 'time', 'vann',
+                      'void', 'wgs', 'xsd']
+    for i, ns in enumerate(namespaces):
+        graph.bind(namespaces_str[i], ns)
+    return graph
+
+
+def extract_subgraph(graph, size=0.5, levels=1, bind_namespaces=True):
+    init_instances = find_init_instances(graph, size)
+    subgraph = Graph()
+    for init_instance in init_instances:
+        subgraph += graph.query(
+            build_level_query(levels=levels),
+            initBindings={'init_instance': init_instance}
+        ).graph
+    subgraph += get_domain_range_assertions(graph)
+    if bind_namespaces:
+        subgraph = bind_all_namespaces(subgraph)
+        subgraph.bind("example", Example)
+
+    print(subgraph.serialize(format="turtle"))
     return subgraph

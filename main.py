@@ -15,7 +15,7 @@ if __name__ == '__main__':
     parser.add_argument('--validation', '-v', type=str)
     parser.add_argument('--shacl', '-s', action='store_true')
     parser.add_argument('--report', '-r', type=str, default='data/report.yaml')
-    parser.add_argument('--subgraph', '-sub', type=float, default=0.0)
+    parser.add_argument('--subgraph', '-sub', type=float, default=0.5)
     args, _ = parser.parse_known_args()
     print(args)
 
