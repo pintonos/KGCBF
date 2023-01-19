@@ -2,8 +2,8 @@ import subprocess
 import sys
 
 from evaluation.validators.AbstractValidator import AbstractValidator
-from framework.logger import Logger
-from framework.utils import read_config
+from corruption.logger import Logger
+from utils.rdf_utils import read_config
 from utils.evaluation_utils import generate_approach_report
 
 

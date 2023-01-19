@@ -1,6 +1,6 @@
 from utils.evaluation_utils import generate_approach_report
-from framework.logger import Logger
-from framework.utils import read_config
+from corruption.logger import Logger
+from utils.rdf_utils import read_config
 
 
 class AbstractValidator:

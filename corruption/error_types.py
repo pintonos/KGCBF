@@ -1,5 +1,7 @@
 import uuid
-from framework.utils import *
+from utils.sparql_utils import *
+from utils.corruption_utils import *
+from utils.rdf_utils import *
 
 
 class AbstractError:

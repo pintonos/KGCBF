@@ -3,7 +3,7 @@ import re
 import yaml
 from rdflib import Graph
 
-from framework.logger import Logger
+from corruption.logger import Logger
 
 
 def matching_regex_count(content: str, query: str) -> int:

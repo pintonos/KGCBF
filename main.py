@@ -1,10 +1,10 @@
 import argparse
 import copy
 
-from framework.error_types import *
-from framework.logger import Logger
+from corruption.error_types import *
+from corruption.logger import Logger
 from evaluation.validation import ValidationMethodsDict
-from framework.utils import extract_subgraph
+from utils.rdf_utils import extract_subgraph, read_config, get_shacl_from_ontology
 
 
 if __name__ == '__main__':
