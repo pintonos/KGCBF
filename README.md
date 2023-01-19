@@ -79,7 +79,3 @@ a CLI tool or start a Docker container, or implement a python library if one is 
 Finally, you must add your new created class to `evaluation/validation.py`, by resolving an arbitrary 
 string name to your class in `ValidationMethodsDict`. After doing this, you can call the CLI tool with `-v [your tool name]`
  and the KGCBF report will be generated.
-
-# Links
-- https://www.wikidata.org/wiki/Special:EntityData/Q42.ttl
-- http://dbpedia.org/resource/Richard_Nixon
