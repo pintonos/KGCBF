@@ -1,8 +1,99 @@
 # Knowledge Graph Curation Benchmark Framework (KGCBF)
 
-Framework for evaluating correction and completion approaches.
+The Knowledge Graph Curation Benchmark Framework (KGCBF) is a framework for evaluating error detection- and correction approaches in knowledge graphs.
 
-For correction it injects specific semantic and syntactic errors into Knowledge graphs. For completion different links are removed. These changes are recorded and after the approach corrected / completed the KG the evaluation module looks up the changed triples and evaluates their correctness.
+It is split into a corruption module and an evaluation module, which are accessed using a command line interface.  
+
+To run the benchmark, install dependencies via the provided `Pipfile` and run the `main.py` script. The possible parameters are listed below.  
+**Note that the pre-defined validation approaches are subject to additional dependencies. Refer to the Section "Evaluation Module" for more information.**
+
+| Parameter    | Description                                                                                                          |
+|--------------|----------------------------------------------------------------------------------------------------------------------|
+| --input      | Path to the input knowledge graph (.ttl). Defaults to `datasets/input.ttl`                                           |
+| --output     | Path to the corrupted knowledge graph output (.ttl). Defaults to `data/output.ttl`                                   |
+| --ontology   | Path to an auxiliary knowledge graph containing ontology or shape triples (.ttl) This graph remains uncorrupted      |
+| --config     | Path to the config file (.yaml). Defaults to `config.yaml`.                                                          |
+| --validation | Validation approach                                                                                                  |
+| --shacl      | If --shacl is set, SHACL shapes are automatically inferred for domain and range violations based on the input graph. |
+| --report     | Path to the final evaluation report (.yaml). Defaults to `data/report.yaml`.                                         |
+| --subgraph   | Defines the size of the sampled subgraph from the input (0-1). Defaults to 0.5.                                      |
+| --multi      | If set, allows multiple errors to occur on a single triple. If not set, only one error is allowed per triple.        |
+
+
+## Corruption Module 
+The corruption module is responsible for generating a knowledge graph for benchmarking by introducing specific corruptions into an 
+input knowledge graph which is presumed to be uncorrupted. The input and output graphs are both in the Turtle format, and are provided 
+via the `--input` and `--output` parameters. The corruption module is configured via a YAML file, which is provided via the `--config` parameter.
+A sample configuration file is shown below.
+
+```yaml
+errors:
+  semantic:
+    DomainTypeError: 0.1
+    RangeTypeError: 0.1
+    InstanceAssertionError: 0.1
+    PropertyAssertionError: 0.1
+  local-syntactic:
+    InstanceIdentifierError: 0.1
+    PropertyNameError: 0.1
+    TypeError: 0.1
+  syntactic:
+    InstanceIdentifierError: 0.2
+    TypeError: 0.1
+    PropertyNameError: 0.1
+    PropertyAssertionError: 0.1
+```
+
+We differentiate between three different error categories: semantic, local-syntactic, and syntactic.  
+**Semantic** errors are errors related to the semantics of the triples, but the triples themselves are syntactically correct. This category includes:
+- `DomainTypeError`: The domain of a property is violated.
+- `RangeTypeError`: The range of a property is violated.
+- `InstanceAssertionError`: An instance is falsely asserted to be a member of a class (rdf:type relation).
+- `PropertyAssertionError`: The property assertion of a triple is semantically incorrect.
+
+We introduce these errors by replacing the object of a triple with a random object from the SDO ontology. In the case of 
+domain and range violations, we alter the definition of an instance to induce a violation of the domain or range of a property.
+In these cases, we try to approximate the desired error quantity by calculating how many triples would be affected by the change.
+
+**Local-syntactic** errors are errors in the presumed syntax of the knowledge graph. For example, if all instances in a knowledge graph 
+are named using the CamelCase convention, then an instance named using the snake_case convention is a local-syntactic error. This category includes:
+- `InstanceIdentifierError`: The identifier of an instance does not conform to the expected syntax.
+- `PropertyNameError`: The name of a property does not conform to the expected syntax.
+- `TypeError`: The type of a literal does not conform to the expected syntax.
+
+We introduce these errors by adding random characters to the identifier of an instance, property, or type definition. 
+We ensure that the altered triples still conform to the Turtle syntax.
+
+**Syntactic** errors are errors in the syntax of the knowledge graph. Specifically, we focus on errors in the RDF syntax. Hence, 
+we only alter the syntax of subjects, predicates, and objects, but not the syntax of the Turtle declarations. This category includes:
+- `InstanceIdentifierError`: The identifier of an instance does not conform to the Turtle syntax.
+- `TypeError`: The type of a literal does not conform to the Turtle syntax.
+- `PropertyNameError`: The name of a property does not conform to the Turtle syntax.
+- `PropertyAssertionError`: The object of a property assertion triple is syntactically incorrect.
+
+We introduce these errors by adding random characters to the identifier of an instance, property, or type definition, where 
+the added characters are illegal in the RDF syntax.
+
+### Additional Corruption Module Features
+The corruption module also supports the following additional features:
+
+**SHACL Shapes**: The corruption module can automatically infer SHACL shapes for domain and range violations based on the input graph.
+This feature is enabled by setting the `--shacl` parameter. Shapes are inferred based on rdfs:domain and rdfs:range definitions. 
+The inferred shapes are written to the output graph. This may be useful for evaluating approaches that use SHACL shapes for validation.
+
+**Ontology**: The corruption module can be provided with an auxiliary knowledge graph containing ontology or shape triples.
+This graph is provided via the `--ontology` parameter. The corruption module will not corrupt triples in this graph, but 
+add this graph to the corrupted output graph in its original form. This allows users to guarantee that the TBox of the corrupted
+graph is unaffected and can be used to reason over the ABox.
+
+**Subgraph**: The corruption module can be configured to only corrupt a subgraph of the input graph. This is useful if the
+input graph is too large to be corrupted in a reasonable amount of time. The size of the subgraph is defined via the `--subgraph` parameter.
+
+**Multiple Errors**: The corruption module can be configured to allow multiple errors to occur on a single triple. Our 
+assumption is that it is generally undesirable to introduce multiple corruptions on a single triple, as the subsequent 
+evaluation of the error detection- and correction approaches may be quite difficult. However, some errors are not likely to 
+affect one another. In cases where the total number of introduced errors thus exceeds the number of triples in the input graph,
+the corruption module will allow multiple errors to occur on a single triple. This behavior can be enabled via the `--multi` parameter.
 
 ## Evaluation Module
 The evaluation module feeds the corrupted graph into a cleaning/evaluation approach. 
@@ -21,7 +112,7 @@ The output is a .yaml file which contains an evaluation of the (mis)match betwee
 
 The report contains the following meta-information:  
 
-| name                                  | content                                                                                                            |
+| Name                                  | Content                                                                                                            |
 |---------------------------------------|--------------------------------------------------------------------------------------------------------------------|
 | _validator                            | The name of the validation approach.                                                                               |
 | _validator_errors                     | How many errors the validation approach has detected.                                                              |
