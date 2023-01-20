@@ -6,7 +6,6 @@ from rdflib.namespace import BRICK, CSVW, DC, DCAT, DCMITYPE, DCTERMS, DCAM, DOA
     QB, RDF, RDFS, SDO, SH, SKOS, SOSA, SSN, TIME, VANN, VOID, WGS, XSD
 from rdflib.term import URIRef
 
-from corruption.namespaces import Example
 from utils.sparql_utils import get_all_instance_ids, get_domain_range_assertions, build_level_query
 
 def print_rdf_triples(graph):
@@ -83,7 +82,6 @@ def extract_subgraph(graph, size=0.5, levels=1, bind_namespaces=True):
     subgraph += get_domain_range_assertions(graph)
     if bind_namespaces:
         subgraph = bind_all_namespaces(subgraph)
-        subgraph.bind("example", Example)
 
     #print(subgraph.serialize(format="turtle"))
     return subgraph
