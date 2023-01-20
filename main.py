@@ -34,6 +34,11 @@ if __name__ == '__main__':
 
     error_instantiations = {cat: {} for cat in config["errors"]}
 
+    # switch to multi-error per triple if config prob. sum > 1.0
+    if sum([prob for error in config["errors"].values() for prob in error.values()]) > 1.0:
+        print("Config error probabilites > 1.0 >>>> multi-error per triple activated!", "\n\n")
+        args.multi = True
+
     # alter graph
     original_graph = None
     if not args.multi:
