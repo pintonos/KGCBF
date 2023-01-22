@@ -1,10 +1,10 @@
 import subprocess
 import sys
 
+from evaluation.report import Report
 from evaluation.validators.AbstractValidator import AbstractValidator
 from corruption.logger import Logger
 from utils.rdf_utils import read_config
-from utils.evaluation_utils import generate_approach_report
 
 
 class ValidatrrValidator(AbstractValidator):
@@ -28,7 +28,9 @@ class ValidatrrValidator(AbstractValidator):
             f"docker run -v {sys.path[0]}:/data n3unit -i /data/{self.input_graph} -o /data/{self.output_file}",
             shell=True)
 
-    def evaluate_errors(self, report_location: str = "data/report.yaml") -> None:
+    def evaluate_errors(self, report_location: str = "data/report.yaml") -> Report:
         self.validate_file()
-        generate_approach_report(self.name, self.error_log, read_config(self.approach_dictionary), self.output_file,
-                                 kgcbf_report_location=report_location)
+        # generate a report
+        report = Report(self.name, self.error_log, read_config(self.approach_dictionary), self.output_file)
+        report.store_report(report_location)
+        return report

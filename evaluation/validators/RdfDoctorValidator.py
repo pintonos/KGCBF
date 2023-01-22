@@ -1,10 +1,10 @@
 import subprocess
 import sys
 
+from evaluation.report import Report
 from evaluation.validators.AbstractValidator import AbstractValidator
 from corruption.logger import Logger
 from utils.rdf_utils import read_config
-from utils.evaluation_utils import generate_approach_report
 
 
 class RdfDoctorValidator(AbstractValidator):
@@ -29,7 +29,9 @@ class RdfDoctorValidator(AbstractValidator):
             f"java -jar {sys.path[0]}/bin/RDFDoctor.jar -i {sys.path[0]}/{self.input_graph}",
             shell=True, cwd=f"{sys.path[0]}/data")
 
-    def evaluate_errors(self, report_location: str = "data/report.yaml") -> None:
+    def evaluate_errors(self, report_location: str = "data/report.yaml") -> Report:
         self.validate_file()
-        generate_approach_report(self.name, self.error_log, read_config(self.approach_dictionary), self.output_file,
-                                 kgcbf_report_location=report_location)
+        # generate a report
+        report = Report(self.name, self.error_log, read_config(self.approach_dictionary), self.output_file)
+        report.store_report(report_location)
+        return report

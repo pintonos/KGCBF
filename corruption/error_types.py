@@ -60,7 +60,6 @@ class LocalSyntacticTypeError(AbstractError):
         pass
 
 
-
 class LocalSyntacticInstanceIdentifierError(AbstractError):
     def __init__(self, prob, logger):
         super(LocalSyntacticInstanceIdentifierError, self).__init__()
@@ -420,8 +419,8 @@ class SemanticPropertyAssertionError(AbstractError):
             s = triple[1]["s"]
             p = triple[1]["p"]
             o = triple[1]["o"]
-            corr_p = str(random.choice(dir(SDO))) # TODO only lowercase refs?
-            update_predicate(graph, s, p, o, corr_p) # random SDO type for now
+            corr_p = str(random.choice(dir(SDO)))  # TODO only lowercase refs?
+            update_predicate(graph, s, p, o, corr_p)  # random SDO type for now
 
             org_triple = {"s": s, "p": p, "o": o}
             corr_triple = {"s": s, "p": corr_p, "o": o}

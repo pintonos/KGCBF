@@ -90,4 +90,5 @@ if __name__ == '__main__':
             print(f"Validation method '{args.validation}' does not exist.")
         else:
             v = ValidationMethodsDict[args.validation](args.output, logger)
-            v.evaluate_errors(args.report)
+            kgcbf_report = v.evaluate_errors(args.report)
+            print(kgcbf_report)
