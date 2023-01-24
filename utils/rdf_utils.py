@@ -46,7 +46,7 @@ def get_namespace_from_uri(graph, uri):
 
 def find_init_instances(graph, size):
     all_instance_ids = get_all_instance_ids(graph)
-    counts = all_instance_ids['s'].value_counts()  # or 'o'?
+    counts = all_instance_ids['s'].value_counts()
     normalized_counts = (counts - counts.min()) / (counts.sum() - counts.min())
 
     init_instances = []

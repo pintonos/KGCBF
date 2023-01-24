@@ -16,7 +16,7 @@ if __name__ == '__main__':
     parser.add_argument('--validation', '-v', type=str)
     parser.add_argument('--shacl', '-s', action='store_true')
     parser.add_argument('--report', '-r', type=str, default='data/report.yaml')
-    parser.add_argument('--subgraph', '-sub', type=float, default=0.5)
+    parser.add_argument('--subgraph', '-sub', type=float, default=1.0)
     parser.add_argument('--multi', '-m', action='store_true')
     args, _ = parser.parse_known_args()
     print(args)
@@ -49,7 +49,7 @@ if __name__ == '__main__':
                 prob = config["errors"][cat][error]
                 print(f"Adding error type {error} in category {cat} with prob {prob}.")
                 error_instantiations[cat][error] = error_mapping[cat][error](prob=prob, logger=logger)
-                if args.multi:
+                if args.multi or cat == 'syntactic':
                     g = error_instantiations[cat][error].update_graph(g)
                 else:
                     # remove corrupted triples from graph to prevent multiple corruptions per triple

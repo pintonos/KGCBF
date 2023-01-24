@@ -2,6 +2,7 @@ import uuid
 from utils.sparql_utils import *
 from utils.corruption_utils import *
 from utils.rdf_utils import *
+import datetime
 
 
 class AbstractError:
@@ -123,14 +124,14 @@ class SyntacticInstanceIdentifierError(AbstractError):
         return graph
 
     def post_process(self, file):
-        with open(file, 'r') as f:
+        with open(file, 'r', encoding="utf8") as f:
             file_data = f.read()
 
         for placeholder, subject in self.replace_subjects.items():
             file_data = file_data.replace(placeholder, subject)
 
         # Write the file out again
-        with open(file, 'w') as f:
+        with open(file, 'w', encoding="utf8") as f:
             f.write(file_data)
 
 
@@ -164,14 +165,14 @@ class SyntacticTypeError(AbstractError):
         return graph
 
     def post_process(self, file):
-        with open(file, 'r') as f:
+        with open(file, 'r', encoding="utf8") as f:
             file_data = f.read()
 
         for placeholder, object in self.replace_objects.items():
             file_data = file_data.replace(placeholder, object)
 
         # Write the file out again
-        with open(file, 'w') as f:
+        with open(file, 'w', encoding="utf8") as f:
             f.write(file_data)
 
 
@@ -205,14 +206,14 @@ class SyntacticPropertyError(AbstractError):
         return graph
 
     def post_process(self, file):
-        with open(file, 'r') as f:
+        with open(file, 'r', encoding="utf8") as f:
             file_data = f.read()
 
         for placeholder, property in self.replace_property.items():
             file_data = file_data.replace(placeholder, property)
 
         # Write the file out again
-        with open(file, 'w') as f:
+        with open(file, 'w', encoding="utf8") as f:
             f.write(file_data)
 
 
@@ -233,8 +234,11 @@ class SyntacticPropertyAssertionError(AbstractError):
             s = triple[1]["s"]
             p = triple[1]["p"]
             o = triple[1]["o"]
-            target = insert_str(o, ''.join(random.sample(get_invalid_characters(), random.randint(1, 3))),
-                                random.randint(-1, len(o)))
+            str_o = str(o)
+            if isinstance(o, datetime.datetime):
+                str_o = o.strftime('%Y-%d-%m')
+            target = insert_str(str_o, ''.join(random.sample(get_invalid_characters(), random.randint(1, 3))),
+                                random.randint(-1, len(str_o)))
             placeholder = f":placeholder-{uuid.uuid4()}"
             update_object(graph, s, p, o, placeholder)
             self.replace_objects[placeholder] = target
@@ -245,14 +249,14 @@ class SyntacticPropertyAssertionError(AbstractError):
         return graph
 
     def post_process(self, file):
-        with open(file, 'r') as f:
+        with open(file, 'r', encoding="utf8") as f:
             file_data = f.read()
 
         for placeholder, object in self.replace_objects.items():
             file_data = file_data.replace(placeholder, object)
 
         # Write the file out again
-        with open(file, 'w') as f:
+        with open(file, 'w', encoding="utf8") as f:
             f.write(file_data)
 
 
@@ -389,9 +393,6 @@ class SemanticInstanceAssertionError(AbstractError):
             o = triple[1]["o"]
             corr_o = str(random.choice(dir(SDO)))
             update_object(graph, s, RDF.type, o, corr_o)  # random SDO type for now
-
-            org_triple = {"s": s, "p": str(RDF.type), "o": o}
-            corr_triple = {"s": s, "p": str(RDF.type), "o": corr_o}
 
             org_triple = {"s": s, "p": p, "o": o}
             corr_triple = {"s": s, "p": p, "o": corr_o}
