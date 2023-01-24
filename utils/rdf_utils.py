@@ -37,7 +37,8 @@ def read_config(config_filepath):
 
 
 def get_namespace_from_uri(graph, uri):
-    namespaces = [RDF, RDFS, FOAF, SDO, OWL, Example]
+    namespaces = [BRICK, CSVW, DC, DCAT, DCMITYPE, DCTERMS, DCAM, DOAP, FOAF, ODRL2, ORG, OWL, PROF, PROV, QB, RDF,
+                  RDFS, SDO, SH, SKOS, SOSA, SSN, TIME, VANN, VOID, WGS, XSD]
     extracted_ns = graph.compute_qname(URIRef(uri))[1]
     for ns in namespaces:
         if ns._NS == extracted_ns:
