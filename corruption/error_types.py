@@ -443,7 +443,7 @@ error_mapping = {
     "local-syntactic": {
         "InstanceIdentifierError": LocalSyntacticInstanceIdentifierError,
         "TypeError": LocalSyntacticTypeError,
-        "PropertyError": LocalSyntacticPropertyNameError
+        "PropertyNameError": LocalSyntacticPropertyNameError
     },
     "syntactic": {
         "InstanceIdentifierError": SyntacticInstanceIdentifierError,

@@ -37,8 +37,12 @@ def sparql_query(graph, subject, predicate, object):
 
 def update_predicate(graph, subject, predicate, object, target_predicate):
     try:
-        rdflib.term._is_valid_uri(object)
-        __sparql_update_predicate(graph, rdflib.URIRef(subject), rdflib.URIRef(predicate), rdflib.URIRef(object),
+        valid_uri = rdflib.term._is_valid_uri(object)
+        if valid_uri:
+            __sparql_update_predicate(graph, rdflib.URIRef(subject), rdflib.URIRef(predicate), rdflib.URIRef(object),
+                                  rdflib.URIRef(target_predicate))
+        else:
+            __sparql_update_predicate(graph, rdflib.URIRef(subject), rdflib.URIRef(predicate), Literal(object),
                                   rdflib.URIRef(target_predicate))
     except:
         __sparql_update_predicate(graph, rdflib.URIRef(subject), rdflib.URIRef(predicate), Literal(object),
@@ -63,10 +67,14 @@ def __sparql_update_predicate(graph, subject, predicate, object, target_predicat
 
 
 def update_object(graph, subject, predicate, object, target_object):
-    try:
-        rdflib.term._is_valid_uri(object)
-        __sparql_update_object(graph, rdflib.URIRef(subject), rdflib.URIRef(predicate), rdflib.URIRef(object),
-                               rdflib.URIRef(target_object))
+    try: # int and float values bug in _is_valid_uri
+        valid_uri = rdflib.term._is_valid_uri(object)
+        if valid_uri:
+            __sparql_update_object(graph, rdflib.URIRef(subject), rdflib.URIRef(predicate), rdflib.URIRef(object),
+                                rdflib.URIRef(target_object))
+        else:
+            __sparql_update_object(graph, rdflib.URIRef(subject), rdflib.URIRef(predicate), Literal(object),
+                           rdflib.URIRef(target_object))
     except:
         __sparql_update_object(graph, rdflib.URIRef(subject), rdflib.URIRef(predicate), Literal(object),
                            rdflib.URIRef(target_object))

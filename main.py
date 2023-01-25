@@ -22,7 +22,7 @@ if __name__ == '__main__':
     print(args)
 
     config = read_config(args.config)
-    print(config, "\n\n")
+    print(yaml.dump(config, allow_unicode=True, default_flow_style=False), "\n\n")
 
     g = Graph()
 
