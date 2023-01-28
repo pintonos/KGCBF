@@ -275,7 +275,7 @@ def build_level_query(levels=1):
     return query_str
 
 
-def get_domain_range_assertions(graph):
+def build_domain_range_assertions(graph):
     qres = graph.query(
         """
         CONSTRUCT {
@@ -287,5 +287,26 @@ def get_domain_range_assertions(graph):
         }
         """,
         initNs={"rdfs": RDFS}
+    )
+    return qres.graph
+
+
+def build_object_only_entities(graph):
+    qres = graph.query(
+        """
+        CONSTRUCT {
+            ?s rdf:type ?o .
+        }
+        WHERE {
+            ?s rdf:type ?o
+            FILTER NOT EXISTS 
+            {
+                ?s ?p1 []
+                FILTER (?p1 != rdf:type)
+            }
+        }
+        """
+        ,
+        initNs={"rdf": RDF}
     )
     return qres.graph
