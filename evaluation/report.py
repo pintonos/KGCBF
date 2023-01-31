@@ -114,7 +114,7 @@ class Report:
         self.estimated_precision = round(
             self.matching / (self.matching + self.estimated_unexplained_corruptions)
             if self.matching + self.estimated_unexplained_corruptions > 0 else 0, 2)
-        self.recall = round(self.matching / self.introduced, 2)
+        self.recall = round(self.matching / self.introduced, 2) if self.matching > 0 else 0
         # Estimated F1 based on true recall and estimated precision.
         if self.estimated_precision + self.recall > 0:
             self.estimated_f1 = round(2 * self.estimated_precision * self.recall / (

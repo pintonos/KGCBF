@@ -2,28 +2,13 @@
 @prefix ex: <http://example.org/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-foaf:member rdfs:domain foaf:Group ; # person -> agent
-    rdfs:range foaf:Agent .
-
-foaf:fundedBy rdfs:domain foaf:project ;
-    rdfs:range foaf:Organization .
-
-foaf:knows rdfs:domain foaf:Person ;
-    rdfs:range foaf:Group,
-        foaf:Organization,
-        foaf:Person .
-
-ex:Georg a foaf:Person ;
-    foaf:knows ex:Georg ,
-        ex:OrganizationSTI,
-        ex:GroupOne ;
+ex:Georg a foaf:Agent ;
+    foaf:knows ex:Andreas ;
     foaf:mbox <mailto:georg.wenzel@student.uibk.ac.at> ;
     foaf:name "Georg Wenzel" .
 
-ex:Andreas a foaf:Person ;
-    foaf:knows ex:Georg ,
-        ex:OrganizationSTI,
-        ex:GroupOne ;
+ex:Andreas a foaf:Agent ;
+    foaf:knows ex:Georg ;
     foaf:mbox <mailto:andreas.peintner@uibk.ac.at> ;
     ex:address "Example street 3" ;
     foaf:name "Andreas Peintner" .
@@ -34,9 +19,10 @@ ex:Dennis a foaf:Agent .
 ex:Simon a foaf:Agent .
 ex:Juliette a foaf:Agent .
 ex:Umut a foaf:Agent .
+ex:Lars a foaf:Agent .
+ex:Michael a foaf:Agent .
 
-ex:OrganizationSTI a foaf:Organization ;
-    foaf:member ex:Umut .
+ex:OrganizationSTI a foaf:Organization .
 
 ex:GroupOne a foaf:Group ;
     foaf:member ex:Andreas,
@@ -50,8 +36,8 @@ ex:GroupTwo a foaf:Group ;
         ex:Max,
         ex:Michael .
 
-ex:ProjectOne a foaf:project ;
+ex:ProjectOne a foaf:Project ;
     foaf:fundedBy ex:OrganizationSTI .
 
-ex:ProjectTwo a foaf:project ;
+ex:ProjectTwo a foaf:Project ;
     foaf:fundedBy ex:OrganizationSTI .

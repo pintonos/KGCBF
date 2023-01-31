@@ -291,9 +291,6 @@
 @prefix yago: <http://dbpedia.org/class/yago/> .
 @prefix yago-res: <http://yago-knowledge.org/resource/> .
 
-dbo:starring rdfs:domain dbo:work ;
-    rdfs:range dbo:Actor .
-
 dbr:12th_Man_\(film\) dbo:starring dbr:Mohanlal ;
     dbp:starring dbr:Mohanlal .
 

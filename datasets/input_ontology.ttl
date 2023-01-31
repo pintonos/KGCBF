@@ -1,0 +1,11 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+foaf:member rdfs:domain foaf:Group ;
+    rdfs:range foaf:Agent .
+
+foaf:fundedBy rdfs:domain foaf:project ;
+    rdfs:range foaf:Organization .
+
+foaf:knows rdfs:domain foaf:Agent ;
+    rdfs:range foaf:Agent .

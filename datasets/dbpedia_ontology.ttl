@@ -1,0 +1,5 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+
+dbo:starring rdfs:domain dbo:work ;
+    rdfs:range dbo:Actor .
