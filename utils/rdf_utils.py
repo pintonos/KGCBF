@@ -6,7 +6,8 @@ from rdflib.namespace import BRICK, CSVW, DC, DCAT, DCMITYPE, DCTERMS, DCAM, DOA
     QB, RDF, RDFS, SDO, SH, SKOS, SOSA, SSN, TIME, VANN, VOID, WGS, XSD
 from rdflib.term import URIRef
 
-from utils.sparql_utils import get_all_instance_ids, get_domain_range_assertions, build_level_query
+from utils.sparql_utils import get_all_instance_ids, build_domain_range_assertions, build_level_query, build_object_only_entities
+
 
 def print_rdf_triples(graph):
     # Loop through each triple in the graph (subj, pred, obj)
@@ -44,6 +45,7 @@ def get_namespace_from_uri(graph, uri):
         if ns._NS == extracted_ns:
             return ns
 
+
 def find_init_instances(graph, size):
     all_instance_ids = get_all_instance_ids(graph)
     counts = all_instance_ids['s'].value_counts()
@@ -80,7 +82,8 @@ def extract_subgraph(graph, size=0.5, levels=1, bind_namespaces=True):
             build_level_query(levels=levels),
             initBindings={'init_instance': init_instance}
         ).graph
-    subgraph += get_domain_range_assertions(graph)
+    subgraph += build_object_only_entities(graph)  # for range errors
+    subgraph += build_domain_range_assertions(graph)
     if bind_namespaces:
         subgraph = bind_all_namespaces(subgraph)
 
