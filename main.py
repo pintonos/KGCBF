@@ -40,9 +40,10 @@ if __name__ == '__main__':
         args.multi = True
 
     # alter graph
-    original_graph = None
+    original_graph, corrupted_triples = None, None
     if not args.multi:
         original_graph = copy.deepcopy(g)
+        corrupted_triples = Graph()
     for cat in config["errors"]:
         for error in config["errors"][cat]:
             if cat in error_mapping and error in error_mapping[cat]:
@@ -54,10 +55,13 @@ if __name__ == '__main__':
                 else:
                     # remove corrupted triples from graph to prevent multiple corruptions per triple
                     g = error_instantiations[cat][error].update_graph(g)
-                    corrupted_triples = g - original_graph
+                    corrupted_triples += g - original_graph
                     g -= corrupted_triples
             else:
                 print(f"Skipping unknown error type: {cat} {error}.")
+
+    if not args.multi:
+        g = g + corrupted_triples
 
     # add ontology and/or shacl shapes graph
     if args.shacl and not args.ontology:
